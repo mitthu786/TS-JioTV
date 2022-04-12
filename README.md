@@ -26,8 +26,14 @@
  - KSWEB PRO ( Php Web Server ) <br>
 
   ```py
+  
+https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk
 
-https://apkdone.com/ksweb-server-php-mysql-apk/download
+  ```
+  
+  ```py
+
+https://apkcow.com/ksweb-server-php-mysql-mod-apk/download/
 
   ```
 
