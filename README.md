@@ -61,16 +61,26 @@ http://localhost:8080/jiotvweb/
 • In Player Put Links Format Like Below
 
   ```py
-http://localhost/jiotvweb/live.php?c=Channel_Name&q=Quality
+http://localhost:8080/jiotvweb/live.php?c=Channel_Name&q=Quality
   ```
 
 ```py
-http://localhost/jiotvweb/live.php?c=And_Pictures_HD&q=800
+http://localhost:8080/jiotvweb/live.php?c=And_Pictures_HD&q=800
 ```
   
-   • <b>Depnding on Your Server Change Links<br></b><br> 
+   • <b>Depending on Your Server Change Links<br></b><br> 
    • This Script is free for USE and Modify</b><br>
-   
+
+#### ♢ Method 3 :
+
+• In Tivimate or OTT Navigator Player Put Links Format Like Below
+
+  ```py
+http://localhost:8080/jiotvweb/playlist.php
+  ```
+  
+   • TNow Enjoy with your Jio Channels.</b><br>
+
 #### 😛 Genrate ssoToken Here :
 
 - For This You Need JioID Number and Password
