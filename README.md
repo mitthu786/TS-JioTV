@@ -1,10 +1,10 @@
 
 <p align="center"><img src="https://images.firstpost.com/wp-content/uploads/2020/07/jio-tvplus-1280.jpg" width="180" height="100"></p>
 
-<h1 align='center'>✯ JɪᴏTV Pʟᴀʏ ✯</h1>
+<h1 align='center'>✯ JɪᴏTV Pʟᴀʏ 2.0 ✯</h1>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
-<!-- © 2021 TechieSneh -->
+<!-- © 2021-22 TechieSneh -->
 
 <h4 align='center'>📺 The PHP Script For Grabb Streaming Links and Play it , This Works Only on Android & Android TV Through LocalHost <br><br>🌟 Start This Repositry Befor Copying 😎<br>😠 Don't Remove Credits<br>Don't Edit This Script 😈<br><br>Put Your Own Credentials In This Script</h4>
 <br>
@@ -15,6 +15,15 @@
 - Will Works In 250, 400, 600, 800 in this Gives Qualities
 - Web Play Supports
 - Works on Phone or PC Browser Perfect
+
+
+<br>
+<h2>💖 NEW FEATURES :</h2>
+
+- Search Feature Added<br>
+1. Search by Channel Name e.g.Sony,Zee,Star ...
+2. Search by Genere e.g.Entertainment,Kids,Movies,Music ...
+3. Search by Language e.g.Hindi,Tamil,Kannada,Odia ... 
 
 
 <br>
@@ -81,6 +90,9 @@ http://localhost:8080/jiotvweb/playlist.php
   
    • TNow Enjoy with your Jio Channels.</b><br>
 
+<!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
+<!-- © 2021-22 TechieSneh -->
+
 #### 😛 Genrate ssoToken Here :
 
 - For This You Need JioID Number and Password
@@ -107,9 +119,9 @@ http://localhost:8080/jiotvweb/playlist.php
 
 
 ---
-<h4 align='center'>© 2022 Techie Sneh</h4>
+<h4 align='center'>© 2021-22 Techie Sneh</h4>
 
-<!-- DO NOT REMOVE THIS CREDIT 🤬 🤬 -->
+<!-- DO NOT REMOVE THIS CREDIT -->
 
 
 
