@@ -1676,7 +1676,7 @@ http://localhost:8080/jiotvweb/live.php?c=TEST11_HD&q=1200&e=junk.m3u8
 #EXTINF:-1 tvg-id="1476" group-title="Entertainment" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/TEST12_HD.png",TEST12 HD
 http://localhost:8080/jiotvweb/live.php?c=TEST12_HD&q=1200&e=junk.m3u8
 #EXTINF:-1 tvg-id="1477" group-title="Movies" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Color_Cineplex_HD.png",Colors Cineplex HD
-http://localhost:8080/jiotvweb/live.php?c=Color_Cineplex_HD&q=1200&e=junk.m3u8
+http://localhost:8080/jiotvweb/live.php?c=Colors_Cineplex_HD&q=1200&e=junk.m3u8
 #EXTINF:-1 tvg-id="1479" group-title="JioDarshan" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Nakoda_Temple.png",Shri Jain Nakoda Parshwanath Tirth
 http://localhost:8080/jiotvweb/live.php?c=Nakoda_Temple&q=1200&e=junk.m3u8
 #EXTINF:-1 tvg-id="1494" group-title="News" tvg-language="Bengali" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Bhoomi_TV.png",BHOOMI 24x7
