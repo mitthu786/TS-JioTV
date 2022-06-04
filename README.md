@@ -22,7 +22,7 @@
 
 - Search Feature Added<br>
 1. Search by Channel Name e.g.Sony,Zee,Star ...
-2. Search by Genere e.g.Entertainment,Kids,Movies,Music ...
+2. Search by Genre e.g.Entertainment,Kids,Movies,Music ...
 3. Search by Language e.g.Hindi,Tamil,Kannada,Odia ... 
 
 
@@ -87,8 +87,32 @@ http://localhost:8080/jiotvweb/live.php?c=And_Pictures_HD&q=800
   ```py
 http://localhost:8080/jiotvweb/playlist.php
   ```
+
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jioautoq.m3u
+  ```
+
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jio240p.m3u
+  ```
+
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jio360p.m3u
+  ```
   
-   • TNow Enjoy with your Jio Channels.</b><br>
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jio480p.m3u
+  ```
+
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jio720p.m3u
+  ```
+
+  ```py
+http://localhost:8080/jiotvweb/localplaylists/jio1080p.m3u
+  ```          
+  
+   • Now Enjoy with your Jio Channels.</b><br>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
