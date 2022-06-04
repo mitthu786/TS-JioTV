@@ -89,7 +89,7 @@ http://localhost:8080/jiotvweb/playlist.php
   ```
 
   ```py
-http://localhost:8080/jiotvweb/localplaylists/jioautoq.m3u
+http://localhost:8080/jiotvweb/playlist.m3u
   ```
 
   ```py
