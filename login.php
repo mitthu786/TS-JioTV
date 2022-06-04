@@ -45,9 +45,13 @@ $j = json_decode($result, true);
 
 $k = $j["ssoToken"];
 if ($k != "")
-{
-    // echo $k;
-    file_put_contents("assets/creds.json", $result);
-    echo "Logged in successfully!";
-}
+    {
+        // echo $k;
+        file_put_contents("assets/data/creds.json", $result);
+        echo "Logged in successfully!";
+    }
+else
+    {
+        echo "WRONG PHONE NO. OR PASSWORDS. PLEASE TRY AGAIN.";
+    }
 ?>

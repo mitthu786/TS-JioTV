@@ -46,3 +46,4 @@ foreach ($json['result'] as $channel)
     echo "<br>" . PHP_EOL;
 }
 
+?>
