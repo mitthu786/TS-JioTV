@@ -1,7 +1,7 @@
 
 <p align="center"><img src="https://images.firstpost.com/wp-content/uploads/2020/07/jio-tvplus-1280.jpg" width="180" height="100"></p>
 
-<h1 align='center'>✯ JɪᴏTV Pʟᴀʏ 2.0 ✯</h1>
+<h1 align='center'>✯ JɪᴏTV Pʟᴀʏ 2.2 ✯</h1>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
@@ -12,7 +12,7 @@
 <h2>😇 Features :</h2>
 
 - HQ Streaming Free of Cost <br>
-- Will Works In 250, 400, 600, 800 in this Gives Qualities
+- Will Works In 250, 400, 600, 800, 1200(FEW NOT SUPPORT) in this Gives Qualities
 - Web Play Supports
 - Works on Phone or PC Browser Perfect
 
@@ -50,15 +50,16 @@ https://apkcow.com/ksweb-server-php-mysql-mod-apk/download/
  - JioTV Zip <br> ( https://github.com/mitthu786/TS-JioTV/blob/main/jiotvweb.zip?raw=true ) <br>
 
 • Locate & Extract all Files in LocalHost (Htdocs) Root Folder <br>
-• Put Your Mobile Number without +91 & Password in below Link <br>
+• Put Your E-Mail or Mobile Number without +91 & Password in below Link <br>
 
 ```py
-http://localhost:8080/jiotvweb/login.php?user=NUMBER&pass=PASSWORD
+http://localhost:8080/jiotvweb/login.php
 ```
 
 • Open KSWEB App & Start The Server <br>
 • Run login.php file for a first time <br>
-• Open [JIOTV WEB]
+• Open [JIOTV WEB] Below Link :
+
 ```py
 http://localhost:8080/jiotvweb/
 ```
@@ -77,12 +78,12 @@ http://localhost:8080/jiotvweb/live.php?c=Channel_Name&q=Quality
 http://localhost:8080/jiotvweb/live.php?c=And_Pictures_HD&q=800
 ```
   
-   • <b>Depending on Your Server Change Links<br></b><br> 
-   • This Script is free for USE and Modify</b><br>
+• <b>Depending on Your Server Change Links<br></b><br> 
+• This Script is free for USE and Modify</b><br>
 
 #### ♢ Method 3 :
 
-• In Tivimate or OTT Navigator Player Put Links Format Like Below
+• In Tivimate or OTT Navigator Player Put Links Format Like Below :<br> 
 
   ```py
 http://localhost:8080/jiotvweb/playlist.php
@@ -91,6 +92,8 @@ http://localhost:8080/jiotvweb/playlist.php
   ```py
 http://localhost:8080/jiotvweb/playlist.m3u
   ```
+
+• FOR DIFFERENT QUALITY USE BELOW LINKS :<br> 
 
   ```py
 http://localhost:8080/jiotvweb/localplaylists/jio240p.m3u
@@ -112,14 +115,15 @@ http://localhost:8080/jiotvweb/localplaylists/jio720p.m3u
 http://localhost:8080/jiotvweb/localplaylists/jio1080p.m3u
   ```          
   
-   • Now Enjoy with your Jio Channels.</b><br>
+• Now Enjoy with your Jio Channels.</b><br>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
 
-#### 😛 Genrate ssoToken Here :
+#### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
 
 - For This You Need JioID Number and Password
+- You Can Also get Data with OTP 
 
 [Jio Login Page] (http://jiologin.unaux.com)
  
