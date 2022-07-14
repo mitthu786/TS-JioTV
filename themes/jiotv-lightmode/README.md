@@ -35,7 +35,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <h2>📸 SCREENSHOTS : </h2>
 
-<img src="https://raw.githubusercontent.com/mitthu786/TS-JioTV/main/screenshots/jiotv-light/light.png" width="400" height="200">
+<img src="https://raw.githubusercontent.com/mitthu786/TS-JioTV/main/screenshots/jiotv-lightmode/light.png" width="400" height="200">
 
 <br>
 
