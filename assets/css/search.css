@@ -1,0 +1,23 @@
+/* Created By : TechieSneh */
+
+#searchBar {
+    width: 45%;
+    height: 35px;
+    border-radius: 16px;
+    border: 1px solid #eaeaea;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-family: fantasy;
+    margin-left: 28%;
+}
+
+#searchWrapper {
+    position: relative;
+}
+
+#searchWrapper::after {
+    content: '🔍';
+    position: absolute;
+    top: 7px;
+    right: 29%;
+}

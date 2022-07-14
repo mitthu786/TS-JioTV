@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/vnd.apple.mpegurl");
-echo '#EXTM3U x-tvg-url="https://github.com/mitthu786/tvepg/releases/download/latest/epg.xml.gz"' . PHP_EOL;
+echo '#EXTM3U x-tvg-url="https://3o77.short.gy/tsnehepg.xml.gz"' . PHP_EOL;
 echo "<br>" . PHP_EOL;
 $json = json_decode(file_get_contents('assets/data/channels.json') , true);
 $LANG_MAP = array(
@@ -45,5 +45,3 @@ foreach ($json['result'] as $channel)
     printf("http://%s/jiotvweb/autoq.php?c=%s" . PHP_EOL . PHP_EOL, $_SERVER['HTTP_HOST'], $targetnew);
     echo "<br>" . PHP_EOL;
 }
-
-?>

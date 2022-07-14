@@ -75,6 +75,9 @@ if ($k != "") {
 
     <title>JIOTV LOGIN </title>
     <meta charset="utf-8">
+    <meta name="description" content="ENJOY FREE LIVE JIOTV">
+    <meta name="keywords" content="JIOTV, LIVETV, SPORTS, MOVIES, MUSIC">
+    <meta name="author" content="Techie Sneh">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="assets/css/signin.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
