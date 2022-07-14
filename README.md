@@ -165,12 +165,13 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 
 #### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
 
-- ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)
-<br>
-- For This You Need JioID Number and Password
-- You Can Also get Data with OTP <br><br>
+1. ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)<br>
+2. For This You Need JioID Number and Password<br> 
+3. You Can Also get Data with OTP
+
 - `user` = Username / Mobile No.
 - `pass` = Password
+
 <br>
 
 <h2>🚸 Warnings :</h2>
@@ -180,8 +181,8 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 
 <h3>🤗 Meet Me : </h3>
 
-• For any Support Join Our Group [Techie Sneh](https://telegram.me/techiesneh)
-• OR Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
+• For any Support Join Our Group [Techie Sneh](https://telegram.me/techiesneh)<br>
+• For Any Query Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>
 
