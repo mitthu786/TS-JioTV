@@ -39,7 +39,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <br>
 
-<img src="https://raw.githubusercontent.com/mitthu786/TS-JioTV/main/screenshots/main/play.png" width="400" height="200">
+<img src="https://raw.githubusercontent.com/mitthu786/TS-JioTV/main/screenshots/jiotv-premium/play.png" width="400" height="200">
 
 <br>
 <h2>🤐 DOWNLOAD ZIP HERE :</h2>
