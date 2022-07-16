@@ -42,7 +42,7 @@ foreach ($json['result'] as $channel)
     $targetnew = trim($target,".png");
     printf("#EXTINF:-1 tvg-id=\"%u\" group-title=\"%s\" tvg-language=\"%s\" tvg-logo=\"http://jiotv.catchup.cdn.jio.com/dare_images/images/%s\",%s" . PHP_EOL, $channel['channel_id'], $GENRE_MAP[$channel['channelCategoryId']], $LANG_MAP[$channel['channelLanguageId']], $channel['logoUrl'], $channel['channel_name']);
     echo "<br>" . PHP_EOL;
-    printf("http://%s/jiotvweb/autoq.php?c=%s" . PHP_EOL . PHP_EOL, $_SERVER['HTTP_HOST'], $targetnew);
+    printf("http://%s/tslight/autoq.php?c=%s" . PHP_EOL . PHP_EOL, $_SERVER['HTTP_HOST'], $targetnew);
     echo "<br>" . PHP_EOL;
 }
 
