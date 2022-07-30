@@ -181,7 +181,7 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 
 <h3>🤗 Meet Me : </h3>
 
-• For any Support Join Our Group [Techie Sneh](https://telegram.me/techiesneh)<br>
+• For any Support Join Our Channel [Techie Sneh Official](https://telegram.me/techiesneh_official)<br>
 • For Any Query Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>
