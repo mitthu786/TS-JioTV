@@ -60,69 +60,43 @@ $j = json_decode($result, true);
 
 $k = $j["ssoToken"];
 if ($k != "") {
-    // echo $k;
     file_put_contents("assets/data/creds.json", $result);
     $sign = "LOGGED IN SUCCESSFULLY !";
 } else {
-    $sign = "WRONG PHONE NO. OR PASSWORDS.<br> PLEASE TRY AGAIN.";
+    $sign = "WRONG USERID OR PASS<br> PLEASE TRY AGAIN";
 }
 
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-
-    <title>JIOTV LOGIN </title>
-    <meta charset="utf-8">
-    <meta name="description" content="ENJOY FREE LIVE JIOTV">
-    <meta name="keywords" content="JIOTV, LIVETV, SPORTS, MOVIES, MUSIC">
-    <meta name="author" content="Techie Sneh">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="assets/css/signin.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JIO LOGIN</title>
+    <link rel="stylesheet" href="assets/css/tslogin.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Techie Sneh">
-    <meta name="copyright" content="This Created by Techie Sneh">
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/37fVLxB/f4027915ec9335046755d489a14472f2.png">
-    <meta name="robots" content="all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
+    <meta name="description" content="ENJOY FREE LIVE JIOTV">
+    <meta name="keywords" content="JIOTV, LIVETV, SPORTS, MOVIES, MUSIC">
+    <meta name="copyright" content="This Created by Techie Sneh">
 </head>
 
 <body>
     <div class="container">
-        <div class="screen">
-            <div class="screen__content">
-                <form class="login" action="<?php $_PHP_SELF ?>" method="POST">
-                    <div class="login__field">
-                        <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="Jio Number / Email" name="email">
-                    </div>
-                    <div class="login__field">
-                        <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Password" name="pass">
-                    </div>
-                    <button class="button login__submit" type="submit">
-                        <span class="button__text">LogIn Now</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>
-                </form>
-                <div class="social-login">
-                    <br>
-                    <h3>JIOTV LOGIN</h3>
-                </div>
-                <div class="copyright">
-                    <br>
-                    <h3>BY : TECHIESNEH</h3>
-                </div>
-                <div class="logsucc"><b></b><?php echo $sign; ?></b></div>
-            </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape3"></span>
-                <span class="screen__background__shape screen__background__shape2"></span>
-                <span class="screen__background__shape screen__background__shape1"></span>
-            </div>
+        <div class="form">
+            <form action="<?php $_PHP_SELF ?>" method="POST">
+                <h1>JIO LOGIN</h1>
+                <label>Jio Number / Email</label>
+                <input type="text" name="email" id="" placeholder="Jio Number / Email" />
+                <label>Password</label>
+                <input type="password" name="pass" id="" placeholder="Password" />
+                <input type="submit" value="LogIn Now" />
+                <label id="forgotpwd"><?php echo $sign; ?></label>
+                <label id="forgotpwd">OTP LOGIN ? <a href="http://jiologin.unaux.com/otp.php">Click Here</a></label>
+            </form>
         </div>
     </div>
 </body>
