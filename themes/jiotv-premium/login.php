@@ -16,9 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $headers = array(
-    'Content-Type:application/json',
-    'x-api-key: l7xx938b6684ee9e4bbe8831a9a682b8e19f',
-    'app-name: RJIL_JioTV'
+    "x-api-key: l7xx75e822925f184370b2e25170c5d5820a",
+    "Content-Type: application/json"
 );
 
 $username = $user;
@@ -31,14 +30,14 @@ $payload = array(
     'upgradeAuth' => 'Y',
     'returnSessionDetails' => 'T',
     'deviceInfo' => array(
-        'consumptionDeviceName' => 'samsung SM-G930F',
+        'consumptionDeviceName' => 'Jio',
         'info' => array(
             'type' => 'android',
             'platform' => array(
-                'name' => 'SM-G930F',
-                'version' => '5.1.1'
+                'name' => 'vbox86p',
+                'version' => '8.0.0'
             ),
-            'androidId' => '3022048329094879'
+            'androidId' => '6fcadeb7b4b10d77'
         )
     )
 );
@@ -46,13 +45,13 @@ $payload = array(
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://api.jio.com/v3/dip/user/unpw/verify');
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-curl_setopt($ch, CURLOPT_USERAGENT, 'Dalvik/2.1.0 (Linux; U; Android 5.1.1; SM-G930F Build/LMY48Z)');
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_ENCODING, 'UTF-8');
-curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_ENCODING, "");
+curl_setopt($ch, CURLOPT_TIMEOUT, 0);
 $result = curl_exec($ch);
 curl_close($ch);
 

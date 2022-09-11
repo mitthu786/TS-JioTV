@@ -20,15 +20,20 @@ Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>😠 Do
 
 - Search Feature Added<br>
 
-1. 🔍 SEARCH BY CHANNEL NAME 
+1. 🔍 SEARCH BY CHANNEL NAME
+
 ```
 e.g.  Sony,Zee,Star ...
 ```
-2. 🔍 SEARCH BY GENRE 
+
+2. 🔍 SEARCH BY GENRE
+
 ```
 e.g.  Entertainment,Kids,Movies,Music ...
 ```
-3. 🔍 SEARCH BY LANGUAGE 
+
+3. 🔍 SEARCH BY LANGUAGE
+
 ```
 e.g.  Hindi,Tamil,Kannada,Odia ...
 ```
@@ -47,7 +52,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <h2>🍁 How To Use : </h2>
 
-#### ♢ Method 1 :
+#### ♢ Login Method 1 :
 
 1. First Download This Application<br>
 
@@ -77,6 +82,7 @@ https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
 ```py
 http://localhost:8080/tsjiotv/login.php
 ```
+
 7. Now Open [JIOTV WEB] Below Link :
 
 ```py
@@ -86,46 +92,50 @@ http://localhost:8080/tsjiotv/
 8. Click above link in any Browser . You Will See all Jio Channels . <br>
 9. Click On Channel and Play <br>
 
-#### ♢ Method 2 :
+#### ♢ Login Method 2 :
 
-• In Player Put Links Format Like Below
+- Follow Above Instructions First & Then Try To Login with this Method.
 
-  ```py
-http://localhost:8080/tsjiotv/live.php?c=Channel_Name&q=Quality
-  ```
+1. Put Your E-Mail or Mobile Number without +91 & Password in Below Link <br>
 
 ```py
-http://localhost:8080/tsjiotv/live.php?c=And_Pictures_HD&q=800
+http://localhost:8080/tsjiotv/login2.php?user=`NUMBER`&pass=`PASSWORD`
 ```
 
-• Depending on Your Server Change Links
-• This Script is free for USE and Modify</b><br>
+2. Now Open [JIOTV WEB] Below Link :
 
-#### ♢ Method 3 :
+```py
+http://localhost:8080/tsjiotv/
+```
+
+3. Click above link in any Browser . You Will See all Jio Channels . <br>
+4. Click On Channel and Play <br>
+
+#### ♢ Play Methods :
 
 • In Tivimate or OTT Navigator Player Put Links Format Like Below :<br>
 
-  ```py
+```py
 http://localhost:8080/tsjiotv/playlist.php
-  ```
+```
 
 • For Local Playlist :<br>
 
-  ```py
+```py
 http://localhost:8080/tsjiotv/localplaylist.m3u
-  ```
+```
 
 • <b>FOR DIFFERENT QUALITY USE BELOW LINKS : </b><br>
 
-  ```py
+```py
 http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
-  ```
+```
+
 • Now Change Above URL Like : jio240p to jio400p , jio600p ,etc. for Quality Change.</b>
 • Hurrah !! Now Play & Enjoy with your Jio Channels .</b><br>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
-
 
 <h2>📸 NEW THEMES SCREENSHOTS : </h2>
 
@@ -166,7 +176,7 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 #### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
 
 1. ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)<br>
-2. For This You Need JioID Number and Password<br> 
+2. For This You Need JioID Number and Password<br>
 3. You Can Also get Data with OTP
 
 - `user` = Username / Mobile No.
@@ -187,6 +197,7 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 <br>
 
 ---
+
 <h4 align='center'>© 2021-22 Techie Sneh</h4>
 
 <!-- DO NOT REMOVE THIS CREDIT -->
