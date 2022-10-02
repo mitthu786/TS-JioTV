@@ -1,4 +1,4 @@
-<h1 align='center'>✯ JɪᴏTV <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jio_TV_logo.svg/1200px-Jio_TV_logo.svg.png" width="40" height="40"> Pʟᴀʏ 3.0 ✯</h1>
+<h1 align='center'>✯ JɪᴏTV+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jio_TV_logo.svg/1200px-Jio_TV_logo.svg.png" width="40" height="40"> Pʟᴀʏ  ✯</h1>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
@@ -12,7 +12,7 @@ Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>😠 Do
 
 - HQ Streaming Free of Cost <br>
 - Will Works In 250, 400, 600, 800, 1200(FEW NOT SUPPORT) in this Given Qualities
-- Web Play Supports
+- Web Play with Quality Change Supports
 - Works on Mobile, AndroidTV or PC Browser Perfect
 
 <br>
