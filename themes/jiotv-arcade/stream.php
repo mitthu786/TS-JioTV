@@ -60,4 +60,3 @@ if (@$_REQUEST["ts"] != "")
     $haystack = file_get_contents("https://jiotv.live.cdn.jio.com/" . $_REQUEST["ts"], false, $context);
     echo $haystack;
 }
-?>

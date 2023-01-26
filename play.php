@@ -111,7 +111,7 @@
             <span class="loading-text-words">G</span>
         </div>
     </div>
-    <video autoplay controls crossorigin poster="http://jiotv.catchup.cdn.jio.com/dare_images/images/<?php echo $_REQUEST["c"] ?>.png" playsinline>
+    <video autoplay controls crossorigin poster="https://jiotv.catchup.cdn.jio.com/dare_images/images/<?php echo $_REQUEST["c"] ?>.png" playsinline>
         <?php
         printf("<source type=\"application/vnd.apple.mpegurl\" src=\"autoq.php?c=%s\">", $_REQUEST["c"]);
         ?>

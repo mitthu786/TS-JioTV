@@ -24,10 +24,13 @@ if (@$_REQUEST["key"] != "") {
         'usergroup' => 'tvYR7NSNn7rymo3F',
         'versionCode' => '260'
     );
-    $opts = ['http' => ['method' => 'GET', 'header' => array_map(function ($h, $v) {
-        return "$h: $v";
-    }
-        , array_keys($headers), $headers),]];
+    $opts = ['http' => ['method' => 'GET', 'header' => array_map(
+        function ($h, $v) {
+            return "$h: $v";
+        },
+        array_keys($headers),
+        $headers
+    ),]];
 
     $cache = str_replace("/", "_", $_REQUEST["key"]);
 
@@ -36,7 +39,6 @@ if (@$_REQUEST["key"] != "") {
         $haystack = file_get_contents("https://tv.media.jio.com/streams_live/" . $_REQUEST["key"] . $token, false, $context);
     } else {
         $haystack = file_get_contents($cache);
-
     }
     echo $haystack;
 }

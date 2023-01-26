@@ -1,22 +1,26 @@
 <h1 align='center'>✯ JɪᴏTV+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jio_TV_logo.svg/1200px-Jio_TV_logo.svg.png" width="40" height="40"> Pʟᴀʏ  ✯</h1>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
-<!-- © 2021-22 TechieSneh -->
+<!-- © 2021-23 TechieSneh -->
 
 <h4 align='center'>📺 The PHP Script For Grab Streaming Links and Play it , This Works Only on Android & Android TV
-Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>😠 Don't Remove Credits<br>Don't Edit This Script
+Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>Don't Edit This Script
 😈<br><br>Login With Your Own Credentials In This Script</h4>
 <br>
 
-<h2>😇 Features :</h2>
+<h3>♻️ JOIN FOR UPDATES :</h3>
+
+- JOIN TELEGRAM CHANNEL
+- https://bit.ly/3XDNjN1
+
+<h3>😇 SCRIPT FEATURES :</h3>
 
 - HQ Streaming Free of Cost <br>
 - Will Works In 250, 400, 600, 800, 1200(FEW NOT SUPPORT) in this Given Qualities
 - Web Play with Quality Change Supports
 - Works on Mobile, AndroidTV or PC Browser Perfect
 
-<br>
-<h2>💖 NEW FEATURES :</h2>
+<h3>💖 PLAYER FEATURES :</h3>
 
 - Search Feature Added<br>
 
@@ -40,7 +44,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <br>
 
-<h2>📸 SCREENSHOTS : </h2>
+<h3>📸 SCREENSHOTS : </h3>
 
 <img src="screenshots/main/main.png" width="400" height="200">
 
@@ -50,7 +54,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <br>
 
-<h2>🍁 How To Use : </h2>
+<h2>🍁 HOW TO USE : </h2>
 
 #### ♢ Login Method 1 :
 
@@ -63,7 +67,7 @@ https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk
 ```
 
 ```py
-https://apkcow.com/ksweb-server-php-mysql-mod-apk/download/
+https://oceanofapk.com/ksweb-server-php-mysql-v3-961-pro-apk-free-download/
 ```
 
 ```py
@@ -136,9 +140,9 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
 <!-- © 2021-22 TechieSneh -->
-
-<h2>📸 NEW THEMES SCREENSHOTS : </h2>
-
+<br>
+<h3>📸 NEW THEMES SCREENSHOTS : </h3>
+<br>
 ##### ♢♢ JIOTV ARCADE SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-arcade)
 
 <img src="screenshots/jiotv-arcade/arcade.png" width="400" height="200">
@@ -184,20 +188,19 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 
 <br>
 
-<h2>🚸 Warnings :</h2>
+<h3>🚸 WARNINGS :</h3>
 
 - This is Just For Educational Purpose
 - DO NOT Sell this Script, This is 💯% Free
 
-<h3>🤗 Meet Me : </h3>
+<h3>🤗 CONTACT US : </h3>
 
-• For any Support Join Our Channel [Techie Sneh Official](https://telegram.me/techiesneh_official)<br>
 • For Any Query Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>
 
 ---
 
-<h4 align='center'>© 2021-22 Techie Sneh</h4>
+<h4 align='center'>© 2021-23 Techie Sneh</h4>
 
 <!-- DO NOT REMOVE THIS CREDIT -->

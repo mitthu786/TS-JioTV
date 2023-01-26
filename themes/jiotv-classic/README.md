@@ -1,10 +1,10 @@
 <h1 align='center'>✯ JIOTV <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jio_TV_logo.svg/1200px-Jio_TV_logo.svg.png" width="40" height="40"> CLASSIC ✯</h1>
 
 <!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
-<!-- © 2021-22 TechieSneh -->
+<!-- © 2021-23 TechieSneh -->
 
 <h4 align='center'>📺 The PHP Script For Grab Streaming Links and Play it , This Works Only on Android & Android TV
-Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>😠 Don't Remove Credits<br>Don't Edit This Script
+Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>Don't Edit This Script
 😈<br><br>Login With Your Own Credentials In This Script</h4>
 <br>
 
@@ -20,15 +20,20 @@ Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>😠 Do
 
 - Search Feature Added<br>
 
-1. 🔍 SEARCH BY CHANNEL NAME 
+1. 🔍 SEARCH BY CHANNEL NAME
+
 ```
 e.g.  Sony,Zee,Star ...
 ```
-2. 🔍 SEARCH BY GENRE 
+
+2. 🔍 SEARCH BY GENRE
+
 ```
 e.g.  Entertainment,Kids,Movies,Music ...
 ```
-3. 🔍 SEARCH BY LANGUAGE 
+
+3. 🔍 SEARCH BY LANGUAGE
+
 ```
 e.g.  Hindi,Tamil,Kannada,Odia ...
 ```
@@ -59,13 +64,12 @@ https://github.com/mitthu786/TS-JioTV/blob/main/themes/jiotv-classic/tsclassic.z
 
 <h3>🤗 Meet Me : </h3>
 
-• For any Support Join Our Group [Techie Sneh](https://telegram.me/techiesneh)
 • OR Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>
 
 ---
-<h4 align='center'>© 2021-22 Techie Sneh</h4>
+
+<h4 align='center'>© 2021-23 Techie Sneh</h4>
 
 <!-- DO NOT REMOVE THIS CREDIT -->
-
