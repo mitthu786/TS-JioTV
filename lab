@@ -1,0 +1,327 @@
+2022-11-17 19:15:39.693 T:19048    INFO <general>: -----------------------------------------------------------------------
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Starting Kodi (19.4 (19.4.0) Git:20220302-e12e66e019). Platform: Windows NT x86 32-bit
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Using Release Kodi x32
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Kodi compiled 2022-03-03 by MSVC 191627035 for Windows NT x86 32-bit version 10.0 (0x0A000007)
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Running on Windows 7 SP1, kernel: Windows NT x86 32-bit version 6.1.7601
+2022-11-17 19:15:39.694 T:19048    INFO <general>: FFmpeg version/source: 4.3.2-Kodi
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Host CPU: Intel(R) Core(TM)2 Duo CPU T5870 @ 2.00GHz, 2 cores available
+2022-11-17 19:15:39.694 T:19048    INFO <general>: System has 2.0 GB of RAM installed
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Desktop Resolution: 1280x800 32Bit at 60Hz
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Running with restricted rights
+2022-11-17 19:15:39.694 T:19048    INFO <general>: Aero is enabled
+2022-11-17 19:15:39.695 T:19048    INFO <general>: Display is not HDR capable or cannot be detected
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://xbmc/ is mapped to: C:\Program Files\Kodi
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://xbmcbin/ is mapped to: C:\Program Files\Kodi
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://xbmcbinaddons/ is mapped to: C:\Program Files\Kodi/addons
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://masterprofile/ is mapped to: C:\Users\Ankur\AppData\Roaming\Kodi\userdata
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://home/ is mapped to: C:\Users\Ankur\AppData\Roaming\Kodi\
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://temp/ is mapped to: C:\Users\Ankur\AppData\Roaming\Kodi\cache
+2022-11-17 19:15:39.695 T:19048    INFO <general>: special://logpath/ is mapped to: C:\Users\Ankur\AppData\Roaming\Kodi\
+2022-11-17 19:15:39.695 T:19048    INFO <general>: The executable running is: C:\Program Files\Kodi\kodi.exe
+2022-11-17 19:15:39.698 T:19048    INFO <general>: Local hostname: Ankur-PC
+2022-11-17 19:15:39.698 T:19048    INFO <general>: Log File is located: C:\Users\Ankur\AppData\Roaming\Kodi\kodi.log
+2022-11-17 19:15:39.698 T:19048    INFO <general>: -----------------------------------------------------------------------
+2022-11-17 19:15:39.698 T:19048    INFO <general>: loading settings
+2022-11-17 19:15:39.699 T:19048    INFO <general>: special://profile/ is mapped to: special://masterprofile/
+2022-11-17 19:15:39.709 T:19048    INFO <general>: No settings file to load (special://xbmc/system/advancedsettings.xml)
+2022-11-17 19:15:39.709 T:19048    INFO <general>: No settings file to load (special://masterprofile/advancedsettings.xml)
+2022-11-17 19:15:39.709 T:19048    INFO <general>: Default Video Player: VideoPlayer
+2022-11-17 19:15:39.709 T:19048    INFO <general>: Default Audio Player: paplayer
+2022-11-17 19:15:39.709 T:19048    INFO <general>: Disabled debug logging due to GUI setting. Level 0.
+2022-11-17 19:15:39.709 T:19048    INFO <general>: Log level changed to "INFO"
+2022-11-17 19:15:39.710 T:19048    INFO <general>: CMediaSourceSettings: loading media sources from special://masterprofile/sources.xml
+2022-11-17 19:15:39.712 T:19048    INFO <general>: creating subdirectories
+2022-11-17 19:15:39.712 T:19048    INFO <general>: userdata folder: special://masterprofile/
+2022-11-17 19:15:39.712 T:19048    INFO <general>: recording folder: 
+2022-11-17 19:15:39.712 T:19048    INFO <general>: screenshots folder: 
+2022-11-17 19:15:39.718 T:19048    INFO <general>: Running database version Addons33
+2022-11-17 19:15:39.810 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: audioencoder.kodi.builtin.aac v1.0.2 installed
+2022-11-17 19:15:39.810 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: audioencoder.kodi.builtin.wma v1.0.2 installed
+2022-11-17 19:15:39.811 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: game.controller.default v1.0.31 installed
+2022-11-17 19:15:39.811 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: game.controller.snes v1.0.30 installed
+2022-11-17 19:15:39.811 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: inputstream.adaptive v19.0.7 installed
+2022-11-17 19:15:39.811 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: inputstream.ffmpegdirect v19.0.3 installed
+2022-11-17 19:15:39.811 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: inputstream.rtmp v19.0.1 installed
+2022-11-17 19:15:39.812 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.audioengine v1.1.1 installed
+2022-11-17 19:15:39.812 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.filesystem v1.1.6 installed
+2022-11-17 19:15:39.812 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.general v1.0.5 installed
+2022-11-17 19:15:39.812 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.gui v5.15.0 installed
+2022-11-17 19:15:39.812 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.main v1.3.0 installed
+2022-11-17 19:15:39.813 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.network v1.0.4 installed
+2022-11-17 19:15:39.813 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.global.tools v1.0.4 installed
+2022-11-17 19:15:39.813 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.audiodecoder v3.0.0 installed
+2022-11-17 19:15:39.813 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.audioencoder v2.1.0 installed
+2022-11-17 19:15:39.813 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.game v2.1.1 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.imagedecoder v2.1.1 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.inputstream v3.0.1 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.peripheral v2.0.0 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.pvr v7.1.0 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.screensaver v2.1.0 installed
+2022-11-17 19:15:39.814 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.vfs v3.0.0 installed
+2022-11-17 19:15:39.815 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.videocodec v2.0.2 installed
+2022-11-17 19:15:39.815 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.binary.instance.visualization v3.0.0 installed
+2022-11-17 19:15:39.815 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: kodi.resource v1.0.0 installed
+2022-11-17 19:15:39.815 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.album.universal v3.1.9 installed
+2022-11-17 19:15:39.815 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.artists.universal v4.3.10 installed
+2022-11-17 19:15:39.816 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.allmusic.com v3.2.2 installed
+2022-11-17 19:15:39.816 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.fanart.tv v3.6.4 installed
+2022-11-17 19:15:39.816 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.imdb.com v3.2.7 installed
+2022-11-17 19:15:39.816 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.musicbrainz.org v2.2.4 installed
+2022-11-17 19:15:39.816 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.theaudiodb.com v2.0.3 installed
+2022-11-17 19:15:39.817 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.common.themoviedb.org v3.2.18 installed
+2022-11-17 19:15:39.817 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.generic.albums v1.0.14 installed
+2022-11-17 19:15:39.817 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.generic.artists v1.0.14 installed
+2022-11-17 19:15:39.817 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.local v1.0.1 installed
+2022-11-17 19:15:39.817 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.themoviedb.org v5.2.6 installed
+2022-11-17 19:15:39.818 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.themoviedb.org.python v1.6.2+matrix.1 installed
+2022-11-17 19:15:39.818 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.tvshows.themoviedb.org v3.5.14 installed
+2022-11-17 19:15:39.818 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: metadata.tvshows.themoviedb.org.python v1.4.16 installed
+2022-11-17 19:15:39.818 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: peripheral.joystick v19.0.1 installed
+2022-11-17 19:15:39.818 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: plugin.video.botallen.hotstar v1.1.1 installed
+2022-11-17 19:15:39.819 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: plugin.video.jiotv v2.3.0 installed
+2022-11-17 19:15:39.819 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: plugin.video.kodiconnect v0.3.4 installed
+2022-11-17 19:15:39.819 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: plugin.video.pcloud-video-streaming v1.5.1 installed
+2022-11-17 19:15:39.819 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: pvr.iptvsimple v19.2.2 installed
+2022-11-17 19:15:39.819 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: repository.botallen v2.0.0 installed
+2022-11-17 19:15:39.820 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: repository.xbmc.org v3.2.5 installed
+2022-11-17 19:15:39.820 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: resource.images.weathericons.default v1.1.9 installed
+2022-11-17 19:15:39.820 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: resource.language.en_gb v2.0.2 installed
+2022-11-17 19:15:39.820 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: resource.uisounds.kodi v1.0.1 installed
+2022-11-17 19:15:39.820 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: screensaver.xbmc.builtin.black v1.0.34 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: screensaver.xbmc.builtin.dim v1.0.64 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.addon.signals v0.0.6+matrix.1 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.certifi v2022.5.18+matrix.1 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.chardet v4.0.0+matrix.1 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.codequick v1.0.2+matrix.1 installed
+2022-11-17 19:15:39.821 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.future v0.18.2+matrix.1 installed
+2022-11-17 19:15:39.822 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.htmlement v1.0.0+matrix.1 installed
+2022-11-17 19:15:39.822 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.idna v3.3.0+matrix.1 installed
+2022-11-17 19:15:39.822 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.inputstreamhelper v0.5.10+matrix.1 installed
+2022-11-17 19:15:39.822 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.kodi-six v0.1.3.1 installed
+2022-11-17 19:15:39.822 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.pil v5.1.0 installed
+2022-11-17 19:15:39.823 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.pycryptodome v3.4.3 installed
+2022-11-17 19:15:39.823 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.requests v2.27.1+matrix.1 installed
+2022-11-17 19:15:39.823 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.urllib3 v1.26.9+matrix.1 installed
+2022-11-17 19:15:39.823 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: script.module.youtube.dl v21.303.0+matrix.1 installed
+2022-11-17 19:15:39.823 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: service.xbmc.versioncheck v0.5.23+matrix.1 installed
+2022-11-17 19:15:39.824 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: skin.estouchy v3.0.6 installed
+2022-11-17 19:15:39.824 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: skin.estuary v3.0.5 installed
+2022-11-17 19:15:39.824 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: webinterface.default v19.x-2.4.8 installed
+2022-11-17 19:15:39.824 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.addon v19.1.0 installed
+2022-11-17 19:15:39.824 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.core v0.1.0 installed
+2022-11-17 19:15:39.825 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.gui v5.15.0 installed
+2022-11-17 19:15:39.825 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.json v12.4.0 installed
+2022-11-17 19:15:39.825 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.metadata v2.1.0 installed
+2022-11-17 19:15:39.825 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.python v3.0.0 installed
+2022-11-17 19:15:39.825 T:19048    INFO <general>: CAddonMgr::ADDON::CAddonMgr::FindAddons: xbmc.webinterface v1.0.0 installed
+2022-11-17 19:15:39.839 T:19048    INFO <general>: CKeyboardLayoutManager: loading keyboard layouts from special://xbmc/system/keyboardlayouts...
+2022-11-17 19:15:39.852 T:16980    INFO <general>: Loading special://xbmc/system/IRSSmap.xml
+2022-11-17 19:15:39.853 T:16980    INFO <general>: * Adding remote mapping for device 'Microsoft MCE'
+2022-11-17 19:15:39.853 T:16980    INFO <general>: * Adding remote mapping for device 'Abstract'
+2022-11-17 19:15:39.876 T:19048    INFO <general>: [WS-Discovery]: Daemon started successfully.
+2022-11-17 19:15:39.877 T:19048    INFO <general>: Primary mode: Generic PnP Monitor #1: 1280x800 @ 60.00Hz
+2022-11-17 19:15:39.878 T:16612    INFO <general>: Found 2 Lists of Devices
+2022-11-17 19:15:39.878 T:16612    INFO <general>: Enumerated DIRECTSOUND devices:
+2022-11-17 19:15:39.878 T:16612    INFO <general>:     Device 1
+2022-11-17 19:15:39.878 T:16612    INFO <general>:         m_deviceName      : {DCBE00DB-F9B9-4772-BCCF-DFDD271EF3ED}
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayName     : Speakers - Speakers (High Definition Audio Device)
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayNameExtra: DIRECTSOUND: Speakers (High Definition Audio Device)
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_deviceType      : AE_DEVTYPE_PCM
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_channels        : FL, FR
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_sampleRates     : 44100
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_dataFormats     : AE_FMT_FLOAT
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_streamTypes     : No passthrough capabilities
+2022-11-17 19:15:39.879 T:16612    INFO <general>:     Device 2
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_deviceName      : default
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayName     : default
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayNameExtra: 
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_deviceType      : AE_DEVTYPE_PCM
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_channels        : FL, FR
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_sampleRates     : 44100
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_dataFormats     : AE_FMT_FLOAT
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_streamTypes     : No passthrough capabilities
+2022-11-17 19:15:39.879 T:16612    INFO <general>: Enumerated WASAPI devices:
+2022-11-17 19:15:39.879 T:16612    INFO <general>:     Device 1
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_deviceName      : {DCBE00DB-F9B9-4772-BCCF-DFDD271EF3ED}
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayName     : Speakers - Speakers (High Definition Audio Device)
+2022-11-17 19:15:39.879 T:16612    INFO <general>:         m_displayNameExtra: WASAPI: Speakers (High Definition Audio Device)
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_deviceType      : AE_DEVTYPE_PCM
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_channels        : FL, FR
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_sampleRates     : 192000,176400,96000,88200,48000,44100
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_dataFormats     : AE_FMT_S24NE4MSB,AE_FMT_S16NE,AE_FMT_S16LE,AE_FMT_S16BE
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_streamTypes     : No passthrough capabilities
+2022-11-17 19:15:39.880 T:16612    INFO <general>:     Device 2
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_deviceName      : default
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_displayName     : default
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_displayNameExtra: 
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_deviceType      : AE_DEVTYPE_PCM
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_channels        : FL, FR
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_sampleRates     : 192000,176400,96000,88200,48000,44100
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_dataFormats     : AE_FMT_S24NE4MSB,AE_FMT_S16NE,AE_FMT_S16LE,AE_FMT_S16BE
+2022-11-17 19:15:39.880 T:16612    INFO <general>:         m_streamTypes     : No passthrough capabilities
+2022-11-17 19:15:39.879 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 320x200 @ 60.00Hz
+2022-11-17 19:15:39.880 T:17680    INFO <general>: CActiveAESink::OpenSink - initialize sink
+2022-11-17 19:15:39.882 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 320x240 @ 60.00Hz
+2022-11-17 19:15:39.883 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 400x300 @ 60.00Hz
+2022-11-17 19:15:39.884 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 512x384 @ 60.00Hz
+2022-11-17 19:15:39.886 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 640x400 @ 60.00Hz
+2022-11-17 19:15:39.887 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 640x480 @ 60.00Hz
+2022-11-17 19:15:39.889 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 800x600 @ 60.00Hz
+2022-11-17 19:15:39.890 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 1024x768 @ 60.00Hz
+2022-11-17 19:15:39.891 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 1280x600 @ 60.00Hz
+2022-11-17 19:15:39.893 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 1280x720 @ 60.00Hz
+2022-11-17 19:15:39.894 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 1280x768 @ 60.00Hz
+2022-11-17 19:15:39.895 T:19048    INFO <general>: Additional mode: Generic PnP Monitor #1: 1280x800 @ 60.00Hz
+2022-11-17 19:15:39.895 T:19048    INFO <general>: CApplication::CApplication::CreateGUI - using the default windowing system
+2022-11-17 19:15:39.895 T:19048    INFO <general>: Checking resolution 16
+2022-11-17 19:15:39.922 T:16612 WARNING <general>: CActiveAE::ActiveAE::CActiveAE::StateMachine - signal: 0 from port: OutputControlPort not handled for state: 7
+2022-11-17 19:15:39.939 T:19048    INFO <general>: DX::DeviceResources::CreateDeviceResources: device is created on adapter 'Mobile Intel(R) 4 Series Express Chipset Family' with D3D_FEATURE_LEVEL_9_1
+2022-11-17 19:15:39.943 T:19048    INFO <general>: DX::DeviceResources::ResizeBuffers: 8 bit swapchain is used with 6 flip sequential buffers and SDR output
+2022-11-17 19:15:39.956 T:19048    INFO <general>: RetroPlayer[PROCESS]: Registering process control for Windows
+2022-11-17 19:15:39.956 T:19048    INFO <general>: RetroPlayer[RENDER]: Registering renderer factory for DirectX
+2022-11-17 19:15:40.303 T:19048    INFO <general>: load keymapping
+2022-11-17 19:15:40.305 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/appcommand.xml
+2022-11-17 19:15:40.306 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/customcontroller.AppleRemote.xml
+2022-11-17 19:15:40.307 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/customcontroller.Harmony.xml
+2022-11-17 19:15:40.308 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/customcontroller.SiriRemote.xml
+2022-11-17 19:15:40.309 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/gamepad.xml
+2022-11-17 19:15:40.310 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/joystick.xml
+2022-11-17 19:15:40.312 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/keyboard.xml
+2022-11-17 19:15:40.315 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/mouse.xml
+2022-11-17 19:15:40.315 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/remote.xml
+2022-11-17 19:15:40.317 T:19048    INFO <general>: Loading special://xbmc/system/keymaps/touchscreen.xml
+2022-11-17 19:15:40.319 T:19048    INFO <general>: GUI format 1280x800, Display Generic PnP Monitor #1: 1280x800 @ 60.00Hz
+2022-11-17 19:15:40.319 T:19048    INFO <general>: CLangInfo: loading resource.language.en_gb language information...
+2022-11-17 19:15:40.332 T:19048    INFO <general>: global locale set to en-us
+2022-11-17 19:15:40.332 T:19048    INFO <general>: CLangInfo: loading resource.language.en_gb language strings...
+2022-11-17 19:15:40.369 T:19916    INFO <general>: Running database version Addons33
+2022-11-17 19:15:40.370 T:19916    INFO <general>: Running database version ViewModes6
+2022-11-17 19:15:40.371 T:19916    INFO <general>: Running database version Textures13
+2022-11-17 19:15:40.374 T:19916    INFO <general>: Running database version MyMusic82
+2022-11-17 19:15:40.377 T:19916    INFO <general>: Running database version MyVideos119
+2022-11-17 19:15:40.378 T:19916    INFO <general>: Running database version TV38
+2022-11-17 19:15:40.379 T:19916    INFO <general>: Running database version Epg13
+2022-11-17 19:15:40.413 T:19048    INFO <general>: Unloaded skin
+2022-11-17 19:15:40.415 T:19048    INFO <general>:   load skin from: C:\Program Files\Kodi\addons\skin.estuary\ (version: 3.0.5)
+2022-11-17 19:15:40.415 T:19048    INFO <general>:   load fonts for skin...
+2022-11-17 19:15:40.417 T:19048    INFO <general>: Loading skin includes from C:\Program Files\Kodi\addons\skin.estuary\xml\includes.xml
+2022-11-17 19:15:40.480 T:19048    INFO <general>: Loading fonts from C:\Program Files\Kodi\addons\skin.estuary\xml\Font.xml
+2022-11-17 19:15:40.512 T:19048    INFO <general>:   load new skin...
+2022-11-17 19:15:40.513 T:19048    INFO <general>: Loading custom window XMLs from skin path C:\Program Files\Kodi\addons\skin.estuary\xml
+2022-11-17 19:15:40.522 T:19048    INFO <general>:   initialize new skin...
+2022-11-17 19:15:40.522 T:19048    INFO <general>: Loading skin file: DialogBusy.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.527 T:19048    INFO <general>: Loading skin file: Pointer.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.528 T:19048    INFO <general>: Loading skin file: DialogVolumeBar.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.529 T:19048    INFO <general>: Loading skin file: DialogExtendedProgressBar.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.531 T:19048    INFO <general>: Loading skin file: DialogSeekBar.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.545 T:19048    INFO <general>: Loading skin file: DialogNotification.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.546 T:19048    INFO <general>: Loading skin file: DialogBusy.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.547 T:19048    INFO <general>: Loading skin file: Custom_1109_TopBarOverlay.xml, load type: LOAD_ON_GUI_INIT
+2022-11-17 19:15:40.558 T:19048    INFO <general>: Loading resource://resource.uisounds.kodi/sounds.xml
+2022-11-17 19:15:40.584 T:19048    INFO <general>:   skin loaded...
+2022-11-17 19:15:40.585 T:19048    INFO <general>: Loading skin file: Startup.xml, load type: LOAD_EVERY_TIME
+2022-11-17 19:15:40.585 T:19048    INFO <general>: Loading skin file: Home.xml, load type: KEEP_IN_MEMORY
+2022-11-17 19:15:40.912 T:19048 WARNING <general>: JSONRPC: Could not parse type "Setting.Details.SettingList"
+2022-11-17 19:15:40.912 T:19048    INFO <general>: JSONRPC: Adding type "Setting.Details.SettingList" to list of incomplete definitions (waiting for "Setting.Details.Setting")
+2022-11-17 19:15:40.913 T:19048    INFO <general>: JSONRPC: Resolving incomplete types/methods referencing Setting.Details.Setting
+2022-11-17 19:15:40.938 T:19048    INFO <general>: JSONRPC v12.4.0: Successfully initialized
+2022-11-17 19:15:40.945 T:19048    INFO <general>: AddOnLog: peripheral.joystick: Enabling joystick interface "xinput"
+2022-11-17 19:15:40.947 T:19048   ERROR <general>: AddOnLog: peripheral.joystick: Failed to load XInput DLL
+2022-11-17 19:15:40.947 T:19048   ERROR <general>: AddOnLog: peripheral.joystick: Failed to initialize interface xinput
+2022-11-17 19:15:40.947 T:19048    INFO <general>: AddOnLog: peripheral.joystick: Enabling joystick interface "directinput"
+2022-11-17 19:15:40.951 T:19048    INFO <general>: PERIPHERALS::CPeripheralBus::Register - new keyboard device registered on application->keyboard: Keyboard (0000:0000)
+2022-11-17 19:15:40.951 T:19048    INFO <general>: PERIPHERALS::CPeripheralBus::Register - new mouse device registered on application->mouse: Mouse (0000:0000)
+2022-11-17 19:15:40.951 T:19048    INFO <general>: Loading player core factory settings from special://xbmc/system/playercorefactory.xml.
+2022-11-17 19:15:40.952 T:19048    INFO <general>: Loaded playercorefactory configuration
+2022-11-17 19:15:40.952 T:19048    INFO <general>: Loading player core factory settings from special://masterprofile/playercorefactory.xml.
+2022-11-17 19:15:40.952 T:19048    INFO <general>: special://masterprofile/playercorefactory.xml does not exist. Skipping.
+2022-11-17 19:15:40.952 T:19048    INFO <general>: removing tempfiles
+2022-11-17 19:15:40.959 T:18600    INFO <general>: initializing python engine.
+2022-11-17 19:15:40.999 T:18872    INFO <general>: Skipped 2 duplicate messages..
+2022-11-17 19:15:40.999 T:18872    INFO <general>: AddOnLog: pvr.iptvsimple: pvr.iptvsimple - PVRIptvData::Create - Creating the PVR IPTV Simple add-on
+2022-11-17 19:15:41.008 T:18872   ERROR <general>: AddOnLog: pvr.iptvsimple: pvr.iptvsimple - iptvsimple::PlaylistLoader::LoadPlayList - Playlist file path is not configured. Channels not loaded.
+2022-11-17 19:15:41.009 T:18872    INFO <general>: AddOnLog: pvr.iptvsimple: PVRIptvData::Create Starting separate client update thread...
+2022-11-17 19:15:41.009 T:18872    INFO <general>: PVR Manager: Starting
+2022-11-17 19:15:41.010 T:19048    INFO <general>: initialize done
+2022-11-17 19:15:41.010 T:13404    INFO <general>: initializing python engine.
+2022-11-17 19:15:41.057 T:19048    INFO <general>: Running the application...
+2022-11-17 19:15:41.089 T:17252    INFO <general>: ES: Starting UDP Event server on port 9777
+2022-11-17 19:15:41.089 T:17252    INFO <general>: UDP: Listening on port 9777 (ipv6 : false)
+2022-11-17 19:15:41.090 T:19048    INFO <general>: JSONRPC Server: Successfully initialized
+2022-11-17 19:15:41.245 T:18420   ERROR <general>: GetChannels: Add-on 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.245 T:18420   ERROR <general>: PVR::CPVRClients::GetChannels: PVR client 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.245 T:18420   ERROR <general>: GetChannelGroups: Add-on 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.246 T:18420   ERROR <general>: PVR::CPVRClients::GetChannelGroups: PVR client 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.246 T:18420   ERROR <general>: GetChannels: Add-on 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.247 T:18420   ERROR <general>: PVR::CPVRClients::GetChannels: PVR client 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.247 T:18420   ERROR <general>: GetChannelGroups: Add-on 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.247 T:18420   ERROR <general>: PVR::CPVRClients::GetChannelGroups: PVR client 'IPTV Simple PVR Add-on:connected' returned an error: server error
+2022-11-17 19:15:41.432 T:18420    INFO <general>: PVR Manager: Started
+2022-11-17 19:15:41.907 T:16980    INFO <general>: CIRServerSuite::Process: failed to connect to irss, will keep retrying every 5 seconds
+2022-11-17 19:15:42.187 T:18600    INFO <general>: CPythonInvoker(0, C:\Users\Ankur\AppData\Roaming\Kodi\addons\inputstream.ffmpegdirect\resources\lib\runner.py): script successfully run
+2022-11-17 19:15:42.212 T:18600    INFO <general>: Python interpreter stopped
+2022-11-17 19:15:42.408 T:19212   ERROR <general>: EXCEPTION Thrown (PythonToCppException) : -->Python callback/script returned the following error<--
+                                                    - NOTE: IGNORING THIS CAN LEAD TO MEMORY LEAKS!
+                                                   Error Type: <class 'ImportError'>
+                                                   Error Contents: DLL load failed while importing _socket: The parameter is incorrect.
+                                                   Traceback (most recent call last):
+                                                     File "C:\Users\Ankur\AppData\Roaming\Kodi\addons\plugin.video.kodiconnect\service.py", line 6, in <module>
+                                                       from logging.config import dictConfig
+                                                     File "C:\Program Files\Kodi\system\python\Lib\logging\config.py", line 30, in <module>
+                                                       import logging.handlers
+                                                     File "C:\Program Files\Kodi\system\python\Lib\logging\handlers.py", line 26, in <module>
+                                                       import logging, socket, os, pickle, struct, time, re
+                                                     File "C:\Program Files\Kodi\system\python\Lib\socket.py", line 49, in <module>
+                                                       import _socket
+                                                   ImportError: DLL load failed while importing _socket: The parameter is incorrect.
+                                                   -->End of Python script error report<--
+                                                   
+2022-11-17 19:15:42.422 T:19212    INFO <general>: Python interpreter stopped
+2022-11-17 19:15:42.523 T:19972   ERROR <general>: EXCEPTION Thrown (PythonToCppException) : -->Python callback/script returned the following error<--
+                                                    - NOTE: IGNORING THIS CAN LEAD TO MEMORY LEAKS!
+                                                   Error Type: <class 'ImportError'>
+                                                   Error Contents: DLL load failed while importing _socket: The parameter is incorrect.
+                                                   Traceback (most recent call last):
+                                                     File "C:\Users\Ankur\AppData\Roaming\Kodi\addons\plugin.video.jiotv\service.py", line 3, in <module>
+                                                       from resources.lib import proxy
+                                                     File "C:\Users\Ankur\AppData\Roaming\Kodi\addons\plugin.video.jiotv\resources\lib\proxy.py", line 5, in <module>
+                                                       from http.server import SimpleHTTPRequestHandler
+                                                     File "C:\Program Files\Kodi\system\python\Lib\http\server.py", line 92, in <module>
+                                                       import email.utils
+                                                     File "C:\Program Files\Kodi\system\python\Lib\email\utils.py", line 29, in <module>
+                                                       import socket
+                                                     File "C:\Program Files\Kodi\system\python\Lib\socket.py", line 49, in <module>
+                                                       import _socket
+                                                   ImportError: DLL load failed while importing _socket: The parameter is incorrect.
+                                                   -->End of Python script error report<--
+                                                   
+2022-11-17 19:15:42.534 T:19972    INFO <general>: Python interpreter stopped
+2022-11-17 19:15:47.339 T:13404    INFO <general>: CPythonInvoker(3, C:\Users\Ankur\AppData\Roaming\Kodi\addons\service.xbmc.versioncheck\resources\lib\runner.py): script successfully run
+2022-11-17 19:15:47.353 T:13404    INFO <general>: Python interpreter stopped
+2022-11-17 19:15:49.012 T:19048    INFO <general>: Loading skin file: FileBrowser.xml, load type: KEEP_IN_MEMORY
+2022-11-17 19:15:59.964 T:19048    INFO <general>: Skipped 1 duplicate messages..
+2022-11-17 19:15:59.964 T:19048    INFO <general>: Stopping player
+2022-11-17 19:15:59.964 T:19048    INFO <general>: Storing total System Uptime
+2022-11-17 19:15:59.964 T:19048    INFO <general>: Saving settings
+2022-11-17 19:15:59.982 T:19048    INFO <general>: Saving skin settings
+2022-11-17 19:15:59.985 T:19048    INFO <general>: Stopping all
+2022-11-17 19:15:59.985 T:19048    INFO <general>: ES: Stopping event server
+2022-11-17 19:16:00.091 T:17252    INFO <general>: ES: UDP Event server stopped
+2022-11-17 19:16:00.191 T:19048    INFO <general>: CServiceAddonManager: failed to stop inputstream.ffmpegdirect (may have ended)
+2022-11-17 19:16:00.191 T:19048    INFO <general>: CServiceAddonManager: failed to stop plugin.video.jiotv (may have ended)
+2022-11-17 19:16:00.191 T:19048    INFO <general>: CServiceAddonManager: failed to stop plugin.video.kodiconnect (may have ended)
+2022-11-17 19:16:00.192 T:19048    INFO <general>: CServiceAddonManager: failed to stop service.xbmc.versioncheck (may have ended)
+2022-11-17 19:16:00.213 T:19048    INFO <general>: Application stopped
+2022-11-17 19:16:00.413 T:19048    INFO <general>: XBApplicationEx: destroying...
+2022-11-17 19:16:00.413 T:19048    INFO <general>: PVR Manager: Stopping
+2022-11-17 19:16:00.414 T:19660    INFO <general>: EPG Container: Persisting unsaved events...
+2022-11-17 19:16:00.414 T:19660    INFO <general>: EPG Container: Persisting events done
+2022-11-17 19:16:00.451 T:19048    INFO <general>: PVR Manager: Stopped
+2022-11-17 19:16:01.014 T:19048    INFO <general>: ADDON: Dll Destroyed - PVR IPTV Simple Client
+2022-11-17 19:16:01.450 T:19048    INFO <general>: AddOnLog: peripheral.joystick: Disabling joystick interface "directinput"
+2022-11-17 19:16:01.451 T:19048    INFO <general>: ADDON: Dll Destroyed - Joystick Support
+2022-11-17 19:16:01.451 T:19048    INFO <general>: unload skin
+2022-11-17 19:16:01.478 T:19048    INFO <general>: Unloaded skin
+2022-11-17 19:16:01.517 T:19048    INFO <general>: unload sections
+2022-11-17 19:16:01.522 T:19048    INFO <general>: [WS-Discovery]: terminating
+2022-11-17 19:16:02.551 T:19048    INFO <general>: XBApplicationEx: application stopped!
