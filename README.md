@@ -1,22 +1,25 @@
 <h1 align='center'>✯ JɪᴏTV+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jio_TV_logo.svg/1200px-Jio_TV_logo.svg.png" width="40" height="40"> Pʟᴀʏ  ✯</h1>
 
-<!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
-<!-- © 2021-23 TechieSneh -->
+<!--
+* Copyright 2021-2023 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+-->
 
-<h4 align='center'>📺 The PHP Script For Grab Streaming Links and Play it , This Works Only on Android & Android TV
-Through LocalHost <br><br>🌟 Star This Repositry Befor Copying 😎<br>Don't Edit This Script
+<h4 align='center'>📺 The PHP Script For Grab Streaming Links and Play it ,<br> This Works Only on Android & Android TV
+Through LocalHost <br><br>🌟 Star This Repository Before Copying 😎<br>Don't Edit This Script
 😈<br><br>Login With Your Own Credentials In This Script</h4>
 <br>
 
 <h3>♻️ JOIN FOR UPDATES :</h3>
 
 - JOIN TELEGRAM CHANNEL
-- https://bit.ly/3XDNjN1
+- https://bit.ly/3QwIvIC
 
 <h3>😇 SCRIPT FEATURES :</h3>
 
-- HQ Streaming Free of Cost <br>
-- Will Works In 250, 400, 600, 800, 1200(FEW NOT SUPPORT) in this Given Qualities
+- HQ Streaming Free of Cost
+- Will Works In All Qualities
 - Web Play with Quality Change Supports
 - Works on Mobile, AndroidTV or PC Browser Perfect
 
@@ -46,11 +49,11 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <h3>📸 SCREENSHOTS : </h3>
 
-<img src="screenshots/main/main.png" width="400" height="200">
+<img src="https://i.ibb.co/brMR0c4/main.png" width="400" height="200">
 
 <br>
 
-<img src="screenshots/main/play.png" width="400" height="200">
+<img src="https://i.ibb.co/Dz4Nhxm/play.png" width="400" height="200">
 
 <br>
 
@@ -74,9 +77,9 @@ https://oceanofapk.com/ksweb-server-php-mysql-v3-961-pro-apk-free-download/
 https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
 ```
 
-2.  Then Download This Zip Files<br>
+2.  Then Download This Zip File<br>
 
-- [JioTV Zip](https://github.com/mitthu786/TS-JioTV/blob/main/tsjiotv.zip?raw=true) <br>
+- [TS-JioTV Zip](https://tsnehcors.mitthu.workers.dev/?https://github.com/mitthu786/TS-JioTV/blob/main/TS-JioTV.zip?raw=true) <br>
 
 1. Locate & Extract all Files in LocalHost (Htdocs) Root Folder <br>
 2. Open KSWEB App & Start The Server <br>
@@ -84,13 +87,13 @@ https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
 4. Put Your E-Mail or Mobile Number without +91 & Password in below Link <br>
 
 ```py
-http://localhost:8080/tsjiotv/login.php
+http://localhost:8080/TS-JioTV/login.php
 ```
 
 7. Now Open [JIOTV WEB] Below Link :
 
 ```py
-http://localhost:8080/tsjiotv/
+http://localhost:8080/TS-JioTV/
 ```
 
 8. Click above link in any Browser . You Will See all Jio Channels . <br>
@@ -103,13 +106,13 @@ http://localhost:8080/tsjiotv/
 1. Put Your E-Mail or Mobile Number without +91 & Password in Below Link <br>
 
 ```py
-http://localhost:8080/tsjiotv/login2.php?user=`NUMBER`&pass=`PASSWORD`
+http://localhost:8080/TS-JioTV/login_direct.php?user=`NUMBER`&pass=`PASSWORD`
 ```
 
 2. Now Open [JIOTV WEB] Below Link :
 
 ```py
-http://localhost:8080/tsjiotv/
+http://localhost:8080/TS-JioTV/
 ```
 
 3. Click above link in any Browser . You Will See all Jio Channels . <br>
@@ -120,82 +123,35 @@ http://localhost:8080/tsjiotv/
 • In Tivimate or OTT Navigator Player Put Links Format Like Below :<br>
 
 ```py
-http://localhost:8080/tsjiotv/playlist.php
+http://localhost:8080/TS-JioTV/playlist.php
 ```
 
-• For Local Playlist :<br>
+• Hurrah !! Now Play & Enjoy with your Jio Channels .
 
-```py
-http://localhost:8080/tsjiotv/localplaylist.m3u
-```
+<!--
+* Copyright 2021-2023 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+-->
 
-• <b>FOR DIFFERENT QUALITY USE BELOW LINKS : </b><br>
+### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
 
-```py
-http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
-```
-
-• Now Change Above URL Like : jio240p to jio400p , jio600p ,etc. for Quality Change.</b>
-• Hurrah !! Now Play & Enjoy with your Jio Channels .</b><br>
-
-<!-- DO NOT EDIT FILE AND ADD YOU NAME HERE AND PUBLISH -->
-<!-- © 2021-22 TechieSneh -->
-<br>
-<h3>📸 NEW THEMES SCREENSHOTS : </h3>
-<br>
-##### ♢♢ JIOTV ARCADE SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-arcade)
-
-<img src="screenshots/jiotv-arcade/arcade.png" width="400" height="200">
-
-<br><br>
-
-##### ♢♢ JIOTV CLASSIC SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-classic)
-
-<img src="screenshots/jiotv-classic/classic.png" width="400" height="200">
-
-<br><br>
-
-##### ♢♢ JIOTV LIGHTMODE SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-lightmode)
-
-<img src="screenshots/jiotv-lightmode/light.png" width="400" height="200">
-
-<br><br>
-
-##### ♢♢ JIOTV DARKMODE SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-darkmode)
-
-<img src="screenshots/jiotv-darkmode/dark.png" width="400" height="200">
-
-<br><br>
-
-##### ♢♢ JIOTV PREMIUM SHOTS [CLICK HERE](https://github.com/mitthu786/TS-JioTV/tree/main/themes/jiotv-premium)
-
-<img src="screenshots/jiotv-premium/premium.png" width="400" height="200">
-
-<br>
-
-<img src="screenshots/jiotv-premium/play.png" width="400" height="200">
-
-<br><br>
-
-#### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
-
-1. ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)<br>
-2. For This You Need JioID Number and Password<br>
+1. ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)
+2. For This You Need JioID Number and Password
 3. You Can Also get Data with OTP
 
 - `user` = Username / Mobile No.
 - `pass` = Password
 
-<br>
-
 <h3>🚸 WARNINGS :</h3>
 
 - This is Just For Educational Purpose
-- DO NOT Sell this Script, This is 💯% Free
+- Don't Sell this Script, This is 💯% Free
 
 <h3>🤗 CONTACT US : </h3>
 
-• For Any Query Contact at [ProtonMail](mailto:techiesneh@protonmail.com)
+- TELEGRAM CHANNEL [JOIN NOW](https://bit.ly/3QwIvIC)
+- FOR ANY QUERY CONTACT US ON [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>
 
@@ -204,3 +160,4 @@ http://localhost:8080/tsjiotv/localplaylists/jio240p.m3u
 <h4 align='center'>© 2021-23 Techie Sneh</h4>
 
 <!-- DO NOT REMOVE THIS CREDIT -->
+<!-- © 2021-23 TechieSneh -->

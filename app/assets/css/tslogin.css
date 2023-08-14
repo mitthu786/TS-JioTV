@@ -1,0 +1,184 @@
+/* 
+* Copyright 2021-2023 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+*/
+
+html,
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+body {
+  background-image: url(https://jiotv.com/src/resources/images/Redirection-screen_Background.jpg);
+  background-size: cover;
+}
+
+/* form {
+        margin-top: 50px;
+      } */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 16px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #8ebf42;
+  color: white;
+  padding: 14px 0;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.formcontainer {
+  text-align: left;
+  margin: 24px 50px 12px;
+}
+
+.container {
+  padding: 16px 0;
+  text-align: left;
+}
+
+span.psw {
+  float: right;
+  padding-top: 0;
+  padding-right: 15px;
+}
+
+.alert {
+  padding: 20px;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+}
+
+:root {
+  --page-height: 100vh;
+  --page-width: 100vw;
+  --page-margin: 0;
+  --page-padding: 0;
+  --page-text-color: #8e9196;
+  --page-text-color-hover: rgba(255, 255, 255, 1);
+  --page-background-color: #1a1e23;
+  --tab-display: grid;
+  --tab-background-color: rgba(255, 255, 255, 0.03);
+  --display-none: none;
+  --box-sizing: border-box;
+}
+
+*:before,
+*:after,
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  justify-content: center;
+  margin: var(--page-margin);
+  padding: var(--page-padding);
+}
+
+p {
+  padding: 0 1em;
+}
+
+p span {
+  color: var(--page-text-color-hover);
+}
+
+tab-container {
+  display: var(--tab-display);
+  margin-top: 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  border: solid rgba(255, 255, 255, 0.03);
+  border-radius: 0.5em;
+  background-color: var(--page-background-color);
+  color: var(--page-text-color);
+}
+
+input {
+  display: none;
+}
+
+input:checked + label {
+  color: var(--page-text-color-hover);
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 250ms;
+}
+
+.toggleLabel {
+  cursor: pointer;
+  transition: color 250ms;
+  padding: 1em;
+  border-right: solid 2px var(--page-background-color);
+  background-color: var(--tab-background-color);
+  text-align: center;
+  transition: all 250ms;
+}
+
+.toggleLabel:last-of-type {
+  border: none;
+}
+
+.toggleLabel:hover {
+  color: var(--page-text-color-hover);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+tab-content {
+  display: var(--tab-display);
+  grid-column: 1 / -1;
+}
+
+input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {
+  display: none;
+}

@@ -1,0 +1,51 @@
+/* 
+* Copyright 2021-2023 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+*/
+
+#userButtons {
+  font-size: 14px;
+  font-family: fantasy;
+  text-align-last: center;
+}
+
+#loginButton {
+  border-radius: 26px;
+  border: 9px solid #ffffff;
+  color: green;
+}
+
+#logoutButton {
+  border-radius: 26px;
+  border: 9px solid #ffffff;
+  color: red;
+}
+
+#PlayListButton {
+  border-radius: 26px;
+  border: 9px solid #ffffff;
+  color: blue;
+}
+
+#searchBar {
+  width: 45%;
+  height: 35px;
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: fantasy;
+  margin-left: 28%;
+}
+
+#searchWrapper {
+  position: relative;
+}
+
+#searchWrapper::after {
+  content: "🔍";
+  position: absolute;
+  top: 7px;
+  right: 29%;
+}
