@@ -36,9 +36,49 @@
     </div><br>
     <div id="searchWrapper">
         <input type="text" name="searchBar" id="searchBar" placeholder="Search ..." />
-    </div><br>
+    </div>
     <div id="content">
         <div class="container">
+            <div class="filters">
+                <label for="genreFilter">Genre:</label>
+                <select id="genreFilter">
+                    <option value="">All</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Movies">Movies</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Infotainment">Infotainment</option>
+                    <option value="News">News</option>
+                    <option value="Music">Music</option>
+                    <option value="Devotional">Devotional</option>
+                    <option value="Business">Business</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="JioDarshan">JioDarshan</option>
+                </select>
+
+                <label for="langFilter">Language:</label>
+                <select id="langFilter">
+                    <option value="">All</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="Punjabi">Punjabi</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Odia">Odia</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Bhojpuri">Bhojpuri</option>
+                    <option value="Kannada">Kannada</option>
+                    <option value="Assamese">Assamese</option>
+                    <option value="Nepali">Nepali</option>
+                    <option value="French">French</option>
+                </select>
+            </div>
             <div id="charactersList" class="row">
             </div>
         </div>

@@ -4,6 +4,46 @@
 * Created By : TechieSneh
 */
 
+/* FILTERS CSS */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+label {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+/* LOGIN BUTTON CSS */
+
 #userButtons {
   font-size: 14px;
   font-family: fantasy;
@@ -27,6 +67,8 @@
   border: 9px solid #ffffff;
   color: blue;
 }
+
+/* SEARCH BAR CSS */
 
 #searchBar {
   width: 45%;

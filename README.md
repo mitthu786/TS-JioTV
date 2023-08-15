@@ -18,8 +18,9 @@ Through LocalHost <br><br>🌟 Star This Repository Before Copying 😎<br>Don't
 
 <h3>😇 SCRIPT FEATURES :</h3>
 
-- HQ Streaming Free of Cost
+- Dropdown Filters Added
 - Will Works In All Qualities
+- Multi Audio Stream Support
 - Web Play with Quality Change Supports
 - Works on Mobile, AndroidTV or PC Browser Perfect
 
@@ -49,7 +50,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <h3>📸 SCREENSHOTS : </h3>
 
-<img src="https://i.ibb.co/brMR0c4/main.png" width="400" height="200">
+<img src="https://i.ibb.co/yfpvJ9Y/main.png" width="400" height="200">
 
 <br>
 
