@@ -52,7 +52,7 @@ $opts = ['http' => ['method' => 'POST', 'header' => array_map(
 ), 'content' => $postdata]];
 
 $context = stream_context_create($opts);
-$haystacks = file_get_contents("https://tv.media.jio.com/apis/v2.0/getchannelurl/getchannelurl?langId=6", false, $context);
+$haystacks = file_get_contents("https://tv.media.jio.com/apis/v2.2/getchannelurl/getchannelurl?langId=6", false, $context);
 $haystack = json_decode($haystacks);
 $cookie = explode('?', $haystack->result);
 

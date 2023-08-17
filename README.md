@@ -14,7 +14,7 @@ Through LocalHost <br><br>🌟 Star This Repository Before Copying 😎<br>Don't
 <h3>♻️ JOIN FOR UPDATES :</h3>
 
 - JOIN TELEGRAM CHANNEL
-- https://bit.ly/3QwIvIC
+- https://bit.ly/3qzL7uD
 
 <h3>😇 SCRIPT FEATURES :</h3>
 
@@ -85,10 +85,12 @@ https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
 1. Locate & Extract all Files in LocalHost (Htdocs) Root Folder <br>
 2. Open KSWEB App & Start The Server <br>
 3. Run login.php file for a first time <br>
-4. Put Your E-Mail or Mobile Number without +91 & Password in below Link <br>
+4. Put Your E-Mail or Mobile Number without +91 & Password in below Link
+
+<br>
 
 ```py
-http://localhost:8080/TS-JioTV/login.php
+http://localhost:8080/TS-JioTV/app/login.php
 ```
 
 7. Now Open [JIOTV WEB] Below Link :
@@ -135,7 +137,7 @@ http://localhost:8080/TS-JioTV/playlist.php
 * Created By : TechieSneh
 -->
 
-### 😛 Generate ssoToken Here (HERE YOU GET DATA WITH OTP):
+### 😛 GENERATE CREDS.JSON (OTP USERS):
 
 1. ✍️ FOR SSO TOKEN : [JioLogin](http://jiologin.unaux.com)
 2. For This You Need JioID Number and Password
@@ -151,7 +153,7 @@ http://localhost:8080/TS-JioTV/playlist.php
 
 <h3>🤗 CONTACT US : </h3>
 
-- TELEGRAM CHANNEL [JOIN NOW](https://bit.ly/3QwIvIC)
+- TELEGRAM CHANNEL [JOIN NOW](https://bit.ly/3qzL7uD)
 - FOR ANY QUERY CONTACT US ON [ProtonMail](mailto:techiesneh@protonmail.com)
 
 <br>

@@ -13,7 +13,7 @@ error_reporting(0);
 header("Content-Type: application/vnd.apple.mpegurl");
 echo '#EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"' . PHP_EOL;
 echo "<br>" . PHP_EOL;
-$json = json_decode(file_get_contents('https://jiotvapi.cdn.jio.com/apis/v1.4/getMobileChannelList/get/?langId=6&os=android&devicetype=phone&usergroup=tvYR7NSNn7rymo3F&version=277&langId=6'), true);
+$json = json_decode(file_get_contents('https://jiotv.data.cdn.jio.com/apis/v1.3/getMobileChannelList/get/?langId=6&os=android&devicetype=phone&usergroup=tvYR7NSNn7rymo3F&version=277&langId=6'), true);
 
 $LANG_MAP = array(
     1 => "Hindi",
