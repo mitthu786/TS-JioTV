@@ -106,19 +106,20 @@
 
         var protocol = window.location.protocol;
         var localIP = window.location.hostname;
+        var port = window.location.port;
 
         if (window.location.hostname !== "127.0.0.1" && window.location.hostname !== "localhost") {
             var hostJio = window.location.host;
         } else {
-            hostJio = localIP;
+            var hostJio = localIP + (port ? ':' + port : '');
         }
 
-        var jioPath = protocol + '://' + hostJio + window.location.pathname.replace(/\/[^/]*$/, '');
+        var jioPath = protocol + '//' + hostJio + window.location.pathname.replace(/\/[^/]*$/, '');
         var jioPath = jioPath + '/app/playlist.php';
 
         navigator.clipboard.writeText(jioPath)
             .then(() => {
-                alert('PlayList URL copied to clipboard!');
+                alert('PlayList URL copied to Clipboard!');
             })
             .catch((error) => {
                 console.error('Error copying URL:', error);

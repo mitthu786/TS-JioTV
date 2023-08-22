@@ -12,13 +12,21 @@ header("Content-Disposition: inline; filename=$jio_fname");
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $local_ip = getHostByName(php_uname('n'));
-if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1") {
+$ip_port = $_SERVER['SERVER_PORT'];
+if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
     $host_jio = $_SERVER['HTTP_HOST'];
 } else {
     $host_jio = $local_ip;
 }
 
-$jio_path = $protocol . '://' . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
+if ($ip_port == 80 || $ip_port == 443) {
+    $port = "";
+} else {
+    $port = ":" . $ip_port;
+}
+
+$jio_path = $protocol . $host_jio .  $port  . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
+
 $json = json_decode(file_get_contents('https://jiotv.data.cdn.jio.com/apis/v1.3/getMobileChannelList/get/?langId=6&os=android&devicetype=phone&usergroup=tvYR7NSNn7rymo3F&version=277&langId=6'), true);
 
 $LANG_MAP = array(
