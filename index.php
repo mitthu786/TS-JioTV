@@ -103,11 +103,20 @@
 
     const PlayListButton = document.getElementById('PlayListButton');
     PlayListButton.addEventListener('click', () => {
-        const currentProtocol = window.location.protocol;
-        const currentHost = window.location.host;
-        const currentPathname = window.location.pathname.split("/");
-        const currentURL = currentProtocol + '//' + currentHost + '/' + currentPathname[1] + '/app/playlist.php';
-        navigator.clipboard.writeText(currentURL)
+
+        var protocol = window.location.protocol;
+        var localIP = window.location.hostname;
+
+        if (window.location.hostname !== "127.0.0.1" && window.location.hostname !== "localhost") {
+            var hostJio = window.location.host;
+        } else {
+            hostJio = localIP;
+        }
+
+        var jioPath = protocol + '://' + hostJio + window.location.pathname.replace(/\/[^/]*$/, '');
+        var jioPath = jioPath + '/app/playlist.php';
+
+        navigator.clipboard.writeText(jioPath)
             .then(() => {
                 alert('PlayList URL copied to clipboard!');
             })

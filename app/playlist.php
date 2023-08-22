@@ -4,15 +4,21 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
-$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
-$host = $protocol . $_SERVER['HTTP_HOST'];
-$filePath = $_SERVER['PHP_SELF'];
-$fullURL =  $host . "/" . explode("/", $filePath)[1];
 
 error_reporting(0);
+$jio_fname = 'TS-JioTV_' . md5(time() . 'fbejnchbieunskjd') . '.m3u';
 header("Content-Type: application/vnd.apple.mpegurl");
-echo '#EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"' . PHP_EOL;
-echo "<br>" . PHP_EOL;
+header("Content-Disposition: inline; filename=$jio_fname");
+
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+$local_ip = getHostByName(php_uname('n'));
+if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1") {
+    $host_jio = $_SERVER['HTTP_HOST'];
+} else {
+    $host_jio = $local_ip;
+}
+
+$jio_path = $protocol . '://' . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
 $json = json_decode(file_get_contents('https://jiotv.data.cdn.jio.com/apis/v1.3/getMobileChannelList/get/?langId=6&os=android&devicetype=phone&usergroup=tvYR7NSNn7rymo3F&version=277&langId=6'), true);
 
 $LANG_MAP = array(
@@ -48,11 +54,11 @@ $GENRE_MAP = array(
     18 => "Shopping",
     19 => "JioDarshan"
 );
+
+
+$jio_data = '#EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"' . PHP_EOL;
 foreach ($json['result'] as $channel) {
-    $target = $channel['logoUrl'];
-    $targetnew = trim($target, ".png");
-    printf("#EXTINF:-1 tvg-id=\"%u\" group-title=\"%s\" tvg-language=\"%s\" tvg-logo=\"http://jiotv.catchup.cdn.jio.com/dare_images/images/%s\",%s" . PHP_EOL, $channel['channel_id'], $GENRE_MAP[$channel['channelCategoryId']], $LANG_MAP[$channel['channelLanguageId']], $channel['logoUrl'], $channel['channel_name']);
-    echo "<br>" . PHP_EOL;
-    printf("%s/app/live.php?id=%s&e=.m3u8" . PHP_EOL . PHP_EOL, $fullURL, $channel['channel_id']);
-    echo "<br>" . PHP_EOL;
+    $jio_data .= '#EXTINF:-1 tvg-id="' . $channel['channel_id'] . '" group-title="TS-JioTV ' . $GENRE_MAP[$channel['channelCategoryId']] . '" tvg-language="' . $LANG_MAP[$channel['channelLanguageId']] . '" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/' . $channel['logoUrl'] . '",' . $channel['channel_name'] . PHP_EOL;
+    $jio_data .= $jio_path . 'live.php?id=' . $channel['channel_id'] . '&e=.m3u' . PHP_EOL;
 }
+print($jio_data);
