@@ -8,68 +8,88 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $u = $_POST['username'];
+include "functions.php";
 
-  if (strpos($u, "@") !== false) {
-    $user = $u;
+function verifyUser($user, $pass)
+{
+
+  if (strpos($user, "@") !== false) {
+    $user = $user;
   } else {
-    $user = "+91" . $u;
+    $user = "+91" . $user;
   }
 
-  $pass = $_POST['password'];
-}
+  $username = $user;
+  $password = $pass;
 
-$headers = array(
-  "x-api-key: l7xx75e822925f184370b2e25170c5d5820a",
-  "Content-Type: application/json"
-);
+  $apiKey = "l7xx75e822925f184370b2e25170c5d5820a";
+  $headers = array(
+    "x-api-key: $apiKey",
+    "Content-Type: application/json"
+  );
 
-$username = $user;
-$password = $pass;
-
-$payload = array(
-  'identifier' => "$username",
-  'password' => "$password",
-  'rememberUser' => 'T',
-  'upgradeAuth' => 'Y',
-  'returnSessionDetails' => 'T',
-  'deviceInfo' => array(
-    'consumptionDeviceName' => 'Jio',
-    'info' => array(
-      'type' => 'android',
-      'platform' => array(
-        'name' => 'vbox86p',
-        'version' => '8.0.0'
-      ),
-      'androidId' => '6fcadeb7b4b10d77'
+  $payload = array(
+    'identifier' => $username,
+    'password' => $password,
+    'rememberUser' => 'T',
+    'upgradeAuth' => 'Y',
+    'returnSessionDetails' => 'T',
+    'deviceInfo' => array(
+      'consumptionDeviceName' => 'Jio',
+      'info' => array(
+        'type' => 'android',
+        'platform' => array(
+          'name' => 'vbox86p',
+          'version' => '8.0.0'
+        ),
+        'androidId' => '6fcadeb7b4b10d77'
+      )
     )
-  )
-);
+  );
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jio.com/v3/dip/user/unpw/verify');
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_ENCODING, "");
-curl_setopt($ch, CURLOPT_TIMEOUT, 0);
-$result = curl_exec($ch);
-curl_close($ch);
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, 'https://api.jio.com/v3/dip/user/unpw/verify');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+  curl_setopt($ch, CURLOPT_ENCODING, "");
+  curl_setopt($ch, CURLOPT_TIMEOUT, 0);
+  $result = curl_exec($ch);
+  curl_close($ch);
 
-$j = json_decode($result, true);
-
-$k = $j["ssoToken"];
-if ($k != "") {
-  file_put_contents("assets/data/creds.json", $result);
-  header("Location: login.php?success");
-} else {
-  $msg = "WRONG USER-ID OR PASS ! PLEASE TRY AGAIN";
+  return json_decode($result, true);
 }
 
+function handleLogin()
+{
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $username = filter_var($username, FILTER_SANITIZE_STRING);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+
+    $response = verifyUser($username, $password);
+    $ssoToken = $response["ssoToken"];
+
+    if (!empty($ssoToken)) {
+      $u_name = encrypt_data($username, "TS-JIOTV");
+      file_put_contents("assets/data/credskey.jtv", $u_name);
+      $j_data = encrypt_data(json_encode($response), $u_name);
+      file_put_contents("assets/data/creds.jtv", $j_data);
+      header("Location: login.php?success");
+      exit();
+    } else {
+      header("Location: login.php?error");
+      exit();
+    }
+  }
+}
+
+handleLogin();
 ?>
 
 <!DOCTYPE html>
@@ -97,15 +117,18 @@ if ($k != "") {
       <input type="radio" id="tabToggle02" name="tabs" value="2" />
       <label class="toggleLabel" for="tabToggle02">OTP Login</label>
       <tab-content>
-        <form action="<?php $_PHP_SELF ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
           <div class="formcontainer">
             <div class="container">
-              <input id="username" name="username" type="text" placeholder="Mobile Number / Username" required />
+              <input id="username" name="username" type="text" placeholder="Mobile No. without +91 / Email" required />
               <input id="password" name="password" type="password" placeholder="Password" required />
               <input type="hidden" name="web" value="true" />
               <input type="hidden" name="type" value="password" />
             </div>
             <button type="submit" style="display: block; width: 100%; padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; font-size: 14px;">Sign In</button>
+            <p style="text-align: center; font-size: small; opacity: 0.5;">
+              Forgot Password? <a href="https://bit.ly/3P9msXn" style="text-decoration: none; color: #007BFF;">Reset Password</a>
+            </p>
             <p style="text-align: center; font-size: small; opacity: 0.5">
               JioTV [ SNEH-TV ]
             </p>
@@ -116,17 +139,20 @@ if ($k != "") {
         <form>
           <div class="formcontainer">
             <div class="container">
-              <p style="text-align: center; color: #ffffff; font-size: medium; opacity: 0.8;">
+              <p style="text-align: left; color: #ffffff; font-size: medium; opacity: 0.8;">
                 1. Click <a href="http://jiologin.unaux.com/otp.php" style="text-decoration: none; color: #007BFF;">Login BY OTP</a>.<br>
                 2. Enter Your Jio Mobile Number without +91.<br>
                 3. Then Enter your OTP received on you given number.<br>
                 4. After successfully login you get Download button.<br>
-                5. Then create a file "creds.json" under app->data folder.<br>
+                5. Then create a file "creds.jtv" under app/data folder.<br>
                 6. Now Click on Download button<br>
-                7. Then Copy and paste its content in the "creds.json" file.<br>
+                7. Then Copy and paste its content in the "creds.jtv" file.<br>
                 8. Now you can use JioTV.
               </p>
             </div>
+            <p style="text-align: center; font-size: small; opacity: 0.5;">
+              Forgot Password? <a href="https://bit.ly/3P9msXn" style="text-decoration: none; color: #007BFF;">Reset Password</a>
+            </p>
             <p style="text-align: center; font-size: small; opacity: 0.5;">
               JioTV [ SNEH-TV ]
             </p>
@@ -136,28 +162,39 @@ if ($k != "") {
     </tab-container>
   </div>
 </body>
+
 <script>
-  document.body.onload = () => {
-    var params = new URLSearchParams(window.location.search);
-    alertEl = document.querySelector(".alert");
+  document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const alertEl = document.querySelector(".alert");
+
     if (params.has("success")) {
-      alertEl.style.display = "block";
-      alertEl.style.backgroundColor = "#4CAF50";
-      alertEl.innerHTML +=
-        "<strong>Success!</strong> You have been logged in";
+      showAlert(alertEl, "Success!", "You have been logged in", "success", "#4CAF50");
       const currentProtocol = window.location.protocol;
       const currentHost = window.location.host;
       const currentPathname = window.location.pathname.replace("app/login.php", "index.php");
       setTimeout(function() {
         const newURL = currentProtocol + "//" + currentHost + currentPathname;
         window.location.replace(newURL);
-      }, 1000);
-    } else {
-      alertEl.style.display = "block";
-      alertEl.style.backgroundColor = "#f44336";
-      alertEl.innerHTML += "<strong>Error!</strong> Wrong username or password. Please try again.";
+      }, 500);
+    } else if (params.has("error")) {
+      showAlert(alertEl, "Error!", "Wrong username or password. Please try again.", "error", "#f44336");
     }
-  };
+  });
+
+  function showAlert(alertEl, title, message, type, color) {
+    alertEl.innerHTML = `
+      <span class="closebtn" onclick="closeAlert(this.parentElement);">&times;</span>
+      <strong>${title}</strong> ${message}
+    `;
+    alertEl.classList.add(type);
+    alertEl.style.backgroundColor = color;
+    alertEl.style.display = "block";
+  }
+
+  function closeAlert(alertContainer) {
+    alertContainer.style.display = "none";
+  }
 </script>
 
 </html>

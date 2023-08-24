@@ -4,14 +4,30 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
-$filePath = "assets/data/creds.json";
+$dir = "assets/data/";
+$fPattern = "*.jtv";
 
-if (file_exists($filePath)) {
-  if (unlink($filePath)) {
-    echo "Logged out and deleted credentials.";
-  } else {
-    echo "Error deleting credentials.";
+$files = glob($dir . $fPattern);
+
+if ($files !== false && count($files) > 0) {
+  $sCount = 0;
+  $eCount = 0;
+
+  foreach ($files as $filePath) {
+    if (unlink($filePath)) {
+      $sCount++;
+    } else {
+      $eCount++;
+    }
+  }
+
+  if ($sCount > 0) {
+    echo "Successfully deleted $sCount credential file(s).";
+  }
+
+  if ($eCount > 0) {
+    echo "Encountered errors deleting $eCount credential file(s).";
   }
 } else {
-  echo "Credentials file not found.";
+  echo "No credential files found in the directory.";
 }

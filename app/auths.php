@@ -5,7 +5,9 @@
 // * Created By : TechieSneh
 
 error_reporting(0);
-$creds = json_decode(file_get_contents('assets/data/creds.json'), true);
+include "functions.php";
+$cred = getCRED();
+$creds = json_decode($cred, true);
 $ssoToken = $creds['ssoToken'];
 $crm = $creds['sessionAttributes']['user']['subscriberId'];
 $uniqueId = $creds['sessionAttributes']['user']['unique'];

@@ -4,58 +4,76 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
-$u = $_GET["user"];
-$password = $_GET["pass"];
+include "functions.php";
+$user = isset($_GET["user"]) ? trim($_GET["user"]) : "";
+$password = isset($_GET["pass"]) ? $_GET["pass"] : "";
 
-if (strpos($u, "@") !== false) {
-    $user = $u;
-} else {
-    $user = "+91" . $u;
+if (empty($user) || empty($password)) {
+    die("Username and password are required.<br><br># USAGE :- <br>1. With Mobile No. : login_direct.php?user=6287******&pass=Ram******<br>2. With Email ID : login_direct.php?user=hello@gmail.com&pass=Ram******<br>");
 }
 
-$headers = array(
-    "x-api-key: l7xx75e822925f184370b2e25170c5d5820a",
-    "Content-Type: application/json"
-);
+if (strpos($user, "@") !== false) {
+    $nUser = $user;
+} else {
+    $nUser = "+91" . $user;
+}
 
-$payload = array(
-    'identifier' => "$user",
-    'password' => "$password",
+$payload = [
+    'identifier' => $nUser,
+    'password' => $password,
     'rememberUser' => 'T',
     'upgradeAuth' => 'Y',
     'returnSessionDetails' => 'T',
-    'deviceInfo' => array(
+    'deviceInfo' => [
         'consumptionDeviceName' => 'Jio',
-        'info' => array(
+        'info' => [
             'type' => 'android',
-            'platform' => array(
+            'platform' => [
                 'name' => 'vbox86p',
                 'version' => '8.0.0'
-            ),
+            ],
             'androidId' => '6fcadeb7b4b10d77'
-        )
-    )
-);
+        ]
+    ]
+];
+
+$headers = [
+    "x-api-key: l7xx75e822925f184370b2e25170c5d5820a",
+    "Content-Type: application/json"
+];
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jio.com/v3/dip/user/unpw/verify');
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_ENCODING, "");
-curl_setopt($ch, CURLOPT_TIMEOUT, 0);
+curl_setopt_array($ch, [
+    CURLOPT_URL => 'https://api.jio.com/v3/dip/user/unpw/verify',
+    CURLOPT_POSTFIELDS => json_encode($payload),
+    CURLOPT_HTTPHEADER => $headers,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_TIMEOUT => 10,
+]);
+
 $result = curl_exec($ch);
+if (curl_errno($ch)) {
+    die("cURL Error: " . curl_error($ch));
+}
+
 curl_close($ch);
 
-$j = json_decode($result, true);
+$responseData = json_decode($result, true);
+$ssoToken = $responseData["ssoToken"] ?? "";
 
-$k = $j["ssoToken"];
-if ($k != "") {
-    echo $k;
-    file_put_contents("assets/creds.json", $result);
-    echo "<br>";
-    echo "ENJOY, LOGGED IN SUCCESSFULLY !!";
+if (!empty($ssoToken)) {
+    $u_name = encrypt_data($nUser, "TS-JIOTV");
+    file_put_contents("assets/data/credskey.jtv", $u_name);
+    $j_data = encrypt_data($response, $u_name);
+    file_put_contents("assets/data/creds.jtv", $j_data);
+    echo 'ENJOY, LOGGED IN SUCCESSFULLY. <a href="../" style="text-decoration:none;color:green;">WATCH NOW</a>';
+    exit();
+} else {
+    $message = "OOPS !! LOGIN FAILED. <a href='./login.php' style='text-decoration:none;color:red;'>UI LOGIN</a>";
+    echo $message;
+    echo "<script>alert('$message');</script>";
 }
