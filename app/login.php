@@ -12,7 +12,6 @@ include "functions.php";
 
 function verifyUser($user, $pass)
 {
-
   if (strpos($user, "@") !== false) {
     $user = $user;
   } else {
@@ -35,33 +34,32 @@ function verifyUser($user, $pass)
     'upgradeAuth' => 'Y',
     'returnSessionDetails' => 'T',
     'deviceInfo' => array(
-      'consumptionDeviceName' => 'Jio',
+      'consumptionDeviceName' => 'SM-G935FD',
       'info' => array(
         'type' => 'android',
         'platform' => array(
-          'name' => 'vbox86p',
+          'name' => 'SM-G935FD',
           'version' => '8.0.0'
         ),
-        'androidId' => '6fcadeb7b4b10d77'
+        'androidId' => '3c6d6b5702fa09bd'
       )
     )
   );
 
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, 'https://api.jio.com/v3/dip/user/unpw/verify');
-  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-  curl_setopt($ch, CURLOPT_ENCODING, "");
-  curl_setopt($ch, CURLOPT_TIMEOUT, 0);
-  $result = curl_exec($ch);
-  curl_close($ch);
+  $options = array(
+    'http' => array(
+      'header' => implode("\r\n", $headers),
+      'method' => 'POST',
+      'content' => json_encode($payload),
+    ),
+  );
+
+  $context = stream_context_create($options);
+  $result = file_get_contents('https://api.jio.com/v3/dip/user/unpw/verify', false, $context);
 
   return json_decode($result, true);
 }
+
 
 function handleLogin()
 {

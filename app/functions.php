@@ -15,6 +15,7 @@ function getCRED()
 // ENCRYPTION && DECRYPTION
 function encrypt_data($data, $key)
 {
+  $key = intval($key);
   $encrypted = '';
   for ($i = 0; $i < strlen($data); $i++) {
     $encrypted .= chr(ord($data[$i]) + $key);
@@ -24,6 +25,7 @@ function encrypt_data($data, $key)
 
 function decrypt_data($e_data, $key)
 {
+  $key = intval($key);
   $encrypted = base64_decode($e_data);
   $decrypted = '';
   for ($i = 0; $i < strlen($encrypted); $i++) {

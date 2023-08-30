@@ -39,7 +39,10 @@ $LANG_MAP = array(
     13 => "Kannada",
     14 => "Assamese",
     15 => "Nepali",
-    16 => "French"
+    16 => "French",
+    17 => "Other",
+    18 => "Other",
+    19 => "Other",
 );
 $GENRE_MAP = array(
     5 => "Entertainment",

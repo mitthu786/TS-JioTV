@@ -25,14 +25,14 @@ $payload = [
     'upgradeAuth' => 'Y',
     'returnSessionDetails' => 'T',
     'deviceInfo' => [
-        'consumptionDeviceName' => 'Jio',
+        'consumptionDeviceName' => 'SM-G935FD',
         'info' => [
             'type' => 'android',
             'platform' => [
-                'name' => 'vbox86p',
+                'name' => 'SM-G935FD',
                 'version' => '8.0.0'
             ],
-            'androidId' => '6fcadeb7b4b10d77'
+            'androidId' => '3c6d6b5702fa09bd'
         ]
     ]
 ];
@@ -42,25 +42,22 @@ $headers = [
     "Content-Type: application/json"
 ];
 
-$ch = curl_init();
-curl_setopt_array($ch, [
-    CURLOPT_URL => 'https://api.jio.com/v3/dip/user/unpw/verify',
-    CURLOPT_POSTFIELDS => json_encode($payload),
-    CURLOPT_HTTPHEADER => $headers,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_TIMEOUT => 10,
-]);
+$options = [
+    'http' => [
+        'header' => implode("\r\n", $headers),
+        'method' => 'POST',
+        'content' => json_encode($payload),
+        'timeout' => 10,
+    ],
+];
 
-$result = curl_exec($ch);
-if (curl_errno($ch)) {
-    die("cURL Error: " . curl_error($ch));
+$context = stream_context_create($options);
+$url = 'https://api.jio.com/v3/dip/user/unpw/verify';
+$result = file_get_contents($url, false, $context);
+
+if ($result === false) {
+    die("Request Error: " . error_get_last()['message']);
 }
-
-curl_close($ch);
 
 $responseData = json_decode($result, true);
 $ssoToken = $responseData["ssoToken"] ?? "";
@@ -68,7 +65,7 @@ $ssoToken = $responseData["ssoToken"] ?? "";
 if (!empty($ssoToken)) {
     $u_name = encrypt_data($nUser, "TS-JIOTV");
     file_put_contents("assets/data/credskey.jtv", $u_name);
-    $j_data = encrypt_data($response, $u_name);
+    $j_data = encrypt_data($result, $u_name);
     file_put_contents("assets/data/creds.jtv", $j_data);
     echo 'ENJOY, LOGGED IN SUCCESSFULLY. <a href="../" style="text-decoration:none;color:green;">WATCH NOW</a>';
     exit();
