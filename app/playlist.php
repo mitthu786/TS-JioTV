@@ -63,7 +63,7 @@ $GENRE_MAP = array(
 
 $jio_data = '#EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"' . PHP_EOL;
 foreach ($json['result'] as $channel) {
-    $jio_data .= '#EXTINF:-1 tvg-id="' . $channel['channel_id'] . '" group-title="TS-JioTV ' . $GENRE_MAP[$channel['channelCategoryId']] . '" tvg-language="' . $LANG_MAP[$channel['channelLanguageId']] . '" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/' . $channel['logoUrl'] . '",' . $channel['channel_name'] . PHP_EOL;
-    $jio_data .= $jio_path . 'live.php?id=' . $channel['channel_id'] . '&e=.m3u' . PHP_EOL;
+    $jio_data .= '#EXTINF:-1 tvg-id="' . $channel['channel_id'] . '" tvg-name="' . $channel['channel_name'] . '" tvg-type="' . $GENRE_MAP[$channel['channelCategoryId']] . '" group-title="TS-JioTV ' . $GENRE_MAP[$channel['channelCategoryId']] . '" tvg-language="' . $LANG_MAP[$channel['channelLanguageId']] . '" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/' . $channel['logoUrl'] . '",' . $channel['channel_name'] . PHP_EOL;
+    $jio_data .= $jio_path . 'live.php?id=' . $channel['channel_id'] . '&e=.m3u8' . PHP_EOL;
 }
 print($jio_data);

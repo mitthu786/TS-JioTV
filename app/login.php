@@ -138,14 +138,7 @@ handleLogin();
           <div class="formcontainer">
             <div class="container">
               <p style="text-align: left; color: #ffffff; font-size: medium; opacity: 0.8;">
-                1. Click <a href="http://jiologin.unaux.com/otp.php" style="text-decoration: none; color: #007BFF;">Login BY OTP</a>.<br>
-                2. Enter Your Jio Mobile Number without +91.<br>
-                3. Then Enter your OTP received on you given number.<br>
-                4. After successfully login you get Download button.<br>
-                5. Then create a file "creds.jtv" under app/data folder.<br>
-                6. Now Click on Download button<br>
-                7. Then Copy and paste its content in the "creds.jtv" file.<br>
-                8. Now you can use JioTV.
+                🚫 LOGIN DISABLED
               </p>
             </div>
             <p style="text-align: center; font-size: small; opacity: 0.5;">

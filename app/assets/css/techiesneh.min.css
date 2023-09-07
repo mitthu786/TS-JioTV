@@ -1,7 +1,6 @@
 /*!
 * Bootstrap v4.5.2 (https://getbootstrap.com/)
 * Copyright 2011-2020 The Bootstrap Authors
-* Copyright 2011-2020 Twitter, Inc.
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 * Modified BY : TechieSneh
 */
@@ -80,7 +79,7 @@ body {
   line-height: 1.5;
   color: #fff;
   text-align: left;
-  background-color: rgb(0, 0, 0);
+  background-color: #1d232a;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -215,9 +214,6 @@ figure {
 
 img {
   vertical-align: middle;
-  border-style: none;
-  border-radius: 20px;
-  border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 svg {
@@ -5679,7 +5675,7 @@ input[type="button"].btn-block {
 
 .card-title {
   margin-bottom: 0.75rem;
-  color: rgb(255 24 0);
+  color: white;
   font-size: 18px;
 }
 
@@ -5690,7 +5686,7 @@ input[type="button"].btn-block {
 
 .card-text:last-child {
   margin-bottom: 0;
-  color: rgb(255, 183, 0);
+  color: rgb(191 171 111);
   font-size: 16px;
 }
 
@@ -7904,7 +7900,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #0f0f0f !important;
+  background-color: #191e24 !important;
 }
 
 a.bg-dark:hover,

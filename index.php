@@ -26,14 +26,16 @@
 </head>
 
 <body>
-    <div id="jtvh1">
-        <h1>JIOTV+</h1>
-    </div>
-    <div id="userButtons">
-        <button id="loginButton">Login</button>
-        <button id="logoutButton">Logout</button>
-        <button id="PlayListButton">PlayList</button>
-    </div><br>
+    <header>
+        <div id="jtvh1">
+            <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+" width="80">
+        </div>
+        <div id="userButtons">
+            <button id="loginButton">Login</button>
+            <button id="logoutButton">Logout</button>
+            <button id="PlayListButton">PlayList</button>
+        </div>
+    </header></br>
     <div id="searchWrapper">
         <input type="text" name="searchBar" id="searchBar" placeholder="Search ..." />
     </div>

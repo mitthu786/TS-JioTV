@@ -4,8 +4,41 @@
 * Created By : TechieSneh
 */
 
-/* FILTERS CSS */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+}
 
+#userButtons {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+
+  #jtvh1 {
+    margin-bottom: 10px;
+  }
+
+  #userButtons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #userButtons button {
+    font-size: 16px;
+  }
+}
+
+/* FILTERS CSS */
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +76,6 @@ select {
 }
 
 /* LOGIN BUTTON CSS */
-
 #userButtons {
   font-size: 14px;
   font-family: fantasy;
@@ -51,25 +83,36 @@ select {
 }
 
 #loginButton {
-  border-radius: 26px;
-  border: 9px solid #ffffff;
-  color: green;
+  border-radius: 10px;
+  border: 10px solid #f0f0f0;
+}
+
+#loginButton:hover {
+  background-color: #86ff52;
+  border: 10px solid #86ff52;
 }
 
 #logoutButton {
-  border-radius: 26px;
-  border: 9px solid #ffffff;
-  color: red;
+  border-radius: 10px;
+  border: 10px solid #f0f0f0;
+}
+
+#logoutButton:hover {
+  background-color: #ff5252;
+  border: 10px solid #ff5252;
 }
 
 #PlayListButton {
-  border-radius: 26px;
-  border: 9px solid #ffffff;
-  color: blue;
+  border-radius: 10px;
+  border: 10px solid #f0f0f0;
+}
+
+#PlayListButton:hover {
+  background-color: #ffe552;
+  border: 10px solid #ffe552;
 }
 
 /* SEARCH BAR CSS */
-
 #searchBar {
   width: 45%;
   height: 35px;

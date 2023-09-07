@@ -43,7 +43,7 @@ $headers = array(
     'versionCode' => '277'
 );
 
-$data = array("channelId" => $cid, "channel_id" => $cid, "programId" => "230128476000", "showtime" => "null", "srno" => "20230128", "stream_type" => "Seek");
+$data = array("channelId" => $cid, "channel_id" => $cid, "stream_type" => "Seek");
 $postdata = http_build_query($data);
 
 $opts = ['http' => ['method' => 'POST', 'header' => array_map(
@@ -81,7 +81,7 @@ $hdr = array(
     'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
 );
 
-$data = array("channelId" => $id, "channel_id" => $id, "programId" => "230128476000", "showtime" => "null", "srno" => "20230128", "stream_type" => "Seek");
+$data = array("channelId" => $id, "channel_id" => $id, "stream_type" => "Seek");
 $pdd = http_build_query($data);
 
 $opts = ['http' => ['method' => 'GET', 'header' => array_map(

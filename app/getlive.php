@@ -44,7 +44,7 @@ $headers = array(
     'versionCode' => '277'
 );
 
-$data = array("channelId" => $id, "channel_id" => $id, "programId" => "230128476000", "showtime" => "null", "srno" => "20230128", "stream_type" => "Seek");
+$data = array("channelId" => $id, "channel_id" => $id, "stream_type" => "Seek");
 $postdata = http_build_query($data);
 
 $opts = ['http' => ['method' => 'POST', 'header' => array_map(
