@@ -28,6 +28,10 @@ header {
     margin-bottom: 10px;
   }
 
+  #jtvh1 img {
+    width: 45px;
+  }
+
   #userButtons {
     flex-direction: row;
     justify-content: center;
@@ -84,32 +88,32 @@ select {
 
 #loginButton {
   border-radius: 10px;
-  border: 10px solid #f0f0f0;
+  border: 2px solid #f0f0f0;
 }
 
 #loginButton:hover {
-  background-color: #86ff52;
-  border: 10px solid #86ff52;
+  background-color: #3cc700;
+  border: 3px solid #3cc700;
 }
 
 #logoutButton {
   border-radius: 10px;
-  border: 10px solid #f0f0f0;
+  border: 2px solid #f0f0f0;
 }
 
 #logoutButton:hover {
   background-color: #ff5252;
-  border: 10px solid #ff5252;
+  border: 3px solid #ff5252;
 }
 
 #PlayListButton {
   border-radius: 10px;
-  border: 10px solid #f0f0f0;
+  border: 2px solid #f0f0f0;
 }
 
 #PlayListButton:hover {
   background-color: #ffe552;
-  border: 10px solid #ffe552;
+  border: 3px solid #ffe552;
 }
 
 /* SEARCH BAR CSS */

@@ -480,6 +480,10 @@ mark,
   -webkit-text-fill-color: transparent;
 }
 
+#jtvh1 img {
+  width: 80px;
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;

@@ -28,7 +28,7 @@
 <body>
     <header>
         <div id="jtvh1">
-            <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+" width="80">
+            <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+">
         </div>
         <div id="userButtons">
             <button id="loginButton">Login</button>
