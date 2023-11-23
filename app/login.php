@@ -103,7 +103,7 @@ handleLogin();
 
 <body>
   <div>
-    <img src="https://jiotv.com/src/resources/images/JioTV_logo.png" alt="JioTV Logo" width="100px" height="100px" style="margin-left: auto; margin-right: auto; display: block" />
+    <img src="assets/img/jiotv.png" alt="JioTV Logo" width="100px" height="100px" style="margin-left: auto; margin-right: auto; display: block" />
     <h1>JioTV Login</h1>
     <hr />
     <div class="alert" style="display: none">
