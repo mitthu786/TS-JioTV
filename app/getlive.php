@@ -1,6 +1,6 @@
 <?php
 
-// Copyright 2021-2023 SnehTV, Inc.
+// Copyright 2021-2024 SnehTV, Inc.
 // Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // Created By: TechieSneh
 
@@ -35,13 +35,13 @@ $headers = [
     'lbcookie' => '1',
     'os' => 'android',
     'osVersion' => '8.1.0',
-    'srno' => '230203144000',
+    'srno' => '240101144000',
     'ssotoken' => $ssoToken,
     'subscriberId' => $crm,
     'uniqueId' => $uniqueId,
     'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
     'usergroup' => 'tvYR7NSNn7rymo3F',
-    'versionCode' => '277',
+    'versionCode' => '331',
 ];
 
 $data = [
@@ -91,10 +91,10 @@ if (!empty($qid)) {
     $qw2 = explode("_", $qw1[0]);
     $qw = end($qw2);
     $pattern = "/{$chs[3]}_{$qw}-([^.]+\.)key/";
-    $replacement = "auths.php?key={$chs[3]}/{$chs[3]}_{$qw}-$1key&ck={$ency}";
+    $replacement = "auth.php?key={$chs[3]}/{$chs[3]}_{$qw}-$1key&ck={$ency}";
     $hs = preg_replace($pattern, $replacement, $hs);
     $pattern = "/{$chs[3]}_{$qw}-([^.]+\.)ts/";
-    $replacement = "auths.php?ts={$chs[3]}/{$chs[3]}_{$qw}-$1ts&ck={$ency}";
+    $replacement = "auth.php?ts={$chs[3]}/{$chs[3]}_{$qw}-$1ts&ck={$ency}";
     $hs = preg_replace($pattern, $replacement, $hs);
     $hs = str_replace("https://tv.media.jio.com/streams_live/{$chs[3]}/", "", $hs);
     echo $hs;
@@ -111,12 +111,12 @@ if (!empty($qid)) {
         }
     }
     foreach ($lived as $liv_v) {
-        $hs = str_replace("{$qc[0]}_{$liv_v}.ts", "auths.php?ts={$chs[3]}/{$chs[4]}/{$qc[0]}_{$liv_v}.ts&ck={$ency}", $hs);
+        $hs = str_replace("{$qc[0]}_{$liv_v}.ts", "auth.php?ts={$chs[3]}/{$chs[4]}/{$qc[0]}_{$liv_v}.ts&ck={$ency}", $hs);
     }
     $key_y = explode(',URI="', $hs);
     $key_t = explode('.key"', $key_y[1]);
     $key_new = str_replace("https://tv.media.jio.com/streams_live/", "", $key_t[0]);
-    $hs = str_replace("{$key_t[0]}.key", "auths.php?key={$key_new}.key&ck={$ency}", $hs);
+    $hs = str_replace("{$key_t[0]}.key", "auth.php?key={$key_new}.key&ck={$ency}", $hs);
     echo $hs;
 } else {
     echo "SOMETHING WENT WRONG";

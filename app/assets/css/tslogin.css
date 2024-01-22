@@ -1,5 +1,5 @@
 /* 
-* Copyright 2021-2023 SnehTV, Inc.
+* Copyright 2021-2024 SnehTV, Inc.
 * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 * Created By : TechieSneh
 */
@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  background-image: url(../img/login-bg.jpg);
+  background-image: url("https://i.ibb.co/t2NzhQm/login-bg.jpg");
   background-size: cover;
 }
 
@@ -134,7 +134,7 @@ p span {
 tab-container {
   display: var(--tab-display);
   margin-top: 50px;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
   grid-template-rows: auto 1fr;
   border: solid rgba(255, 255, 255, 0.03);
   border-radius: 0.5em;

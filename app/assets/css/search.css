@@ -1,5 +1,5 @@
 /* 
-* Copyright 2021-2023 SnehTV, Inc.
+* Copyright 2021-2024 SnehTV, Inc.
 * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 * Created By : TechieSneh
 */
@@ -38,7 +38,7 @@ header {
   }
 
   #userButtons button {
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -94,6 +94,16 @@ select {
 #loginButton:hover {
   background-color: #3cc700;
   border: 3px solid #3cc700;
+}
+
+#refreshButton {
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+#refreshButton:hover {
+  background-color: #00bdc7;
+  border: 3px solid #00bdc7;
 }
 
 #logoutButton {

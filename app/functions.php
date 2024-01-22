@@ -1,13 +1,16 @@
 <?php
 
-// * Copyright 2021-2023 SnehTV, Inc.
+// * Copyright 2021-2024 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
+$DATA_FOLDER = "assets/data";
+
 function getCRED()
 {
-  $filePath = "assets/data/creds.jtv";
-  $key_data = file_get_contents("assets/data/credskey.jtv");
+  global $DATA_FOLDER;
+  $filePath = $DATA_FOLDER . "/creds.jtv";
+  $key_data = file_get_contents($DATA_FOLDER . "/credskey.jtv");
   $cred_data = decrypt_data(file_get_contents($filePath), $key_data);
   return $cred_data;
 }

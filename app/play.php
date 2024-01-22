@@ -1,14 +1,22 @@
-<!--
-* Copyright 2021-2023 SnehTV, Inc.
-* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
-* Created By : TechieSneh
--->
+<?php
+
+// Copyright 2021-2024 SnehTV, Inc.
+// Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+// Created By : TechieSneh
+
+error_reporting(0);
+$data = base64_decode($_REQUEST['data']);
+$data = explode('=?=', $data);
+$cid = $data[0];
+$name = str_replace('_', ' ', $cid);
+$id = $data[1];
+
+?>
 
 <html lang="en">
 
 <head>
-    <title><?php $name = str_replace('_', ' ', $_REQUEST["cid"]);
-            echo $name; ?> | JioTV +</title>
+    <title><?php echo $name; ?> | JioTV +</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="ENJOY FREE LIVE TV">
     <meta name="keywords" content="LIVETV, SPORTS, MOVIES, MUSIC">
@@ -18,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
     <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
     <script src="assets/js/jwplayer.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/37fVLxB/f4027915ec9335046755d489a14472f2.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/BcjC6R8/jiotv.png">
     <script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script>
 
 </head>
@@ -495,17 +503,15 @@
     </script>
     <script type="text/JavaScript">
         jwplayer("myElement").setup({
-            title: '<?php $name = str_replace('_', ' ', $_REQUEST["cid"]);
-                    echo $name; ?>',
+            title: '<?php echo $name; ?>',
             description: "SnehTV",
-            image: 'https://jiotv.catchup.cdn.jio.com/dare_images/images/<?php echo $_REQUEST["cid"] ?>.png',
+            image: 'https://jiotv.catchup.cdn.jio.com/dare_images/images/<?php echo $cid; ?>.png',
             aspectratio: '16:9',
             width: '100%',
-            autostart: false,
-            file: "live.php?id=<?php echo $_REQUEST["id"]; ?>&e=.m3u8",
+            mute: false,
+            autostart: true,
+            file: "live.php?id=<?php echo $id; ?>&e=.m3u8",
             type: "mp4",
-            abouttext: 'Author',
-            aboutlink: 'https://instagram.com/',
             captions: {color: '#ffb800',fontSize: 30,backgroundOpacity: 0},
             sharing: {
                 sites: ['facebook','twitter']
