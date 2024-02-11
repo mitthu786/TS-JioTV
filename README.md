@@ -78,21 +78,19 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 
 ### 🔐 Installation :
 
-### 🅰️ First Download This Application
+### 🅰️ First Download This Application ( PHP WEB SERVER )
 
-1. `KSWEB PRO` ( Php Web Server )
+1. `KSWEB PRO v3.987 for Mobile`
 
-```
-https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk
-```
+   ```
+   https://tsneh.vercel.app/ksweb_3.987.apk
+   ```
 
-```
-https://oceanofapk.com/ksweb-server-php-mysql-v3-961-pro-apk-free-download/
-```
+2. `XAMPP for Windows (PC)`
 
-```
-https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
-```
+   ```
+   https://www.apachefriends.org/download.html
+   ```
 
 ### 🅱️ Then Download This Zip File
 
@@ -102,9 +100,9 @@ https://s3.dlandroid.com/apps/KSWEB-server[dlandroid.com].apk
 2. Open KSWEB app & start the server. </br>
 3. Now Open `TS-JioTV` Below Link :
 
-```
-http://localhost:8080/TS-JioTV/
-```
+   ```
+   http://localhost:8080/TS-JioTV/
+   ```
 
 4. First Login with your credentials.
 5. Now, You Will See all Jio Channels. </br>
@@ -112,7 +110,7 @@ http://localhost:8080/TS-JioTV/
 
 ## ▶️ PlayList Methods :
 
-• In Tivimate or OTT Navigator Player Put Links Format Like Below :</br>
+• In Tivimate or OTT Navigator Player Put Links Format Like Below :
 
 ```
 http://localhost:8080/TS-JioTV/app/playlist.php
