@@ -39,10 +39,10 @@ $jio_path = substr($jio_path, 0, -1);
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
-  <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/BcjC6R8/jiotv.png">
-  <script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script>
+  <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+  <script type="text/javascript" src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
 
   <style>
     @import url("https://cdn.jsdelivr.net/npm/@fontsource/holtwood-one-sc@4.5.1/index.min.css");

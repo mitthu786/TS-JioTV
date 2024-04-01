@@ -6,171 +6,37 @@
 
 error_reporting(0);
 include "cpfunctions.php";
+
 $cred = getCRED();
 $jio_cred = json_decode($cred, true);
 $ssoToken = $jio_cred['ssoToken'];
 $crm = $jio_cred['sessionAttributes']['user']['subscriberId'];
 $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
+$access_token = $jio_cred['authToken'];
+$device_id = $jio_cred['deviceId'];
+$ck = @$_REQUEST["ck"];
 
-$cokky = @$_REQUEST["ck"];
-$encyy = @str_replace("PLUS", "+", $cokky);
-$encyyy = @str_replace("EQUALS", "=", $encyy);
-$cokk = base64_decode(strrev($encyyy));
+$headers = jio_headers($ck, $crm, $device_id, $ssoToken, $uniqueId);
 
-if (@$_REQUEST["key"] != "" && @$_REQUEST["ck"] != "") {
+if (isset($_REQUEST["ck"]) && $_REQUEST["ck"] !== "") {
+    if (isset($_REQUEST["key"]) && $_REQUEST["key"] !== "") {
+        $seq = explode('?', $_REQUEST["key"]);
+        echo cUrlGetData('https://tv.media.jio.com/streams_catchup/' . $seq[0] . '?' . $ck, $headers);
+    }
 
-    $seq = explode('?', @$_REQUEST["key"]);
+    if (isset($_REQUEST["pkey"]) && $_REQUEST["pkey"] !== "") {
+        echo cUrlGetData('https://tv.media.jio.com/fallback/bpk-tv/' . $_REQUEST["pkey"], $headers);
+    }
 
-    $headers = array(
-        // 'Cookie' => "$cokk",
-        'appkey' => 'NzNiMDhlYzQyNjJm',
-        'channelid' => '0',
-        'crmid' => "$crm",
-        'deviceId' => 'e4286d7b481d69b8',
-        'devicetype' => 'phone',
-        'lbcookie' => '1',
-        'os' => 'android',
-        'osVersion' => '8.1.0',
-        'srno' => '240101144000',
-        'ssotoken' => "$ssoToken",
-        'subscriberId' => "$crm",
-        'uniqueId' => "$uniqueId",
-        'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
-        'usergroup' => 'tvYR7NSNn7rymo3F',
-        'versionCode' => '331',
-        'Accept-Encoding' => 'identity',
-        'Host' => 'jiotvmbcod.cdn.jio.com',
-        'Connection' => 'Keep-Alive'
-    );
-    $opts = ['http' => ['method' => 'GET', 'header' => array_map(
-        function ($h, $v) {
-            return "$h: $v";
-        },
-        array_keys($headers),
-        $headers
-    ),]];
+    if ((isset($_REQUEST["ts"]) && $_REQUEST["ts"] !== "") || (isset($_REQUEST["tss"]) && $_REQUEST["tss"] !== "")) {
+        header("Content-Type: video/mp2t");
+        header("Connection: keep-alive");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Expose-Headers: Content-Length,Content-Range");
+        header("Access-Control-Allow-Headers: Range");
+        header("Accept-Ranges: bytes");
 
-
-    $context = stream_context_create($opts);
-    $haystack = file_get_contents('https://tv.media.jio.com/streams_catchup/' . $seq[0] . '?' . $cokk, false, $context);
-    echo $haystack;
-}
-
-if (@$_REQUEST["pkey"] != "" && @$_REQUEST["ck"] != "") {
-
-    $headers = array(
-        'Cookie' => "$cokk",
-        'appkey' => 'NzNiMDhlYzQyNjJm',
-        'channelid' => '0',
-        'crmid' => "$crm",
-        'deviceId' => 'e4286d7b481d69b8',
-        'devicetype' => 'phone',
-        'isott' => 'true',
-        'languageId' => '6',
-        'lbcookie' => '1',
-        'os' => 'android',
-        'osVersion' => '8.1.0',
-        'srno' => '240101144000',
-        'ssotoken' => "$ssoToken",
-        'subscriberId' => "$crm",
-        'uniqueId' => "$uniqueId",
-        'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
-        'usergroup' => 'tvYR7NSNn7rymo3F',
-        'versionCode' => '331'
-    );
-    $opts = ['http' => ['method' => 'GET', 'header' => array_map(
-        function ($h, $v) {
-            return "$h: $v";
-        },
-        array_keys($headers),
-        $headers
-    ),]];
-
-
-    $context = stream_context_create($opts);
-    $haystack = file_get_contents('https://tv.media.jio.com/fallback/bpk-tv/' . $_REQUEST["pkey"], false, $context);
-    echo $haystack;
-}
-
-if (@$_REQUEST["ts"] != "" && @$_REQUEST["ck"] != "") {
-    header("Content-Type: video/mp2t");
-    header("Connection: keep-alive");
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Expose-Headers: Content-Length,Content-Range");
-    header("Access-Control-Allow-Headers: Range");
-    header("Accept-Ranges: bytes");
-
-    $headers = array(
-        'Cookie' => "$cokk",
-        'appkey' => 'NzNiMDhlYzQyNjJm',
-        'channelid' => '0',
-        'crmid' => "$crm",
-        'deviceId' => 'e4286d7b481d69b8',
-        'devicetype' => 'phone',
-        'isott' => 'true',
-        'languageId' => '6',
-        'lbcookie' => '1',
-        'os' => 'android',
-        'osVersion' => '8.1.0',
-        'srno' => '240101144000',
-        'ssotoken' => "$ssoToken",
-        'subscriberId' => "$crm",
-        'uniqueId' => "$uniqueId",
-        'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
-        'usergroup' => 'tvYR7NSNn7rymo3F',
-        'versionCode' => '331'
-    );
-    $opts = ['http' => ['method' => 'GET', 'header' => array_map(
-        function ($h, $v) {
-            return "$h: $v";
-        },
-        array_keys($headers),
-        $headers
-    ),]];
-
-    $context = stream_context_create($opts);
-    $haystack = file_get_contents("https://jiotvcod.cdn.jio.com/bpk-tv/" . $_REQUEST["ts"], false, $context);
-    echo $haystack;
-}
-if (@$_REQUEST["tss"] != "" && @$_REQUEST["ck"] != "") {
-    header("Content-Type: video/mp2t");
-    header("Connection: keep-alive");
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Expose-Headers: Content-Length,Content-Range");
-    header("Access-Control-Allow-Headers: Range");
-    header("Accept-Ranges: bytes");
-
-    $tsq = explode('?', @$_REQUEST["tss"]);
-
-    $headers = array(
-        'Cookie' => "$cokk",
-        'appkey' => 'NzNiMDhlYzQyNjJm',
-        'channelid' => '0',
-        'crmid' => "$crm",
-        'deviceId' => 'e4286d7b481d69b8',
-        'devicetype' => 'phone',
-        'isott' => 'true',
-        'languageId' => '6',
-        'lbcookie' => '1',
-        'os' => 'android',
-        'osVersion' => '8.1.0',
-        'srno' => '240101144000',
-        'ssotoken' => "$ssoToken",
-        'subscriberId' => "$crm",
-        'uniqueId' => "$uniqueId",
-        'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
-        'usergroup' => 'tvYR7NSNn7rymo3F',
-        'versionCode' => '331'
-    );
-    $opts = ['http' => ['method' => 'GET', 'header' => array_map(
-        function ($h, $v) {
-            return "$h: $v";
-        },
-        array_keys($headers),
-        $headers
-    ),]];
-
-    $context = stream_context_create($opts);
-    $haystack = file_get_contents("https://jiotvcod.cdn.jio.com/" . $tsq[0], false, $context);
-    echo $haystack;
+        $url = isset($_REQUEST["ts"]) ? 'https://jiotvcod.cdn.jio.com/bpk-tv/' . $_REQUEST["ts"] : 'https://jiotvcod.cdn.jio.com/' . explode('?', $_REQUEST["tss"])[0];
+        echo cUrlGetData($url, $headers);
+    }
 }

@@ -5,13 +5,13 @@
 // Created By: TechieSneh
 
 error_reporting(0);
+include "functions.php";
 header("Content-Type: application/vnd.apple.mpegurl");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Expose-Headers: Content-Length,Content-Range");
 header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
-include "functions.php";
 $cred = getCRED();
 $jio_cred = json_decode($cred, true);
 $ssoToken = $jio_cred['ssoToken'];
@@ -19,6 +19,17 @@ $access_token = $jio_cred['authToken'];
 $crm = $jio_cred['sessionAttributes']['user']['subscriberId'];
 $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
 $device_id = $jio_cred['deviceId'];
+
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+$local_ip = getHostByName(php_uname('n'));
+$ip_port = $_SERVER['SERVER_PORT'];
+if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
+    $host_jio = $_SERVER['HTTP_HOST'];
+} else {
+    $host_jio = $local_ip;
+}
+
+$jio_path = $protocol . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
 
 $id = $_REQUEST["id"] ?? "";
 
@@ -29,47 +40,44 @@ $data = [
 
 $post_data = http_build_query($data);
 
-$headers = [
+$headers = array(
     "Host: jiotvapi.media.jio.com",
-    'Content-Type: application/x-www-form-urlencoded',
-    'appkey: NzNiMDhlYzQyNjJm',
-    'channel_id: ' . $id,
-    'userid: ' . $crm,
-    'crmid: ' . $crm,
-    'deviceId: ' . $device_id,
-    'devicetype: phone',
-    'isott: true',
-    'languageId: 6',
-    'lbcookie: 1',
-    'os: android',
-    'dm: Xiaomi 22101316UP',
-    'osVersion: 13',
-    'srno: 240106144000',
-    'accesstoken: ' . $access_token,
-    'subscriberId: ' . $crm,
-    'uniqueId: ' . $uniqueId,
-    'content-length: ' . strlen($post_data),
-    'usergroup: tvYR7NSNn7rymo3F',
-    'User-Agent: okhttp/4.2.2',
-    'versionCode: 331',
-];
+    "Content-Type: application/x-www-form-urlencoded",
+    "appkey: NzNiMDhlYzQyNjJm",
+    "channel_id: " . $id,
+    "userid: " . $crm,
+    "crmid: " . $crm,
+    "deviceId: " . $device_id,
+    "devicetype: phone",
+    "isott: true",
+    "languageId: 6",
+    "lbcookie: 1",
+    "os: android",
+    "dm: Xiaomi 22101316UP",
+    "osversion: 14",
+    "srno: 240303144000",
+    "accesstoken: " . $access_token,
+    "subscriberid: " . $crm,
+    "uniqueId: " . $uniqueId,
+    "content-length: " . strlen($post_data),
+    "usergroup: tvYR7NSNn7rymo3F",
+    "User-Agent: okhttp/4.9.3",
+    "versionCode: 331",
+);
 
-$opts = [
-    'http' => [
-        'method' => 'POST',
-        'header' => implode("\r\n", $headers),
-        'content' => $post_data,
-    ],
-];
+$haystacks = cUrlGetData("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", $headers, $post_data);
+$haystack = @json_decode($haystacks);
 
-$context = stream_context_create($opts);
-$haystacks = @file_get_contents("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", false, $context);
-
-if ($haystacks === FALSE) {
-    header("Location: login/refreshLogin.php");
+if ($haystack->code !== 200) {
+    refresh_token();
+    header('Location: ' . $_SERVER['REQUEST_URI']);
     exit();
 } else {
-    $haystack = json_decode($haystacks);
+
+    $headers_1 = [
+        "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7",
+    ];
+
     $cookie = explode('?', $haystack->result);
 
     if (strstr($cookie[1], "minrate=")) {
@@ -81,31 +89,10 @@ if ($haystacks === FALSE) {
 
     $chs = explode('/', $cookie[0]);
     $cook = strrev(base64_encode($cookies_y));
-    $cook = str_replace("+", "PLUS", $cook);
-    $cook = str_replace("=", "EQUALS", $cook);
+    $cook = str_replace(["+", "="], ["PLUS", "EQUALS"],  $cook);
 
-    if (strpos($cookie[1], "packagerx") !== false) {
-        $opts = [
-            "http" => [
-                "method" => "GET",
-                "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7",
-            ],
-        ];
-        $cx = stream_context_create($opts);
-        $hs = file_get_contents($haystack->result, false, $cx);
-        for ($i = 1; $i <= 6; $i++) {
-            $hs = str_replace("$i.m3u8", "getlive.php?id=$id&pqid=$i.m3u8", $hs);
-        }
-        echo $hs;
-    } elseif (strpos($cookie[1], "bpk-tv") !== false) {
-        $opts = [
-            "http" => [
-                "method" => "GET",
-                "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7",
-            ],
-        ];
-        $cx = stream_context_create($opts);
-        $hs = file_get_contents($haystack->result, false, $cx);
+    if (strpos($cookie[1], "bpk-tv") !== false) {
+        $hs = cUrlGetData($haystack->result, $headers_1);
 
         $search = [
             'URI="',
@@ -129,28 +116,22 @@ if ($haystacks === FALSE) {
         echo $hs;
     } elseif (strpos($cookie[1], "/HLS/") !== false) {
 
-        $opts = [
-            "http" => [
-                "method" => "GET",
-                "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7",
-            ],
-        ];
-
-        $cx = stream_context_create($opts);
-        $hs = file_get_contents("assets/video/index.m3u8", false, $cx);
+        $url = $jio_path . "assets/video/index.m3u8";
+        $hs = cUrlGetData($url, $headers_1);
         $hs = str_replace("snehiptv", "assets/video/snehiptv", $hs);
 
         echo $hs;
+    } elseif (strpos($cookie[1], "packagerx") !== false) {
+        $hs = cUrlGetData($haystack->result, $headers_1);
+        for ($i = 1; $i <= 6; $i++) {
+            $hs = str_replace("$i.m3u8", "getlive.php?id=$id&pqid=$i.m3u8", $hs);
+        }
+
+        echo $hs;
     } elseif (strpos($cookie[1], "acl=/" . $chs[3] . "/") !== false) {
-        $opts = [
-            "http" => [
-                "method" => "GET",
-                "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7",
-            ],
-        ];
-        $cx = stream_context_create($opts);
-        $hs = file_get_contents($haystack->result, false, $cx);
+        $hs = cUrlGetData($haystack->result, $headers_1);
         $hs = str_replace($chs[3], "getlive.php?id=$id&qid=$chs[3]", $hs);
+
         echo $hs;
     } else {
         echo "SOMETHING WENT WRONG";

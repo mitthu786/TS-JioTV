@@ -149,9 +149,6 @@ function verify_jio_otp($mobile, $otp)
 
 function refresh_jio_token()
 {
-  $error = true;
-  $Msg = "Unknown";
-  $newAuthToken = "";
   $JIO_AUTH = json_decode(getCRED(), true);
 
   if (!empty($JIO_AUTH)) {
@@ -180,7 +177,7 @@ function refresh_jio_token()
     $resp = [
       'status' => 'error',
       'message' => '',
-      'newAuthToken' => ''
+      'authToken' => ''
     ];
 
     if (isset($ref_data['message']) && !empty($ref_data['message'])) {

@@ -17,32 +17,33 @@ $jio_cred = json_decode($cred, true);
 $ssoToken = $jio_cred['ssoToken'];
 $crm = $jio_cred['sessionAttributes']['user']['subscriberId'];
 $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
+$device_id = $jio_cred['deviceId'];
 
 $id = $_REQUEST["id"] ?? "";
 $pq_id = $_REQUEST["pq_id"] ?? "";
 $qid = $_REQUEST["qid"] ?? "";
 
-$headers = [
+$headers = array(
     'Content-type' => 'application/x-www-form-urlencoded',
     'appkey' => 'NzNiMDhlYzQyNjJm',
     'channelId' => $id,
     'channel_id' => $id,
     'crmid' => $crm,
-    'deviceId' => 'e4286d7b481d69b8',
+    'deviceId' => $device_id,
     'devicetype' => 'phone',
     'isott' => 'true',
     'languageId' => '6',
     'lbcookie' => '1',
     'os' => 'android',
-    'osVersion' => '8.1.0',
+    'osVersion' => '13',
     'srno' => '240101144000',
     'ssotoken' => $ssoToken,
     'subscriberId' => $crm,
     'uniqueId' => $uniqueId,
-    'User-Agent' => 'plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7',
+    'User-Agent' => 'plaYtv/7.1.3 (Linux;Android 13) ExoPlayerLib/2.11.7',
     'usergroup' => 'tvYR7NSNn7rymo3F',
     'versionCode' => '331',
-];
+);
 
 $data = [
     "channelId" => $id,
@@ -51,22 +52,7 @@ $data = [
 ];
 $post_data = http_build_query($data);
 
-$opts = [
-    'http' => [
-        'method' => 'POST',
-        'header' => array_map(
-            function ($h, $v) {
-                return "$h: $v";
-            },
-            array_keys($headers),
-            $headers
-        ),
-        'content' => $post_data,
-    ],
-];
-
-$context = stream_context_create($opts);
-$haystacks = file_get_contents("https://tv.media.jio.com/apis/v2.2/getchannelurl/getchannelurl?langId=6", false, $context);
+$haystacks = cUrlGetData("https://tv.media.jio.com/apis/v2.2/getchannelurl/getchannelurl?langId=6", $headers, $post_data);
 $haystack = json_decode($haystacks);
 
 $cookie = explode('?', $haystack->result);
@@ -84,9 +70,12 @@ $enc_yyy = str_replace("+", "PLUS", $enc_yy);
 $ency = str_replace("=", "EQUALS", $enc_yyy);
 
 if (!empty($qid)) {
-    $opts = ["http" => ["method" => "GET", "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7"]];
-    $cx = stream_context_create($opts);
-    $hs = file_get_contents("https://jiotvmblive.cdn.jio.com/{$chs[3]}/{$qid}?{$cookies_w}", false, $cx);
+
+    $headers_1 = [
+        "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7",
+    ];
+
+    $hs = cUrlGetData("https://jiotvbpkmob.cdn.jio.com/{$chs[3]}/{$qid}?{$cookies_w}", $headers_1);
     $qw1 = explode(".", $qid);
     $qw2 = explode("_", $qw1[0]);
     $qw = end($qw2);
@@ -99,9 +88,7 @@ if (!empty($qid)) {
     $hs = str_replace("https://tv.media.jio.com/streams_live/{$chs[3]}/", "", $hs);
     echo $hs;
 } elseif (!empty($pq_id)) {
-    $opts = ["http" => ["method" => "GET", "header" => "User-Agent: plaYtv/7.0.5 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7"]];
-    $cx = stream_context_create($opts);
-    $hs = file_get_contents("https://jiotvmblive.cdn.jio.com/{$chs[3]}/{$chs[4]}/{$pq_id}?{$cookies_w}", false, $cx);
+    $hs = cUrlGetData("https://jiotvbpkmob.cdn.jio.com/{$chs[3]}/{$chs[4]}/{$pq_id}?{$cookies_w}", $headers_1);
     $hsw = explode('_', $hs);
     $qc = explode('.m3u8', $pq_id);
     $lived = [];
