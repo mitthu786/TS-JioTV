@@ -14,7 +14,6 @@ if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
 }
 
 $jio_path = $protocol . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
-$jio_path = str_replace("/catchup/", "/", $jio_path);
 
 $DATA_FOLDER = "../assets/data";
 
@@ -22,6 +21,7 @@ function refresh_token()
 {
   global $DATA_FOLDER, $jio_path;
   $filePath = $DATA_FOLDER . "/creds.jtv";
+  $jio_path = @str_replace("/catchup/", "/", $jio_path);
   // Check if the file exists and if it's older than 7000 seconds
   if (file_exists($filePath) && (time() - filemtime($filePath) > 7000)) {
     return cUrlGetData($jio_path . "/login/refreshLogin.php");
