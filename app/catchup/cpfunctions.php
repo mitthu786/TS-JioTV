@@ -42,7 +42,7 @@ function getCRED()
 function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, $ssoToken)
 {
   $reqHeader = array();
-  $reqHeader[] = "Cookie: " . base64_decode(strrev(str_replace(["PLUS", "EQUALS"], ["+", "="], $ck)));
+  $reqHeader[] = "Cookie: " . hex2bin($ck);
   $reqHeader[] = "appkey: NzNiMDhlYcQyNjJm";
   $reqHeader[] = "accesstoken: " . $access_token;
   $reqHeader[] = "channel_id: " . $id;
@@ -65,7 +65,7 @@ function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, 
 function jio_headers($cookies, $crm, $device_id, $ssoToken, $uniqueId)
 {
   $reqHeader = array();
-  $reqHeader[] = "Cookie: " . base64_decode(strrev(str_replace(["PLUS", "EQUALS"], ["+", "="], $cookies)));
+  $reqHeader[] = "Cookie: " . hex2bin($cookies);
   $reqHeader[] = "appkey: NzNiMDhlYcQyNjJm";
   $reqHeader[] = "channel_id: 144";
   $reqHeader[] = "crmid: " . $crm;

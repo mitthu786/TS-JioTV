@@ -22,7 +22,7 @@ if (@$_REQUEST["cid"] != "" && @$_REQUEST["ck"] != "") {
     $chs = explode('-', $id);
 
     $headers = array(
-        'Cookie' => base64_decode(strrev(str_replace(["PLUS", "EQUALS"], ["+", "="], $cooks))),
+        'Cookie' => hex2bin($cooks),
         'Content-type' => 'application/x-www-form-urlencoded',
         'User-Agent' => 'plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7',
     );

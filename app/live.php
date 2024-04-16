@@ -88,8 +88,7 @@ if ($haystack->code !== 200) {
     }
 
     $chs = explode('/', $cookie[0]);
-    $cook = strrev(base64_encode($cookies_y));
-    $cook = str_replace(["+", "="], ["PLUS", "EQUALS"],  $cook);
+    $cook = bin2hex($cookies_y);
 
     if (strpos($cookie[1], "bpk-tv") !== false) {
         $hs = cUrlGetData($haystack->result, $headers_1);
@@ -121,19 +120,8 @@ if ($haystack->code !== 200) {
         $hs = str_replace("snehiptv", "assets/video/snehiptv", $hs);
 
         echo $hs;
-    } elseif (strpos($cookie[1], "packagerx") !== false) {
-        $hs = cUrlGetData($haystack->result, $headers_1);
-        for ($i = 1; $i <= 6; $i++) {
-            $hs = str_replace("$i.m3u8", "getlive.php?id=$id&pqid=$i.m3u8", $hs);
-        }
-
-        echo $hs;
-    } elseif (strpos($cookie[1], "acl=/" . $chs[3] . "/") !== false) {
-        $hs = cUrlGetData($haystack->result, $headers_1);
-        $hs = str_replace($chs[3], "getlive.php?id=$id&qid=$chs[3]", $hs);
-
-        echo $hs;
     } else {
-        echo "SOMETHING WENT WRONG";
+        http_response_code(404);
+        die();
     }
 }

@@ -97,10 +97,7 @@ if ($haystack->code !== 200) {
         $cookie = $cookie[1];
     }
 
-    $cook = $cookie;
-    $cook = strrev(base64_encode($cook));
-    $cook = str_replace(["+", "="], ["PLUS", "EQUALS"], $cook);
-
+    $cook = bin2hex($cookie);
     $headers = jio_headers($cook, $crm, $device_id, $ssoToken, $uniqueId);
 
     if (strpos($cookie, "bpk-tv") !== false) {
@@ -119,6 +116,7 @@ if ($haystack->code !== 200) {
         $hs = str_replace('https://jiotvcod.cdn.jio.com/', 'cpstream.php?ck=' . $cook . '&sid=', $hs);
         print $hs;
     } else {
-        echo "SOMETHING WENT WRONG";
+        http_response_code(404);
+        die();
     }
 }

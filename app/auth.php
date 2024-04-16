@@ -16,7 +16,7 @@ $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
 $device_id = $jio_cred['deviceId'];
 
 $cookies = @$_REQUEST["ck"];
-$cookies = base64_decode(strrev(str_replace(["PLUS", "EQUALS"], ["+", "="], $cookies)));
+$cookies = hex2bin($cookies);
 $headers = jio_headers($cookies, $access_token, $crm, $device_id, $ssoToken, $uniqueId);
 
 if (!empty($_REQUEST["key"]) && !empty($_REQUEST["ck"])) {
