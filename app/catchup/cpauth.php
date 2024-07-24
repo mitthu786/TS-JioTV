@@ -20,12 +20,11 @@ $headers = jio_headers($ck, $crm, $device_id, $ssoToken, $uniqueId);
 
 if (isset($_REQUEST["ck"]) && $_REQUEST["ck"] !== "") {
     if (isset($_REQUEST["key"]) && $_REQUEST["key"] !== "") {
-        $seq = explode('?', $_REQUEST["key"]);
-        echo cUrlGetData('https://tv.media.jio.com/streams_catchup/' . $seq[0] . '?' . $ck, $headers);
+        echo cUrlGetData('https://tv.media.jio.com/streams_catchup/' . urlencode($_REQUEST["key"]), $headers);
     }
 
     if (isset($_REQUEST["pkey"]) && $_REQUEST["pkey"] !== "") {
-        echo cUrlGetData('https://tv.media.jio.com/fallback/bpk-tv/' . $_REQUEST["pkey"], $headers);
+        echo cUrlGetData('https://tv.media.jio.com/fallback/bpk-tv/' . urlencode($_REQUEST["pkey"]), $headers);
     }
 
     if ((isset($_REQUEST["ts"]) && $_REQUEST["ts"] !== "") || (isset($_REQUEST["tss"]) && $_REQUEST["tss"] !== "")) {
@@ -36,7 +35,7 @@ if (isset($_REQUEST["ck"]) && $_REQUEST["ck"] !== "") {
         header("Access-Control-Allow-Headers: Range");
         header("Accept-Ranges: bytes");
 
-        $url = isset($_REQUEST["ts"]) ? 'https://jiotvcod.cdn.jio.com/bpk-tv/' . $_REQUEST["ts"] : 'https://jiotvcod.cdn.jio.com/' . explode('?', $_REQUEST["tss"])[0];
+        $url = isset($_REQUEST["ts"]) ? 'https://jiotvmbcod.cdn.jio.com/bpk-tv/' . $_REQUEST["ts"] : 'https://jiotvmbcod.cdn.jio.com/' . explode('?', $_REQUEST["tss"])[0];
         echo cUrlGetData($url, $headers);
     }
 }

@@ -15,8 +15,7 @@ if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
 }
 $jio_path = $protocol . $host_jio  . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
 
-$data = $_REQUEST['data'];
-$data = base64_decode($data);
+$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
 $data = explode("=?=", $data);
 
 $id = $data[1];
@@ -46,10 +45,10 @@ $pg = $data[2];
     <div id="jtvh1">
       <img src="https://i.ibb.co/BcjC6R8/jiotv.png" alt="JIOTV+">
     </div>
-    <div class="userButtons">
-      <button id="homeButton">Home</button>
-      <button id="refreshButton">Refresh</button>
-      <button id="logoutButton">Logout</button>
+    <div id="userButtons">
+      <button class="Btns" id="homeButton">Home</button>
+      <button class="Btns" id="refreshButton">Refresh</button>
+      <button class="Btns" id="logoutButton">Logout</button>
     </div>
   </header>
 
@@ -110,7 +109,7 @@ $pg = $data[2];
     $end = get_T_time($catchupDataArr['epg'][$i]['endEpoch']);
 
     $data = $name . '=?=' . $id . '=?=' . $epiShowTime . '=?=' . $srno . '=?=' . $begin . '=?=' . $end;
-    $link = $jio_path . 'cplay.php?data=' . base64_encode($data);
+    $link = $jio_path . 'cplay_' . bin2hex($data);
 
     echo '<div class="movie_card" id="bright">
             <div class="info_section">

@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^cp_([A-Za-z0-9-=-_-!-~--]+)/?$ cp.php?data=$1 [NC,L]
+RewriteRule ^cplay_([A-Za-z0-9-=-_-!-~--]+)/?$ cplay.php?data=$1 [NC,L]
+RewriteRule ^ts_catchup_([A-Za-z0-9-=-_-!-~--]+)_([A-Za-z0-9-=-_-!-~--]+)_([A-Za-z0-9-=-_-!-~--]+)_([A-Za-z0-9-=-_-!-~--]+)_([A-Za-z0-9-=-_-!-~--]+).m3u8/?$ cpapi.php?id=$1&st=$2&pid=$3&begin=$4&end=$5 [NC,L]

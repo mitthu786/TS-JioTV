@@ -8,7 +8,7 @@ error_reporting(0);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 if (isset($_GET['data'])) {
-    $data = base64_decode($_GET['data']);
+    $data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
     $data = explode('=?=', $data);
     $name = $data[0];
     $name = str_replace("_", " ", $name);
@@ -19,7 +19,7 @@ if (isset($_GET['data'])) {
     $dates = "20" . substr($result, 0, 2) . "-" . substr($result, 2, 2) . "-" . substr($result, 4, 5);
     $begin = $data[4];
     $end = $data[5];
-    $link = "cpapi.php?id=" . $id . "&st=" . $showtime . "&pid=" . $pid . '&begin=' . $begin . '&end=' . $end . '&e=.m3u8';
+    $link = "ts_catchup_" . $id . "_" . $showtime . "_" . $pid . '_' . $begin . '_' . $end . '.m3u8';
     $logo = "https://jiotv.catchup.cdn.jio.com/dare_images/shows/" . $dates . "/" . $pid . ".jpg";
 
     echo <<<GFG

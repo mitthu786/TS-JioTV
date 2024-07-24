@@ -1,0 +1,185 @@
+/* 
+* Copyright 2021-2024 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+*/
+
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/holtwood-one-sc@4.5.1/index.min.css");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
+
+#jtvh1 {
+  text-align: center;
+  font-size: 25px;
+  margin: 15px;
+  padding-bottom: 10px;
+  font-family: "Holtwood One SC", serif;
+  background-color: rgb(255, 255, 255);
+  background-image: rgb(255, 255, 255);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#jtvh1 img {
+  width: 80px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+
+  #jtvh1 {
+    margin-bottom: 10px;
+  }
+
+  #jtvh1 img {
+    width: 45px;
+  }
+
+  #userButtons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #userButtons button {
+    font-size: 12px;
+  }
+}
+
+/* LOGIN BUTTON CSS */
+#userButtons {
+  font-size: 16px;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  text-align-last: center;
+}
+
+.Btns {
+  color: #ffffffd6;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #383b54;
+}
+
+.Btns:hover {
+  color: #d9d9d9;
+  background-color: #00000034;
+}
+
+body {
+  background-color: #212541;
+  /* color: #fff; */
+  font-family: sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.red_card {
+  width: 250px;
+  height: 250px;
+  background-color: #ff000000;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.card {
+  width: 250px;
+  height: 250px;
+  background-color: #f2f2f20d;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.layer2 {
+}
+#DateCard {
+  font-family: sans-serif;
+}
+#day {
+  font-size: 8em;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #ff0000, #8488a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 200px;
+  height: 180px;
+}
+#month_name {
+  font-size: 3em;
+  font-weight: bold;
+  color: black;
+  width: auto;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
+#day_name {
+  font-size: 1.5em;
+  color: black;
+  position: absolute;
+  transform-origin: top left;
+  transform: rotate(270deg);
+  padding-left: 40px;
+  padding-top: 60px;
+}
+#year {
+  font-size: 1em;
+  color: black;
+  position: absolute;
+  left: 20px;
+  top: 58px;
+}
+
+@media (max-width: 768px) {
+  #day {
+    font-size: 4em;
+    width: 120px;
+    height: 80px;
+  }
+  #month_name {
+    font-size: 2em;
+    top: 0px;
+    left: 15px;
+  }
+  #day_name {
+    font-size: 0.8em;
+    padding-left: 10px;
+    padding-top: 40px;
+  }
+  #year {
+    font-size: 0.8em;
+    left: 20px;
+    top: 38px;
+  }
+}

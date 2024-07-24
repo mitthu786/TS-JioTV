@@ -5,7 +5,7 @@
 // Created By : TechieSneh
 
 error_reporting(0);
-$data = base64_decode($_REQUEST['data']);
+$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
 $data = explode('=?=', $data);
 $cid = $data[0];
 $name = str_replace('_', ' ', $cid);
@@ -510,7 +510,7 @@ $id = $data[1];
             width: '100%',
             mute: false,
             autostart: true,
-            file: "live.php?id=<?php echo $id; ?>&e=.m3u8",
+            file: "ts_live_<?php echo $id; ?>.m3u8",
             type: "mp4",
             captions: {color: '#ffb800',fontSize: 30,backgroundOpacity: 0},
             sharing: {

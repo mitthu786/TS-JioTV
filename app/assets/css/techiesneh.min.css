@@ -77,9 +77,8 @@ body {
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
   text-align: left;
-  background-color: #1d232a;
+  background-color: #212541;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -5629,9 +5628,9 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #ffffff0f;
+  background-color: #ffffff1a;
   background-clip: border-box;
-  border: 2px solid #151515;
+  /* border: 2px solid #151515; */
   border-radius: 20px;
   margin: 5px;
   text-align: center;
@@ -5671,8 +5670,9 @@ input[type="button"].btn-block {
   min-height: 1px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 1px solid #fff;
-  border-radius: 15px;
+  border-top: 1px solid #f00;
+  border-bottom: 1px solid #f00;
+  border-radius: 20px;
   color: #fff;
   font-family: "Signika Negative", sans-serif;
 }
@@ -5680,7 +5680,8 @@ input[type="button"].btn-block {
 .card-title {
   margin-bottom: 0.75rem;
   color: white;
-  font-size: 18px;
+  /* font-size: 18px; */
+  text-transform: uppercase;
 }
 
 .card-subtitle {
@@ -5690,7 +5691,7 @@ input[type="button"].btn-block {
 
 .card-text:last-child {
   margin-bottom: 0;
-  color: rgb(191 171 111);
+  color: rgb(0 0 0);
   font-size: 16px;
 }
 
@@ -7071,9 +7072,9 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #303030;
+  background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #444;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
 }
@@ -7106,10 +7107,10 @@ a.close.disabled {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 1rem 1rem;
-  border-bottom: 1px solid #444;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px);
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 }
 
 .modal-header .close {
@@ -7134,18 +7135,14 @@ a.close.disabled {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  padding: 0.75rem;
-  border-top: 1px solid #444;
-  border-bottom-right-radius: calc(0.3rem - 1px);
-  border-bottom-left-radius: calc(0.3rem - 1px);
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
 }
 
 .modal-footer > * {
@@ -7904,7 +7901,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #191e24 !important;
+  background-color: #ffffffa6 !important;
 }
 
 a.bg-dark:hover,

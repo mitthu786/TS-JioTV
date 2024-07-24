@@ -5,8 +5,7 @@
 // * Created By : TechieSneh
 
 error_reporting(0);
-$data = $_REQUEST["data"];
-$data = base64_decode($data);
+$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
 $data = explode('=?=', $data);
 $cid = $data[0];
 $id = $data[1];
@@ -26,7 +25,8 @@ if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
 $jio_path = $protocol . $host_jio  . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
 $jio_path = substr($jio_path, 0, -1);
 
-
+$file_path = 'assets/data/credskey.jtv';
+$file_exists = file_exists($file_path);
 ?>
 <html>
 
@@ -40,146 +40,10 @@ $jio_path = substr($jio_path, 0, -1);
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/details.css">
   <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/BcjC6R8/jiotv.png">
   <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
   <script type="text/javascript" src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
-
-  <style>
-    @import url("https://cdn.jsdelivr.net/npm/@fontsource/holtwood-one-sc@4.5.1/index.min.css");
-    @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
-
-    #jtvh1 {
-      text-align: center;
-      font-size: 25px;
-      margin: 15px;
-      padding-bottom: 10px;
-      font-family: "Holtwood One SC", serif;
-      background-color: rgb(255, 255, 255);
-      background-image: rgb(255, 255, 255);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    #jtvh1 img {
-      width: 80px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      color: #fff;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
-      }
-
-      #jtvh1 {
-        margin-bottom: 10px;
-      }
-
-      #jtvh1 img {
-        width: 45px;
-      }
-
-      #userButtons {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      #userButtons button {
-        font-size: 12px;
-      }
-    }
-
-    /* LOGIN BUTTON CSS */
-    #userButtons {
-      font-size: 14px;
-      font-family: fantasy;
-      text-align-last: center;
-    }
-
-    #homeButton {
-      border-radius: 10px;
-      border: 2px solid #f0f0f0;
-    }
-
-    #homeButton:hover {
-      background-color: #ffc107;
-      border: 3px solid #ffc107;
-    }
-
-    #refreshButton {
-      border-radius: 10px;
-      border: 2px solid #f0f0f0;
-    }
-
-    #refreshButton:hover {
-      background-color: #00bdc7;
-      border: 3px solid #00bdc7;
-    }
-
-    #logoutButton {
-      border-radius: 10px;
-      border: 2px solid #f0f0f0;
-    }
-
-    #logoutButton:hover {
-      background-color: #ff5252;
-      border: 3px solid #ff5252;
-    }
-
-    body {
-      background-color: #1d232a;
-      /* color: #fff; */
-      font-family: sans-serif;
-      font-size: 16px;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Cards */
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .red_card {
-      width: 250px;
-      height: 250px;
-      background-color: #ff000000;
-      border-radius: 10px;
-      padding: 20px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .card {
-      width: 250px;
-      height: 250px;
-      background-color: #f2f2f20d;
-      border-radius: 10px;
-      padding: 20px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card {
-        width: 150px;
-        height: 150px;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -188,9 +52,9 @@ $jio_path = substr($jio_path, 0, -1);
       <img src="https://i.ibb.co/BcjC6R8/jiotv.png" alt="JIOTV+">
     </div>
     <div id="userButtons">
-      <button id="homeButton">Home</button>
-      <button id="refreshButton">Refresh</button>
-      <button id="logoutButton">Logout</button>
+      <button class="Btns" id="homeButton">Home</button>
+      <button class="Btns" id="refreshButton">Refresh</button>
+      <button class="Btns" id="logoutButton">Logout</button>
     </div>
   </header>
   </br>
@@ -198,32 +62,44 @@ $jio_path = substr($jio_path, 0, -1);
     <img src="<?php echo $image; ?>" alt="Logo" width="100px" style="margin-left: auto; margin-right: auto; display: block" />
     <?php
     $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = base64_encode($cp_link_live);
+    $cp_link_live = bin2hex($cp_link_live);
     echo <<<GFG
     <h2 id="jtvh1"> $name </h2>
-    <a href="$jio_path/play.php?data=$cp_link_live" class="btn btn-danger">LIVE</a>
+    <a href="$jio_path/play_$cp_link_live" class="btn btn-danger">LIVE</a>
     GFG;
     ?>
     <hr width="50%" color="red">
   </div></br>
   <?php if ($c == "y") {
     $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = base64_encode($cp_link_live);
+    $cp_link_live = bin2hex($cp_link_live);
     echo <<<GFG
         <div class="card-container">
     GFG;
     for ($i = 0; $i >= -7; $i--) {
       $cp_link = $cid . '=?=' . $id . '=?=' . $i;
-      $cp_link = base64_encode($cp_link);
+      $cp_link = bin2hex($cp_link);
 
       $currentDate = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
       $prevDate = clone $currentDate;
       $prevDate->modify("$i day");
 
+      $day = $prevDate->format('d');
+      $month = $prevDate->format('F');
+      $year = $prevDate->format('Y');
+      $weekName = $prevDate->format('l');
+
       echo <<<GFG
       <div class="card">
-        <img class="card-img-top" src="$image" alt="logo" width="20px">
-        <a href="$jio_path/catchup/cp.php?data=$cp_link" class="btn btn-primary">{$prevDate->format('d-m-Y')}</a>
+        <div id="DateCard">
+          <div id="day">$day</div>
+          <div class="layer2">
+            <span id="day_name">$weekName</span>
+            <span id="month_name">$month</span>
+            <span id="year">$year</span>          
+          </div>
+        </div>
+        <a href="$jio_path/catchup/cp_$cp_link" class="btn btn-primary">WATCH</a>
       </div>
       GFG;
     }
@@ -233,7 +109,7 @@ $jio_path = substr($jio_path, 0, -1);
   }
   if ($c == "n") {
     $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = base64_encode($cp_link_live);
+    $cp_link_live = bin2hex($cp_link_live);
     echo <<<GFG
   <div class="card-container">
     <div class="red_card">
@@ -244,10 +120,41 @@ $jio_path = substr($jio_path, 0, -1);
   }
   ?>
   </br>
+
+  <?php if (!$file_exists) : ?>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="LoginModal">🔐 TS-JioTV : Login Portal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Log in to enjoy seamless, uninterrupted access to all our live TV channels and premium content.
+          </div>
+          <div class="modal-footer">
+            <a href="login" class="btn btn-primary">Login</a>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
   <script src="assets/js/details.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+  <?php if (!$file_exists) : ?>
+    <script>
+      $(document).ready(function() {
+        $('#myModal').modal('show');
+      });
+    </script>
+  <?php endif; ?>
 </body>
 
 </html>

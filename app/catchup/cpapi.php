@@ -106,14 +106,16 @@ if ($haystack->code !== 200) {
         $hs = str_replace(['cpstream.php?cid=cpstream.php?cid=', 'cpstream.php?cid='], 'cpstream.php?ck=' . $cook . '&cid=', $hs);
         print_r($hs);
     } elseif (strpos($cookie, "/HLS/") !== false) {
+        $link_1 = $chs[0] . '/' . $chs[1] . '/' . $chs[2] . '/' . $chs[3] . '/' . $chs[4] . '/' . $chs[5] . '/' . $chs[6];
         $link = $chs[0] . '/' . $chs[1] . '/' . $chs[2] . '/' . $chs[3] . '/' . $chs[4];
         $data = explode("_", $chs[5]);
         $hs = cUrlGetData($haystack->result, $headers);
         $hs = str_replace($data[0], 'cpSonyAuth.php?id=' . $id . '&ck=' . $cook . '&link=' . $link . '&data=' . $data[0], $hs);
+        $hs = str_replace('WL/', 'cpSonyAuth.php?id=' . $id . '&ck=' . $cook . '&link=' . $link_1 . '&data=WL/', $hs);
         print $hs;
     } elseif (strpos($cookie, "acl=/" . $chs[3] . "/") !== false) {
         $hs = cUrlGetData($haystack->result, $headers);
-        $hs = str_replace('https://jiotvcod.cdn.jio.com/', 'cpstream.php?ck=' . $cook . '&sid=', $hs);
+        $hs = str_replace('https://jiotvmbcod.cdn.jio.com/', 'cpstream.php?ck=' . $cook . '&sid=', $hs);
         print $hs;
     } else {
         http_response_code(404);

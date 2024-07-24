@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^details_([A-Za-z0-9-=-_-!-~--]+)/?$ details.php?data=$1 [NC,L]
+RewriteRule ^play_([A-Za-z0-9-=-_-!-~--]+)/?$ play.php?data=$1 [NC,L]
+RewriteRule ^ts_live_([A-Za-z0-9-=-_-!-~--]+).m3u8/?$ live.php?id=$1 [NC,L]
+RewriteRule ^tsjio_playlist.m3u/?$ playlist.php [NC,L]

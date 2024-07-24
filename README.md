@@ -55,21 +55,21 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 </br>
 <h3>📸 MOBILE SHOTS : </h3>
 <p align="left">
-  <img src="https://i.ibb.co/9hGqtLD/mob-home.png" alt="mob-home" width="120">
-  <img src="https://i.ibb.co/D9gWPB1/mob-7-Days.png" alt="mob-7-Days" width="120">
+  <img src="https://i.ibb.co/bL3x1f9/1.png" alt="mob-home" width="120">
+  <img src="https://i.ibb.co/dGMrpdf/2.png" alt="mob-7-Days" width="120">
 </p>
 
 <p align="left">
-  <img src="https://i.ibb.co/p0Qk4HZ/mob-Catchup.png" alt="mob-Catchup" width="120">
-  <img src="https://i.ibb.co/Y2xXwdF/mob-Catchup-Play.png" alt="mob-Catchup-Play" width="120">
+  <img src="https://i.ibb.co/b72rZ1m/3.png" alt="mob-Catchup" width="120">
+  <img src="https://i.ibb.co/nDmthvB/4.png" alt="mob-Catchup-Play" width="120">
 </p>
 
 <h3>📸 PC WEB SHOTS : </h3>
 
-<img src="https://i.ibb.co/RNSj9t2/home.png" alt="home" width="300" height="150"></br>
+<img src="https://i.ibb.co/7tJd9Rb/11.png" alt="home" width="300" height="150"></br>
 <img src="https://i.ibb.co/xYJNzw3/play.png" width="300" height="150"></br>
-<img src="https://i.ibb.co/F66ckTm/Catchup7-Days.png" alt="Catchup7-Days" width="300" height="150"></br>
-<img src="https://i.ibb.co/PTbsgys/Catchup.png" alt="Catchup" width="300" height="150"></br>
+<img src="https://i.ibb.co/P5RTwNN/12.png" alt="Catchup7-Days" width="300" height="150"></br>
+<img src="https://i.ibb.co/0qNGkdg/13.png" alt="Catchup" width="300" height="150"></br>
 <img src="https://i.ibb.co/tbzzwrq/Catchup-Play.png" alt="Catchup-Play" width="300" height="150"></br>
 
 </br>
@@ -96,24 +96,25 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 
 - [TS-JioTV Zip](https://tsnehcors.mitthu.workers.dev/?https://github.com/mitthu786/TS-JioTV/blob/main/TS-JioTV.zip?raw=true) </br>
 
-1. Locate & Extract all Files in LocalHost `Htdocs` Root Folder. </br>
-2. Open KSWEB app & start the server. </br>
-3. Now Open `TS-JioTV` Below Link :
+1. Locate & Extract all Files in LocalHost `Htdocs` Root Folder
+2. Open KSWEB app `Choose Nginx Server` & Then start the server
+3. Open Browser & type `http://localhost/TS-JioTV/`
+4. Now Open `TS-JioTV` Below Link :
 
    ```
-   http://localhost:8080/TS-JioTV/
+   http://localhost:8000/TS-JioTV/
    ```
 
-4. First Login with your credentials.
-5. Now, You Will See all Jio Channels. </br>
-6. Click on Channel and Play. </br>
+5. First Login with your credentials
+6. Now, You Will See all Jio Channels
+7. Click on Channel and Play. </br>
 
 ## ▶️ PlayList Methods :
 
 • In Tivimate or OTT Navigator Player Put Links Format Like Below :
 
 ```
-http://localhost:8080/TS-JioTV/app/playlist.php
+http://localhost:8080/TS-JioTV/app/tsjio_playlist.m3u
 ```
 
 • Hurrah !! Now Play & Enjoy with your Jio Channels .

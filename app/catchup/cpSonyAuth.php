@@ -38,6 +38,10 @@ if (!empty($_REQUEST["link"]) && !empty($_REQUEST["data"])) {
     } else {
         $content = @str_replace('WL/', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/WL/', $content);
     }
+
+    $lastSlashPos = strrpos($data, '/');
+    $trimmedUrl = substr($data, 0, $lastSlashPos);
+    $content = @str_replace('segment-', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/' . $trimmedUrl . '/segment-', $content);
     echo $content;
 }
 

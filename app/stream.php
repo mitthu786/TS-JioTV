@@ -9,38 +9,49 @@ include "functions.php";
 
 header("Content-Type: application/vnd.apple.mpegurl");
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Expose-Headers: Content-Length,Content-Range");
+header("Access-Control-Expose-Headers: Content-Length, Content-Range");
 header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
-$id = @$_REQUEST["id"];
-$cid = @$_REQUEST["cid"];
-$cooks = @$_REQUEST["ck"];
+// Retrieve and sanitize input parameters
+$id = isset($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '';
+$cid = isset($_REQUEST["cid"]) ? htmlspecialchars($_REQUEST["cid"]) : '';
+$cooks = isset($_REQUEST["ck"]) ? htmlspecialchars($_REQUEST["ck"]) : '';
 
-if (@$_REQUEST["cid"] != "" && @$_REQUEST["ck"] != "") {
+if ($cid !== '' && $cooks !== '') {
 
     $chs = explode('-', $id);
 
-    $headers = array(
-        'Cookie' => hex2bin($cooks),
-        'Content-type' => 'application/x-www-form-urlencoded',
-        'User-Agent' => 'plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7',
-    );
+    // Prepare headers
+    $headers = [
+        'Cookie: ' . hex2bin($cooks),
+        'Content-Type: application/x-www-form-urlencoded',
+        'User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7',
+    ];
 
-    $hs = cUrlGetData("https://jiotvbpkmob.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/$id", $headers);
+    // Fetch data
+    $url = "https://jiotvmblive.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/{$id}";
+    $hs = cUrlGetData($url, $headers);
+    $cooKee = get_and_refresh_cookie($url, $headers);
 
+    // Search and replace patterns
     $search = [
         ',URI="https://tv.media.jio.com/fallback/bpk-tv/',
         "{$chs[0]}-",
-        "auth.php?ck=$cooks&ts=keyframes/auth.php?ckk=$cooks&ts=",
+        "auth.php?ck=$cooKee&ts=keyframes/auth.php?ckk=$cooKee&ts=",
     ];
 
     $replace = [
-        ',URI="auth.php?ck=' . $cooks . '&pkey=',
-        "auth.php?ck=$cooks&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
-        "auth.php?ck=$cooks&ts=keyframes/",
+        ',URI="auth.php?ck=' . $cooKee . '&pkey=',
+        "auth.php?ck=$cooKee&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
+        "auth.php?ck=$cooKee&ts=keyframes/",
     ];
 
+    // Perform search and replace in the response
     $hs = str_replace($search, $replace, $hs);
     echo $hs;
+} else {
+    // Handle missing parameters
+    http_response_code(400);
+    echo "Missing required parameters.";
 }

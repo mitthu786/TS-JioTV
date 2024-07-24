@@ -4,6 +4,11 @@
 * Created By : TechieSneh
 -->
 
+<?php
+$file_path = 'app/assets/data/credskey.jtv';
+$file_exists = file_exists($file_path);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +36,10 @@
             <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+">
         </div>
         <div id="userButtons">
-            <button id="loginButton">Login</button>
-            <button id="refreshButton">Refresh</button>
-            <button id="logoutButton">Logout</button>
-            <button id="PlayListButton">PlayList</button>
+            <button class="Btn" id="loginButton">Login</button>
+            <button class="Btn" id="refreshButton">Refresh</button>
+            <button class="Btn" id="logoutButton">Logout</button>
+            <button class="Btn" id="PlayListButton">PlayList</button>
         </div>
     </header></br>
     <div id="searchWrapper">
@@ -43,16 +48,16 @@
     <div id="content">
         <div class="container">
             <div class="filters">
-                <label for="catchupFilter">Catchup:</label>
+                <label for="catchupFilter"></label>
                 <select id="catchupFilter">
-                    <option value="">All</option>
+                    <option value="">-- CATCHUP --</option>
                     <option value="y">True</option>
                     <option value="n">False</option>
                 </select>
 
-                <label for="genreFilter">Genre:</label>
+                <label for="genreFilter"></label>
                 <select id="genreFilter">
-                    <option value="">All</option>
+                    <option value="">-- GENRE --</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Movies">Movies</option>
                     <option value="Kids">Kids</option>
@@ -68,9 +73,9 @@
                     <option value="JioDarshan">JioDarshan</option>
                 </select>
 
-                <label for="langFilter">Language:</label>
+                <label for="langFilter"></label>
                 <select id="langFilter">
-                    <option value="">All</option>
+                    <option value="">-- LANG --</option>
                     <option value="Hindi">Hindi</option>
                     <option value="English">English</option>
                     <option value="Marathi">Marathi</option>
@@ -93,7 +98,38 @@
             </div>
         </div>
     </div>
+
+    <?php if (!$file_exists) : ?>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LoginModal">🔐 TS-JioTV : Login Portal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Log in to enjoy seamless, uninterrupted access to all our live TV channels and premium content.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="app/login" class="btn btn-primary">Login</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <script src="app/assets/js/search.js"></script>
+
+    <?php if (!$file_exists) : ?>
+        <script>
+            $(document).ready(function() {
+                $('#myModal').modal('show');
+            });
+        </script>
+    <?php endif; ?>
 </body>
 
 </html>
