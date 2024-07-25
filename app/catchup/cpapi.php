@@ -9,11 +9,10 @@ include "cpfunctions.php";
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $local_ip = getHostByName(php_uname('n'));
-$ip_port = $_SERVER['SERVER_PORT'];
-if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
-    $host_jio = $_SERVER['HTTP_HOST'];
-} else {
-    $host_jio = $local_ip;
+$host_jio = ($_SERVER['SERVER_ADDR'] !== '127.0.0.1' && $_SERVER['SERVER_ADDR'] !== 'localhost') ? $_SERVER['HTTP_HOST'] : $local_ip;
+
+if (strpos($host_jio, $_SERVER['SERVER_PORT']) === false) {
+    $host_jio .= ':' . $_SERVER['SERVER_PORT'];
 }
 
 $jio_path = $protocol . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));

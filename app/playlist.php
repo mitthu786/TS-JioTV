@@ -17,7 +17,11 @@ header("Content-Disposition: inline; filename=$jio_fname");
 // Determine the protocol and host
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $local_ip = getHostByName(php_uname('n'));
-$host_jio = $_SERVER['SERVER_ADDR'] !== "127.0.0.1" ? $_SERVER['HTTP_HOST'] : $local_ip;
+$host_jio = ($_SERVER['SERVER_ADDR'] !== '127.0.0.1' && $_SERVER['SERVER_ADDR'] !== 'localhost') ? $_SERVER['HTTP_HOST'] : $local_ip;
+
+if (strpos($host_jio, $_SERVER['SERVER_PORT']) === false) {
+    $host_jio .= ':' . $_SERVER['SERVER_PORT'];
+}
 
 // Construct the Jio path
 $jio_path = $protocol . $host_jio . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));

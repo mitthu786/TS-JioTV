@@ -29,6 +29,10 @@ $local_ip = getHostByName(php_uname('n'));
 $ip_port = $_SERVER['SERVER_PORT'];
 $host_jio = ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" && $_SERVER['SERVER_ADDR'] !== 'localhost') ? $_SERVER['HTTP_HOST'] : $local_ip;
 
+if (strpos($host_jio, $_SERVER['SERVER_PORT']) === false) {
+    $host_jio .= ':' . $_SERVER['SERVER_PORT'];
+}
+
 $jio_path = rtrim($protocol . $host_jio . str_replace(" ", "%20", dirname($_SERVER['PHP_SELF'])), '/');
 
 $id = htmlspecialchars($_REQUEST["id"] ?? '');
