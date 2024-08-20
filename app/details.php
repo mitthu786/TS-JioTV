@@ -59,7 +59,7 @@ $file_exists = file_exists($file_path);
   </header>
   </br>
   <div style="text-align: center;">
-    <img src="<?php echo $image; ?>" alt="Logo" width="100px" style="margin-left: auto; margin-right: auto; display: block" />
+    <img src="<?php echo $image; ?>" alt="Logo" width="200px" style="margin-left: auto; margin-right: auto; display: block" />
     <?php
     $cp_link_live = $cid . '=?=' . $id;
     $cp_link_live = bin2hex($cp_link_live);

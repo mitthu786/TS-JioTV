@@ -14,13 +14,13 @@ if (isset($_GET['data'])) {
     $name = str_replace("_", " ", $name);
     $id = $data[1];
     $showtime = $data[2];
-    $pid = $data[3];
-    $result = substr($pid, 0, 6);
+    $srno = $data[3];
+    $result = substr($srno, 0, 6);
     $dates = "20" . substr($result, 0, 2) . "-" . substr($result, 2, 2) . "-" . substr($result, 4, 5);
     $begin = $data[4];
     $end = $data[5];
-    $link = "ts_catchup_" . $id . "_" . $showtime . "_" . $pid . '_' . $begin . '_' . $end . '.m3u8';
-    $logo = "https://jiotv.catchup.cdn.jio.com/dare_images/shows/" . $dates . "/" . $pid . ".jpg";
+    $link = "ts_catchup_" . $id . "_" . $srno . '_' . $begin . '_' . $end . '.m3u8';
+    $logo = "https://jiotv.catchup.cdn.jio.com/dare_images/shows/" . $dates . "/" . $srno . ".jpg";
 
     echo <<<GFG
      <html lang="en">

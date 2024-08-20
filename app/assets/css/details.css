@@ -23,6 +23,12 @@
   width: 80px;
 }
 
+
+#userButtons {
+  display: flex;
+  gap: 5px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -52,7 +58,7 @@ header {
   }
 
   #userButtons button {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -64,6 +70,7 @@ header {
 }
 
 .Btns {
+  font-family: "Holtwood One SC", serif;
   color: #ffffffd6;
   padding: 10px;
   border-radius: 20px;

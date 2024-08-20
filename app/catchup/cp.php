@@ -22,6 +22,8 @@ $id = $data[1];
 $cid = $data[0];
 $cid = str_replace("_", " ", $cid);
 $pg = $data[2];
+
+$image = 'https://jiotv.catchup.cdn.jio.com/dare_images/images/' . $cid . '.png';
 ?>
 
 <!DOCTYPE html>
@@ -52,10 +54,9 @@ $pg = $data[2];
     </div>
   </header>
 
-  <div id="jtvh1">
-    <a href="index.php">
-      <h1><?php echo $cid; ?></br>CATCHUP</h1>
-    </a>
+  <div>
+    <img src="<?php echo $image; ?>" alt="Logo" width="200px" style="margin-left: auto; margin-right: auto; display: block" />
+    <h2 id="jtvh1"><?php echo $cid; ?></br>CATCHUP</h1>
   </div>
 
   <?php
@@ -96,9 +97,9 @@ $pg = $data[2];
     $episodePoster = "https://jiotv.catchup.cdn.jio.com/dare_images/shows/" . $catchupDataArr['epg'][$i]['episodePoster'];
     $episodedate = $catchupDataArr['epg'][$i]['episodePoster'];
     $result1 = substr($episodedate, 0, 10);
-    $showtime = $catchupDataArr['epg'][$i]['showtime'];
-    $endtime = $catchupDataArr['epg'][$i]['endtime'];
-    $epiShowTime = str_replace(":", "", $showtime);
+    $showTime = $catchupDataArr['epg'][$i]['showtime'];
+    $endTime = $catchupDataArr['epg'][$i]['endtime'];
+    $epiShowTime = str_replace(":", "", $showTime);
     $episode_desc = $catchupDataArr['epg'][$i]['description'];
     $name = $catchupDataArr['epg'][$i]['showname'];
     $name = str_replace("/", " ", $name);
@@ -118,7 +119,7 @@ $pg = $data[2];
                     <h3>' . $name . '</h3>
                     <span class="minutes">' . $result1 . '</span>
                     </br></br>
-                    <h4>' . date("g:i A", strtotime($showtime)) . " - " . date("g:i A", strtotime($endtime)) . '</h4>
+                    <h4>' . date("g:i A", strtotime($showTime)) . " - " . date("g:i A", strtotime($endTime)) . '</h4>
                 </div>
                 <div class="movie_desc">
                     <p class="text">' . $episode_desc . '</p>

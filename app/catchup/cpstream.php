@@ -38,8 +38,13 @@ if (@$_REQUEST["cid"] != "" && @$_REQUEST["ck"] != "") {
     $link = "https://jiotvcod.cdn.jio.com/bpk-tv/" . $chs[0] . '/Catchup_Fallback/' . $seqq[0] . '?vbegin=' . $seq[1] . '&vend=' . $seq[2];
     $hs = cUrlGetData($link, $headers);
     $hs = @str_replace('https://tv.media.jio.com/fallback/bpk-tv/', 'cpauth.php?ck=' . $cooks . '&pkey=', $hs);
-    $hs = @str_replace($chs[0] . '-', 'cpauth.php?ck=' . $cooks . '&ts=' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-', $hs);
 
+    if ($PROXY) {
+        $hs = @str_replace($chs[0] . '-', 'cpauth.php?ck=' . $cooks . '&ts=' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-', $hs);
+    } else {
+        $hs = @str_replace($chs[0] . '-', 'https://jiotvcod.cdn.jio.com/bpk-tv/' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-', $hs);
+        $hs = @str_replace(".ts", ".ts?" . hex2bin($cooks), $hs);
+    }
     echo $hs;
 }
 
@@ -50,7 +55,12 @@ if (@$_REQUEST["sid"] != "" && @$_REQUEST["ck"] != "") {
     $link = "https://jiotvmbcod.cdn.jio.com/" . $chs[0] . "/" . $chs[1] . "/" . $chs[2] . "?" . $cook;
     $hs = cUrlGetData($link, $headers);
     $hs = @str_replace('https://tv.media.jio.com/streams_catchup/', 'cpauth.php?ck=' . $cooks . '&key=', $hs);
-    $hs = @str_replace('https://jiotvmbcod.cdn.jio.com/', 'cpauth.php?ck=' . $cooks . '&tss=', $hs);
+
+    if ($PROXY) {
+        $hs = @str_replace('https://jiotvmbcod.cdn.jio.com/', 'cpauth.php?ck=' . $cooks . '&tss=', $hs);
+    } else {
+        $hs = @str_replace(".ts", ".ts?" . hex2bin($cooks), $hs);
+    }
 
     echo $hs;
 }

@@ -13,12 +13,11 @@ Created By: TechieSneh
 
 #jtvh1 {
   text-align: center;
-  font-size: 15px;
+  font-size: 25px;
   margin: 15px;
   padding-bottom: 10px;
   font-family: "Holtwood One SC", serif;
   background-color: rgb(255, 255, 255);
-  background-image: rgb(255, 255, 255);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -37,7 +36,7 @@ header {
 
 #userButtons {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 @media (max-width: 768px) {
@@ -61,7 +60,7 @@ header {
   }
 
   #userButtons button {
-    font-size: 16px;
+    font-size: 10px;
   }
 }
 
@@ -272,6 +271,7 @@ body {
 }
 
 .Btns {
+  font-family: "Holtwood One SC", serif;
   color: #ffffffd6;
   padding: 10px;
   border-radius: 20px;

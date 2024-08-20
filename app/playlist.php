@@ -112,17 +112,27 @@ $jio_data .= $sony_data . PHP_EOL;
 // Add the JioTV channels to the M3U data
 if ($json !== null) {
     foreach ($json as $channel) {
+        $channel_id = htmlspecialchars($channel['channel_id'], ENT_QUOTES, 'UTF-8');
+        $channel_name = htmlspecialchars($channel['channel_name'], ENT_QUOTES, 'UTF-8');
+        $channel_category = htmlspecialchars($channel['channelCategoryId'], ENT_QUOTES, 'UTF-8');
+        $channel_language = htmlspecialchars($channel['channelLanguageId'], ENT_QUOTES, 'UTF-8');
+        $logo_url = htmlspecialchars($channel['logoUrl'], ENT_QUOTES, 'UTF-8');
+        $catchup_source = htmlspecialchars($jio_path . 'catchup/ts_catchup_' . urlencode($channel['channel_id']) . '_${catchup-id}_${start}_${stop}.m3u8', ENT_QUOTES, 'UTF-8');
+        $stream_url = $jio_path . 'ts_live_' . urlencode($channel['channel_id']) . '.m3u8';
+
         $jio_data .= sprintf(
-            '#EXTINF:-1 tvg-id="%s" tvg-name="%s" tvg-type="%s" group-title="TS-JioTV %s" tvg-language="%s" tvg-logo="%s",%s',
-            htmlspecialchars($channel['channel_id'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['channel_name'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['channelCategoryId'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['channelCategoryId'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['channelLanguageId'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['logoUrl'], ENT_QUOTES, 'UTF-8'),
-            htmlspecialchars($channel['channel_name'], ENT_QUOTES, 'UTF-8')
+            '#EXTINF:-1 tvg-id="%s" tvg-name="%s" tvg-type="%s" group-title="TS-JioTV %s" tvg-language="%s" tvg-logo="%s"%s,%s',
+            $channel_id,
+            $channel_name,
+            $channel_category,
+            $channel_category,
+            $channel_language,
+            $logo_url,
+            $channel['isCatchupAvailable'] == "True" ? ' catchup-days="7" catchup="auto" catchup-source="' . $catchup_source . '"' : '',
+            $channel_name
         ) . PHP_EOL;
-        $jio_data .= $jio_path . 'ts_live_' . urlencode($channel['channel_id']) . '.m3u8' . PHP_EOL . PHP_EOL;
+
+        $jio_data .= $stream_url . PHP_EOL . PHP_EOL;
     }
 }
 

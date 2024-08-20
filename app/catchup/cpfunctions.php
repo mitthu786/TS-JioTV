@@ -4,6 +4,14 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
+// Set Proxy  
+$PROXY = false;
+
+// Constants
+define('DATA_FOLDER', '../assets/data');
+define('TOKEN_EXPIRY_TIME', 7000);
+
+// Determine protocol, local IP address
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $local_ip = getHostByName(php_uname('n'));
 $host_jio = ($_SERVER['SERVER_ADDR'] !== '127.0.0.1' && $_SERVER['SERVER_ADDR'] !== 'localhost') ? $_SERVER['HTTP_HOST'] : $local_ip;
@@ -22,7 +30,7 @@ function refresh_token()
   $filePath = $DATA_FOLDER . "/creds.jtv";
   $jio_path = @str_replace("/catchup/", "/", $jio_path);
   // Check if the file exists and if it's older than 7000 seconds
-  if (file_exists($filePath) && (time() - filemtime($filePath) > 7000)) {
+  if (file_exists($filePath) && (time() - filemtime($filePath) > TOKEN_EXPIRY_TIME)) {
     return cUrlGetData($jio_path . "/login/refreshLogin.php");
   }
 }
@@ -38,12 +46,10 @@ function getCRED()
 }
 
 
-function jio_sony_headers($ck = false, $id, $crm, $device_id, $access_token, $uniqueId, $ssoToken)
+function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, $ssoToken)
 {
   $reqHeader = array();
-  if ($ck) {
-    $reqHeader[] = "Cookie: " . hex2bin($ck);
-  }
+  $reqHeader[] = "Cookie: " . hex2bin($ck);
   $reqHeader[] = "appkey: NzNiMDhlYcQyNjJm";
   $reqHeader[] = "accesstoken: " . $access_token;
   $reqHeader[] = "channel_id: " . $id;

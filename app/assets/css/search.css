@@ -14,7 +14,7 @@ header {
 
 #userButtons {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 @media (max-width: 768px) {
@@ -29,7 +29,7 @@ header {
   }
 
   #jtvh1 img {
-    width: 45px;
+    width: 30px;
   }
 
   #userButtons {
@@ -38,7 +38,7 @@ header {
   }
 
   #userButtons button {
-    font-size: 16px;
+    font-size: 10px;
   }
 }
 
@@ -99,6 +99,7 @@ option:first-child {
 }
 
 .Btn {
+  font-family: "Holtwood One SC", serif;
   color: #ffffffd6;
   padding: 10px;
   border-radius: 20px;

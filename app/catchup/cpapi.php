@@ -31,19 +31,18 @@ $crm = $jio_cred['sessionAttributes']['user']['subscriberId'];
 $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
 $device_id = $jio_cred['deviceId'];
 
-$st = $_REQUEST['st'];
-$pid = $_REQUEST['pid'];
+$srno = $_REQUEST['srno'];
 $id = $_REQUEST['id'];
-$result = substr($pid, 0, 6);
+$result = substr($srno, 0, 6);
 $begin = $_REQUEST['begin'];
 $end = $_REQUEST['end'];
 
 $data = [
     'stream_type' => 'Catchup',
     'channel_id' => $id,
-    'programId' => $pid,
-    'showtime' => $st,
-    'srno' => "20$result",
+    'programId' => $srno,
+    'showtime' => '000000',
+    'srno' => $srno,
     'begin' => $begin,
     'end' => $end,
 ];

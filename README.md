@@ -15,17 +15,18 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 
 - [Telegram Channel](https://tsneh.vercel.app/ts-tg)
 
-### 😇 SCRIPT FEATURES :
+### 😇 `SCRIPT` FEATURES :
 
 - 🎬 New UI & Design
 - 📅 7 Days Catchup Added
 - 🔐 OTP Login Added
+- 🕸️ Proxy Option Added
 - 🎥 Dropdown Filters Updated
 - 🎬 Multi Audio Stream Support
 - 🌐 Web Play with Quality Change Supports
 - 💻 Works on Mobile, AndroidTV or PC Browser Perfect
 
-### 💖 PLAYER FEATURES :
+### 💖 PLAYER `FEATURES` :
 
 - Search Feature Added</br>
 
@@ -77,11 +78,13 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 
 1. `KSWEB PRO v3.987 for Mobile`
 
+   - works on <= Android 14
+
    ```
    https://tsneh.vercel.app/ksweb_3.987.apk
    ```
 
-2. `XAMPP for Windows (PC)`
+2. `XAMPP for Windows & Linux (PC)`
 
    ```
    https://www.apachefriends.org/download.html
@@ -104,16 +107,32 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
    http://localhost:8000/TS-JioTV/
    ```
 
-5. First Login with your credentials
-6. Now, You Will See all Jio Channels
+5. First `Login` with your credentials
+6. Now, You Will See `all Jio Channels`
 7. Click on Channel and Play
 
-### ▶️ PlayList Methods :
+</br>
+
+### ▶️ `PlayList` Methods :
 
 - For Tivimate or OTT Navigator Player
 
   ```
   http://localhost:8000/TS-JioTV/app/tsjio_playlist.m3u
+  ```
+
+</br>
+
+### 🕸️ Proxy Uses [ `Applicable Only Outside India` ] :
+
+- Please set `true` instead of `false` at the specified locations :
+
+  - `app/functions.php`
+  - `app/catchup/cpfunctions.php`
+
+  ```
+   // Set Proxy
+   $PROXY = false;
   ```
 
 <!--
@@ -128,8 +147,8 @@ Through LocalHost </br></br>🌟 Star This Repository Before Forking 😎</br>Do
 
 ### 📞 CONTACT US :
 
-- TELEGRAM CHANNEL [JOIN NOW](https://tsneh.vercel.app/ts-tg)
-- FOR ANY QUERY CONTACT US ON [PROTON-MAIL](mailto:techiesneh@protonmail.com)
+- `TELEGRAM` CHANNEL [JOIN NOW](https://tsneh.vercel.app/ts-tg)
+- FOR ANY QUERY `CONTACT US` ON [PROTON-MAIL](mailto:techiesneh@protonmail.com)
 
 </br>
 

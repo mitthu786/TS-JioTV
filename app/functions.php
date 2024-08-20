@@ -4,6 +4,9 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
+// Set Proxy  
+$PROXY = false;
+
 // Constants
 define('DATA_FOLDER', 'assets/data');
 define('TOKEN_EXPIRY_TIME', 7000);

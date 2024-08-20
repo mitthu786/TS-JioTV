@@ -34,18 +34,25 @@ if ($cid !== '' && $cooks !== '') {
     $hs = cUrlGetData($url, $headers);
     $cooKee = get_and_refresh_cookie($url, $headers);
 
-    // Search and replace patterns
     $search = [
         ',URI="https://tv.media.jio.com/fallback/bpk-tv/',
-        "{$chs[0]}-",
-        "auth.php?ck=$cooKee&ts=keyframes/auth.php?ckk=$cooKee&ts=",
+        "{$chs[0]}-"
     ];
 
-    $replace = [
-        ',URI="auth.php?ck=' . $cooKee . '&pkey=',
-        "auth.php?ck=$cooKee&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
-        "auth.php?ck=$cooKee&ts=keyframes/",
-    ];
+    if ($PROXY) {
+        $replace = [
+            ',URI="auth.php?ck=' . $cooKee . '&pkey=',
+            "auth.php?ck=$cooKee&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-"
+        ];
+    } else {
+        $cookies_1 = hex2bin($cooKee);
+        $search[] = ".ts";
+        $replace = [
+            ',URI="auth.php?ck=' . $cooKee . '&pkey=',
+            "https://jiotvmblive.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
+            ".ts?{$cookies_1}"
+        ];
+    }
 
     // Perform search and replace in the response
     $hs = str_replace($search, $replace, $hs);
