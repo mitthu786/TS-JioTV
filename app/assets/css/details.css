@@ -143,7 +143,7 @@ body {
   height: 180px;
 }
 #month_name {
-  font-size: 3em;
+  font-size: 2.2em;
   font-weight: bold;
   color: black;
   width: auto;
@@ -152,20 +152,20 @@ body {
   left: 15px;
 }
 #day_name {
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: black;
   position: absolute;
   transform-origin: top left;
   transform: rotate(270deg);
-  padding-left: 40px;
-  padding-top: 60px;
+  padding-left: 42px;
+  padding-top: 66px;
 }
 #year {
   font-size: 1em;
   color: black;
   position: absolute;
   left: 20px;
-  top: 58px;
+  top: 48px;
 }
 
 @media (max-width: 768px) {
@@ -175,7 +175,7 @@ body {
     height: 80px;
   }
   #month_name {
-    font-size: 2em;
+    font-size: 1.5em;
     top: 0px;
     left: 15px;
   }
@@ -187,6 +187,6 @@ body {
   #year {
     font-size: 0.8em;
     left: 20px;
-    top: 38px;
+    top: 32px;
   }
 }
