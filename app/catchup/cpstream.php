@@ -1,6 +1,5 @@
 <?php
-
-// * Copyright 2021-2024 SnehTV, Inc.
+// * Copyright 2021-2025 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
@@ -11,56 +10,85 @@ header("Access-Control-Expose-Headers: Content-Length,Content-Range");
 header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
-
 include "cpfunctions.php";
+
+// Get credentials
 $cred = getCRED();
 $jio_cred = json_decode($cred, true);
-$ssoToken = $jio_cred['ssoToken'];
-$crm = $jio_cred['sessionAttributes']['user']['subscriberId'];
-$uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
+$ssoToken = $jio_cred['ssoToken'] ?? '';
+$crm = $jio_cred['sessionAttributes']['user']['subscriberId'] ?? '';
+$uniqueId = $jio_cred['sessionAttributes']['user']['unique'] ?? '';
 
-$cid = @$_REQUEST["cid"];
-$sid = @$_REQUEST["sid"];
-$cooks = @$_REQUEST["ck"];
+// Request parameters
+$cid = $_REQUEST['cid'] ?? '';
+$sid = $_REQUEST['sid'] ?? '';
+$cooks = $_REQUEST['ck'] ?? '';
 
-$headers = array(
+// Common headers
+$headers = [
     'Cookie: ' . hex2bin($cooks),
     'authority: jiotvcod.cdn.jio.com',
     'Content-type: application/x-www-form-urlencoded',
     'user-agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7',
-);
+];
 
-if (@$_REQUEST["cid"] != "" && @$_REQUEST["ck"] != "") {
+// Process CID request
+if (!empty($cid) && !empty($cooks)) {
+    [$seqq, $query] = explode('?', $cid, 2) + ['', ''];
 
-    $seqq = explode('?', $cid);
-    $seq = explode('=', $seqq[1]);
-    $chs = explode('-', $seqq[0]);
-    $link = "https://jiotvcod.cdn.jio.com/bpk-tv/" . $chs[0] . '/Catchup_Fallback/' . $seqq[0] . '?vbegin=' . $seq[1] . '&vend=' . $seq[2];
+    [$vc, $vb, $ve] = explode('=', $query);
+    $chs = explode('-', $seqq);
+
+    $link = sprintf(
+        "https://jiotvcod.cdn.jio.com/bpk-tv/%s/Catchup_Fallback/%s?vbegin=%s&vend=%s",
+        $chs[0],
+        $seqq,
+        $vb,
+        $ve
+    );
+
     $hs = cUrlGetData($link, $headers);
-    $hs = @str_replace('https://tv.media.jio.com/fallback/bpk-tv/', 'cpauth.php?ck=' . $cooks . '&pkey=', $hs);
+    $base = 'cpauth.php?ck=' . $cooks;
 
-    if ($PROXY) {
-        $hs = @str_replace($chs[0] . '-', 'cpauth.php?ck=' . $cooks . '&ts=' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-', $hs);
-    } else {
-        $hs = @str_replace($chs[0] . '-', 'https://jiotvcod.cdn.jio.com/bpk-tv/' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-', $hs);
-        $hs = @str_replace(".ts", ".ts?" . hex2bin($cooks), $hs);
-    }
-    echo $hs;
+    $hs = str_replace(
+        ['https://tv.media.jio.com/fallback/bpk-tv/', $chs[0] . '-', '.ts'],
+        [
+            $base . '&pkey=',
+            $PROXY ? $base . '&ts=' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-'
+                : 'https://jiotvcod.cdn.jio.com/bpk-tv/' . $chs[0] . '/Catchup_Fallback/' . $chs[0] . '-',
+            $PROXY ? '.ts' : '.ts?' . hex2bin($cooks)
+        ],
+        $hs
+    );
+
+    exit($hs);
 }
 
-if (@$_REQUEST["sid"] != "" && @$_REQUEST["ck"] != "") {
+// Process SID request
+if (!empty($sid) && !empty($cooks)) {
+    [$seq, $query] = explode('?', $sid, 2) + ['', ''];
+    $chs = explode('/', $seq);
 
-    $seq = explode('?', $sid);
-    $chs = explode('/', $seq[0]);
-    $link = "https://jiotvmbcod.cdn.jio.com/" . $chs[0] . "/" . $chs[1] . "/" . $chs[2] . "?" . $cook;
+    $link = sprintf(
+        "https://jiotvmbcod.cdn.jio.com/%s/%s/%s?%s",
+        $chs[0],
+        $chs[1],
+        $chs[2],
+        hex2bin($cooks)
+    );
+
     $hs = cUrlGetData($link, $headers);
-    $hs = @str_replace('https://tv.media.jio.com/streams_catchup/', 'cpauth.php?ck=' . $cooks . '&key=', $hs);
+    $base = 'cpauth.php?ck=' . $cooks;
 
-    if ($PROXY) {
-        $hs = @str_replace('https://jiotvmbcod.cdn.jio.com/', 'cpauth.php?ck=' . $cooks . '&tss=', $hs);
-    } else {
-        $hs = @str_replace(".ts", ".ts?" . hex2bin($cooks), $hs);
-    }
+    $hs = str_replace(
+        ['https://tv.media.jio.com/streams_catchup/', 'https://jiotvmbcod.cdn.jio.com/', '.ts'],
+        [
+            $base . '&key=',
+            $PROXY ? $base . '&tss=' : 'https://jiotvmbcod.cdn.jio.com/',
+            $PROXY ? '.ts' : '.ts?' . hex2bin($cooks)
+        ],
+        $hs
+    );
 
-    echo $hs;
+    exit($hs);
 }

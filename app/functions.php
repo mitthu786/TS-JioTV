@@ -1,6 +1,6 @@
 <?php
 
-// * Copyright 2021-2024 SnehTV, Inc.
+// * Copyright 2021-2025 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
@@ -129,7 +129,7 @@ function getCRED()
 function encrypt_data($data, $key)
 {
   $key = (int) $key;
-  $encrypted = array_map(fn ($char) => chr(ord($char) + $key), str_split($data));
+  $encrypted = array_map(fn($char) => chr(ord($char) + $key), str_split($data));
   return base64_encode(implode('', $encrypted));
 }
 
@@ -138,7 +138,7 @@ function decrypt_data($e_data, $key)
 {
   $key = (int) $key;
   $encrypted = base64_decode($e_data);
-  $decrypted = array_map(fn ($char) => chr(ord($char) - $key), str_split($encrypted));
+  $decrypted = array_map(fn($char) => chr(ord($char) - $key), str_split($encrypted));
   return implode('', $decrypted);
 }
 
@@ -176,4 +176,32 @@ function extractCookies($header)
     }
   }
   return $cookies;
+}
+
+function getUserData()
+{
+  $filePath = __DIR__ . "/assets/data/creds.jtv";
+  $key_data = file_get_contents(__DIR__ . "/assets/data/credskey.jtv");
+  $cred = decrypt_data(file_get_contents($filePath), $key_data);
+
+  $jio_cred = json_decode($cred, true) ?? [];
+
+  $name = $jio_cred['sessionAttributes']['user']['commonName'];
+  $mobile = $jio_cred['sessionAttributes']['user']['mobile'];
+  $jwt = $jio_cred['authToken'];
+  $parts = explode('.', $jwt);
+  $payload = base64_decode($parts[1]);
+  $expiry_time = json_decode($payload, true)['exp'];
+
+
+  $date = new DateTime();
+  $date->setTimestamp($expiry_time);
+  $date->setTimezone(new DateTimeZone('Asia/Kolkata'));
+  $exp_date_time = $date->format('d-M-Y h:i:s A');
+
+  return [
+    'name' => $name,
+    'mobile' => $mobile,
+    'exp_date_time' => $exp_date_time
+  ];
 }

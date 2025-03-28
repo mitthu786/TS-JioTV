@@ -1,60 +1,69 @@
 <?php
-
-// Copyright 2021-2024 SnehTV, Inc.
+// Copyright 2021-2025 SnehTV, Inc.
 // Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // Created By: TechieSneh
 
 error_reporting(0);
 include "functions.php";
 
+// Common headers
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Expose-Headers: Content-Length, Content-Range");
+header("Access-Control-Allow-Headers: Range");
+header("Accept-Ranges: bytes");
+
 // Fetch credentials
 $cred = getCRED();
-$jio_cred = json_decode($cred, true);
+$jio_cred = json_decode($cred, true) ?? [];
+if (!$jio_cred) die("Invalid credentials");
 
-if (!$jio_cred) {
-    die("Invalid credentials");
+[
+    'ssoToken' => $ssoToken,
+    'authToken' => $access_token,
+    'deviceId' => $device_id,
+    'sessionAttributes' => [
+        'user' => [
+            'subscriberId' => $crm,
+            'unique' => $uniqueId
+        ]
+    ]
+] = $jio_cred;
+
+// Process request
+$cookies = isset($_REQUEST['ck']) ? hex2bin($_REQUEST['ck']) : '';
+if (empty($cookies)) {
+    http_response_code(400);
+    die("Missing authentication token");
 }
 
-$ssoToken = $jio_cred['ssoToken'] ?? '';
-$access_token = $jio_cred['authToken'] ?? '';
-$crm = $jio_cred['sessionAttributes']['user']['subscriberId'] ?? '';
-$uniqueId = $jio_cred['sessionAttributes']['user']['unique'] ?? '';
-$device_id = $jio_cred['deviceId'] ?? '';
-
-$cookies = $_REQUEST["ck"] ?? '';
-$cookies = hex2bin($cookies);
 $headers = jio_headers($cookies, $access_token, $crm, $device_id, $ssoToken, $uniqueId);
 
-// Function to fetch and echo data
-function fetchAndEchoData($url, $headers)
-{
-    $data = cUrlGetData($url, $headers);
-    if ($data === false) {
-        http_response_code(500);
-        echo "Error fetching data from: $url";
-        return false;
-    }
-    echo $data;
-    return true;
-}
+// Determine request type
+$param = match (true) {
+    isset($_REQUEST['key']) => ['url' => 'streams_live/' . urlencode($_REQUEST['key']), 'type' => 'm3u8'],
+    isset($_REQUEST['pkey']) => ['url' => 'fallback/bpk-tv/' . urlencode($_REQUEST['pkey']), 'type' => 'm3u8'],
+    isset($_REQUEST['ts']) => [
+        'url' => $_REQUEST['ts'],
+        'type' => 'video/mp2t',
+        'headers' => ['Connection: keep-alive']
+    ],
+    default => null
+};
 
-if (!empty($_REQUEST["key"]) && !empty($cookies)) {
-    $url = 'https://tv.media.jio.com/streams_live/' . urlencode($_REQUEST["key"]);
-    fetchAndEchoData($url, $headers);
-} elseif (!empty($_REQUEST["pkey"]) && !empty($cookies)) {
-    $url = 'https://tv.media.jio.com/fallback/bpk-tv/' . urlencode($_REQUEST["pkey"]);
-    fetchAndEchoData($url, $headers);
-} elseif (!empty($_REQUEST["ts"]) && !empty($cookies)) {
-    header("Content-Type: video/mp2t");
-    header("Connection: keep-alive");
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Expose-Headers: Content-Length, Content-Range");
-    header("Access-Control-Allow-Headers: Range");
-    header("Accept-Ranges: bytes");
-
-    $url = 'https://jiotvmblive.cdn.jio.com/' . urlencode($_REQUEST["ts"]);
-    fetchAndEchoData($url, $headers);
-} else {
+if (!$param) {
     http_response_code(400);
-    echo "Invalid request parameters.";
+    die("Invalid request parameters");
 }
+
+// Set content headers
+header("Content-Type: {$param['type']}");
+foreach ($param['headers'] ?? [] as $header) header($header);
+
+// Fetch and output data
+if ($param['type'] === 'm3u8') {
+    $data = cUrlGetData("https://tv.media.jio.com/{$param['url']}", $headers);
+    echo $data ?: "Error fetching content";
+    exit;
+}
+$data = cUrlGetData("https://jiotvmblive.cdn.jio.com/{$param['url']}", $headers);
+echo $data ?: "Error fetching content";

@@ -1,6 +1,6 @@
 <?php
 
-// * Copyright 2021-2024 SnehTV, Inc.
+// * Copyright 2021-2025 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
@@ -15,44 +15,54 @@ $uniqueId = $jio_cred['sessionAttributes']['user']['unique'];
 $access_token = $jio_cred['authToken'];
 $device_id = $jio_cred['deviceId'];
 
-$ck = @$_REQUEST["ck"];
-$ts = @$_REQUEST['ts'];
-$id = @$_REQUEST["id"];
-$link = @$_REQUEST["link"];
-$data = @$_REQUEST['data'];
+$ck = $_REQUEST["ck"] ?? '';
+$ts = $_REQUEST['ts'] ?? '';
+$id = $_REQUEST["id"] ?? '';
+$link = $_REQUEST["link"] ?? '';
+$data = $_REQUEST['data'] ?? '';
+
 $headers = jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, $ssoToken);
 
-if (!empty($_REQUEST["link"]) && !empty($_REQUEST["data"])) {
-    header("Content-Type: application/vnd.apple.mpegurl");
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Expose-Headers: Content-Length,Content-Range");
-    header("Access-Control-Allow-Headers: Range");
-    header("Accept-Ranges: bytes");
+// Common headers for all responses
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Expose-Headers: Content-Length,Content-Range");
+header("Access-Control-Allow-Hheaders: Range");
+header("Accept-Ranges: bytes");
 
-    $new_link = $link . '/' . $data;
-    $content = cUrlGetData($new_link, $headers);
-    $content = @str_replace('sonyliv_', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/sonyliv_', $content);
+if ($link && $data) {
+    header("Content-Type: application/vnd.apple.mpegurl");
+
+    $content = cUrlGetData("$link/$data", $headers);
+    
+    $basePath = "cpSonyAuth.php?id=$id&ck=$ck&ts=$link/";
+
+    // Pattern replacements
+    $content = str_replace('sonyliv_', "$basePath" . 'sonyliv_', $content);
 
     if (strpos($content, 'WL/') === false) {
-        $content = @str_replace('movie_', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/movie_', $content);
+        $content = str_replace('movie_', "$basePath" . 'movie_', $content);
     } else {
-        $content = @str_replace('WL/', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/WL/', $content);
+        $content = str_replace('WL/', "$basePath" . 'WL/', $content);
     }
 
-    $lastSlashPos = strrpos($data, '/');
-    $trimmedUrl = substr($data, 0, $lastSlashPos);
-    $content = @str_replace('segment-', 'cpSonyAuth.php?id=' . $id . '&ck=' . $ck . '&ts=' . $link . '/' . $trimmedUrl . '/segment-', $content);
+    if (strpos($content, 'WL2/') === false) {
+        $content = str_replace('movie_', "$basePath" . 'movie_', $content);
+    } else {
+        $content = str_replace('WL2/', "$basePath" . 'WL2/', $content);
+    }
+
+    // Segment path handling
+    $trimmedPath = substr($data, 0, strrpos($data, '/'));
+    $content = str_replace('segment-', "$basePath$trimmedPath/segment-", $content);
+
     echo $content;
+    exit;
 }
 
-if (!empty($_REQUEST["ts"]) && !empty($_REQUEST["ck"])) {
+if ($ts && $ck) {
     header("Content-Type: video/mp2t");
     header("Connection: keep-alive");
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Expose-Headers: Content-Length,Content-Range");
-    header("Access-Control-Allow-Headers: Range");
-    header("Accept-Ranges: bytes");
 
-    $content = cUrlGetData($ts, $headers);
-    echo $content;
+    echo cUrlGetData($ts, $headers);
+    exit;
 }

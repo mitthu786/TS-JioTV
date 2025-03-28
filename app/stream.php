@@ -1,64 +1,57 @@
 <?php
-
-// Copyright 2021-2024 SnehTV, Inc.
+// Copyright 2021-2025 SnehTV, Inc.
 // Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // Created By: TechieSneh
 
 error_reporting(0);
 include "functions.php";
 
+// Set common headers
 header("Content-Type: application/vnd.apple.mpegurl");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Expose-Headers: Content-Length, Content-Range");
 header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
-// Retrieve and sanitize input parameters
-$id = isset($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '';
-$cid = isset($_REQUEST["cid"]) ? htmlspecialchars($_REQUEST["cid"]) : '';
-$cooks = isset($_REQUEST["ck"]) ? htmlspecialchars($_REQUEST["ck"]) : '';
+// Get and sanitize parameters
+$id = htmlspecialchars($_REQUEST['id'] ?? '');
+$cid = htmlspecialchars($_REQUEST['cid'] ?? '');
+$cooks = htmlspecialchars($_REQUEST['ck'] ?? '');
 
-if ($cid !== '' && $cooks !== '') {
-
-    $chs = explode('-', $id);
-
-    // Prepare headers
-    $headers = [
-        'Cookie: ' . hex2bin($cooks),
-        'Content-Type: application/x-www-form-urlencoded',
-        'User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7',
-    ];
-
-    // Fetch data
-    $url = "https://jiotvmblive.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/{$id}";
-    $hs = cUrlGetData($url, $headers);
-    $cooKee = get_and_refresh_cookie($url, $headers);
-
-    $search = [
-        ',URI="https://tv.media.jio.com/fallback/bpk-tv/',
-        "{$chs[0]}-"
-    ];
-
-    if ($PROXY) {
-        $replace = [
-            ',URI="auth.php?ck=' . $cooKee . '&pkey=',
-            "auth.php?ck=$cooKee&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-"
-        ];
-    } else {
-        $cookies_1 = hex2bin($cooKee);
-        $search[] = ".ts";
-        $replace = [
-            ',URI="auth.php?ck=' . $cooKee . '&pkey=',
-            "https://jiotvmblive.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
-            ".ts?{$cookies_1}"
-        ];
-    }
-
-    // Perform search and replace in the response
-    $hs = str_replace($search, $replace, $hs);
-    echo $hs;
-} else {
-    // Handle missing parameters
+if (empty($cid) || empty($cooks)) {
     http_response_code(400);
-    echo "Missing required parameters.";
+    exit("Missing required parameters");
 }
+
+// Process request
+$chs = explode('-', $id);
+$cookie = hex2bin($cooks);
+
+// Prepare headers
+$headers = [
+    'Cookie: ' . $cookie,
+    'Content-Type: application/x-www-form-urlencoded',
+    'User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7'
+];
+
+// Fetch data
+$url = sprintf("https://jiotvmblive.cdn.jio.com/bpk-tv/%s/Fallback/%s", $chs[0], $id);
+$hs = cUrlGetData($url, $headers);
+$cuk = get_and_refresh_cookie($url, $headers);
+
+// Prepare replacement arrays
+[$search, $replace] = $PROXY
+    ? [
+        [',URI="https://tv.media.jio.com/fallback/bpk-tv/', $chs[0] . '-', '.ts'],
+        [',URI="auth.php?ck=' . $cuk . '&pkey=', "auth.php?ck=$cuk&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-", '']
+    ]
+    : [
+        [',URI="https://tv.media.jio.com/fallback/bpk-tv/', $chs[0] . '-', '.ts'],
+        [
+            ',URI="auth.php?ck=' . $cuk . '&pkey=',
+            "https://jiotvmblive.cdn.jio.com/bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-",
+            ".ts?" . hex2bin($cuk)
+        ]
+    ];
+
+echo str_replace($search, $replace, $hs);

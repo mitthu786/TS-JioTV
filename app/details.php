@@ -1,12 +1,12 @@
 <?php
-
-// * Copyright 2021-2024 SnehTV, Inc.
+// * Copyright 2021-2025 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
 error_reporting(0);
 $data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
 $data = explode('=?=', $data);
+// print_r($data);die();
 $cid = $data[0];
 $id = $data[1];
 $name = strtoupper(str_replace('_', ' ', $cid));
@@ -15,146 +15,277 @@ $c = $data[2];
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $local_ip = getHostByName(php_uname('n'));
-$ip_port = $_SERVER['SERVER_PORT'];
-if ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" || 'localhost') {
-  $host_jio = $_SERVER['HTTP_HOST'];
-} else {
-  $host_jio = $local_ip;
-}
+$host_jio = ($_SERVER['SERVER_ADDR'] !== "127.0.0.1" && $_SERVER['SERVER_ADDR'] !== 'localhost')
+  ? $_SERVER['HTTP_HOST']
+  : $local_ip . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '');
 
-$jio_path = $protocol . $host_jio  . str_replace(" ", "%20", str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
-$jio_path = substr($jio_path, 0, -1);
+$jio_path = $protocol . $host_jio . str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
+$jio_path = rtrim($jio_path, '/');
 
 $file_path = 'assets/data/credskey.jtv';
 $file_exists = file_exists($file_path);
+
+// Fetch EPG data
+function getEPGData($id)
+{
+  $headers = [
+    'Host' => 'jiotvapi.cdn.jio.com',
+    'user-agent' => 'okhttp/4.9.3',
+    'Accept-Encoding' => 'gzip'
+  ];
+
+  $context = stream_context_create([
+    'http' => [
+      'method' => 'GET',
+      'header' => implode("\r\n", array_map(
+        fn($k, $v) => "$k: $v",
+        array_keys($headers),
+        $headers
+      ))
+    ]
+  ]);
+
+  $url = "https://jiotvapi.cdn.jio.com/apis/v1.3/getepg/get?offset=0&channel_id=$id&langId=6";
+  $response = @file_get_contents($url, false, $context);
+
+  return $response ? @json_decode(gzdecode($response), true) : null;
+}
+
+$catchupDataArr = getEPGData($id);
+
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title><?php echo $name; ?> | JioTV +</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="description" content="ENJOY FREE LIVE TV">
-  <meta name="keywords" content="LIVETV, SPORTS, MOVIES, MUSIC">
-  <meta name="author" content="TSNEH">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/details.css">
-  <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/BcjC6R8/jiotv.png">
-  <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
-  <script type="text/javascript" src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= $name ?> | JioTV+ ReBorn</title>
+  <link rel="icon" href="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+  <style>
+    .glass-effect {
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #8B5CF6, #EC4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .date-card {
+      background: rgba(31, 41, 55, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .date-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+  </style>
 </head>
 
-<body>
-  <header>
-    <div id="jtvh1">
-      <img src="https://i.ibb.co/BcjC6R8/jiotv.png" alt="JIOTV+">
-    </div>
-    <div id="userButtons">
-      <button class="Btns" id="homeButton">Home</button>
-      <button class="Btns" id="refreshButton">Refresh</button>
-      <button class="Btns" id="logoutButton">Logout</button>
+<body class="bg-gray-900 text-gray-100">
+  <header class="bg-gray-800 shadow-xl">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <div data-aos="fade-right">
+        <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+" class="h-12">
+      </div>
+      <!-- In Header Section -->
+      <div id="userButtons" class="flex gap-2" data-aos="fade-left">
+        <button onclick="window.location.href='../'" class="p-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all group relative" id="loginButton">
+          <span class="iconify text-xl" data-icon="mdi:home"></span>
+          <span class="sr-only">Home</span>
+        </button>
+
+        <button class="p-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all group relative" id="refreshButton">
+          <span class="iconify text-xl" data-icon="mdi:reload"></span>
+          <span class="sr-only">Refresh</span>
+        </button>
+
+        <button class="p-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all group relative" id="logoutButton">
+          <span class="iconify text-xl" data-icon="mdi:logout"></span>
+          <span class="sr-only">Logout</span>
+        </button>
+      </div>
     </div>
   </header>
-  </br>
-  <div style="text-align: center;">
-    <img src="<?php echo $image; ?>" alt="Logo" width="200px" style="margin-left: auto; margin-right: auto; display: block" />
-    <?php
-    $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = bin2hex($cp_link_live);
-    echo <<<GFG
-    <h2 id="jtvh1"> $name </h2>
-    <a href="$jio_path/play_$cp_link_live" class="btn btn-danger">LIVE</a>
-    GFG;
-    ?>
-    <hr width="50%" color="red">
-  </div></br>
-  <?php if ($c == "y") {
-    $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = bin2hex($cp_link_live);
-    echo <<<GFG
-        <div class="card-container">
-    GFG;
-    for ($i = 0; $i >= -7; $i--) {
-      $cp_link = $cid . '=?=' . $id . '=?=' . $i;
-      $cp_link = bin2hex($cp_link);
 
-      $currentDate = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
-      $prevDate = clone $currentDate;
-      $prevDate->modify("$i day");
 
-      $day = $prevDate->format('d');
-      $month = $prevDate->format('F');
-      $year = $prevDate->format('Y');
-      $weekName = $prevDate->format('l');
+  <main class="container mx-auto pt-24 pb-12 px-4">
+    <div class="glass-effect rounded-2xl p-4 md:p-8 mb-6 md:mb-8 mx-2 md:mx-0" data-aos="fade-up">
+      <div class="text-center space-y-4 md:space-y-6">
+        <img src="<?= $image ?>" alt="<?= $name ?>"
+          class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-xl mb-4 md:mb-6 shadow-lg">
 
-      echo <<<GFG
-      <div class="card">
-        <div id="DateCard">
-          <div id="day">$day</div>
-          <div class="layer2">
-            <span id="day_name">$weekName</span>
-            <span id="month_name">$month</span>
-            <span id="year">$year</span>          
+        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-2 md:mb-4">
+          <?= $name ?>
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 justify-items-center">
+
+          <?php
+          date_default_timezone_set('Asia/Kolkata');
+
+          $currentDate = date('d-M-Y');
+          $currentTime = date('h:i A');
+          ?>
+
+          <div class="flex items-center space-x-2 text-sm md:text-base">
+            <span class="iconify" data-icon="mdi:calendar"></span>
+            <span><?= $currentDate ?></span>
+          </div>
+          <div class="flex items-center space-x-2 text-sm md:text-base">
+            <span class="iconify" data-icon="mdi:clock-time-four"></span>
+            <span id="live-clock"><?= $currentTime ?></span>
           </div>
         </div>
-        <a href="$jio_path/catchup/cp_$cp_link" class="btn btn-primary">WATCH</a>
+
+        <!-- <p class="text-gray-300 text-xs md:text-sm line-clamp-3 md:line-clamp-4 px-2 md:px-0">
+          Description
+        </p> -->
+
+        <a href="<?= $jio_path . '/play_' . bin2hex($cid . '=?=' . $id) ?>"
+          class="inline-block w-full sm:w-auto px-4 py-2 md:px-8 md:py-3 
+                  bg-gradient-to-r from-purple-600 to-pink-600 
+                  hover:from-purple-700 hover:to-pink-700 
+                  rounded-lg font-medium text-sm md:text-base 
+                  transition-all transform hover:scale-105"
+          data-aos="zoom-in">
+          Watch Live
+        </a>
       </div>
-      GFG;
+    </div>
+
+    <!-- Catchup Section -->
+    <?php if ($c == true): ?>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
+        <?php for ($i = 0; $i >= -7; $i--):
+          $cp_link = bin2hex($cid . '=?=' . $id . '=?=' . $i);
+          $currentDate = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
+          $prevDate = clone $currentDate;
+          $prevDate->modify("$i day");
+
+          $day = $prevDate->format('d');
+          $month = $prevDate->format('F');
+          $year = $prevDate->format('Y');
+          $weekName = $prevDate->format('l');
+        ?>
+          <div class="date-card rounded-xl p-6 text-center">
+            <div class="mb-4">
+              <div class="text-4xl font-bold text-purple-400"><?= $day ?></div>
+              <div class="text-gray-400 text-sm mt-2">
+                <div><?= $weekName ?></div>
+                <div><?= $month ?> <?= $year ?></div>
+              </div>
+            </div>
+            <a href="<?= $jio_path ?>/catchup/cp_<?= $cp_link ?>"
+              class="inline-block w-full sm:w-auto px-4 py-2 bg-purple-800 hover:bg-purple-700 rounded-lg transition-colors">
+              Watch Catchup
+            </a>
+          </div>
+        <?php endfor; ?>
+      </div>
+    <?php else: ?>
+      <div class="glass-effect rounded-2xl p-8 text-center" data-aos="fade-up">
+        <div class="text-2xl gradient-text font-bold mb-4">Catchup Not Available</div>
+        <p class="text-gray-400">This channel doesn't support catchup viewing</p>
+      </div>
+    <?php endif; ?>
+  </main>
+
+  <!-- Login Modal -->
+  <?php if (!$file_exists): ?>
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
+      <div class="glass-effect rounded-xl p-6 max-w-md w-full transform transition-all" data-aos="zoom-in">
+        <h2 class="text-2xl font-bold gradient-text mb-4">🔐 Login Required</h2>
+        <p class="text-gray-400 mb-6">Sign in to access premium content</p>
+        <div class="flex justify-end gap-2">
+          <a href="login"
+            class="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:opacity-90 transition-opacity">
+            Continue to Login
+          </a>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <!-- LogOut Modal -->
+  <div id="logoutModal" class="hidden fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-gray-800 rounded-xl p-6 max-w-md w-full border border-gray-700 transform transition-all" data-aos="zoom-in">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">🚪 Confirm Logout</h2>
+      <p class="text-gray-400 mb-6">
+        Are you sure you want to logout? You'll need to login again to access premium content.
+      </p>
+      <div class="flex justify-end gap-2">
+        <button class="px-6 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+          onclick="closeLogoutModal()">
+          Cancel
+        </button>
+        <button class="px-6 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+          onclick="performLogout('dt')">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refresh Modal -->
+  <div id="refreshModal" class="hidden fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-gray-800 rounded-xl p-6 max-w-md w-full border border-gray-700 transform transition-all" data-aos="zoom-in">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">🔄 Refresh Authentication</h2>
+      <p class="text-gray-400 mb-6">
+        Are you sure you want to refresh your authentication? This will update your session credentials.
+      </p>
+      <div class="flex justify-end gap-2">
+        <button class="px-6 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+          onclick="closeRefreshModal()">
+          Cancel
+        </button>
+        <button class="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+          onclick="performRefresh('dt')">
+          Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-gray-800 mt-12 py-4">
+    <div class="container mx-auto text-center text-gray-400">
+      <p>&copy; 2021-<?= date('Y') ?> SnehTV, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="assets/js/button.js"></script>
+  <script>
+    // Initialize animations
+    AOS.init({
+      duration: 800,
+      once: false,
+      easing: 'ease-in-out-quad'
+    });
+
+    // Real-time clock update
+    function updateClock() {
+      const timeElement = document.getElementById('live-clock');
+      if (timeElement) {
+        timeElement.textContent = new Date().toLocaleTimeString();
+      }
     }
-    echo <<<GFG
-  </div>
-  GFG;
-  }
-  if ($c == "n") {
-    $cp_link_live = $cid . '=?=' . $id;
-    $cp_link_live = bin2hex($cp_link_live);
-    echo <<<GFG
-  <div class="card-container">
-    <div class="red_card">
-      <h2 id="jtvh1"> OOPS !! CATCHUP NOT AVAILABLE </h2>
-    </div>
-  </div>
-  GFG;
-  }
-  ?>
-  </br>
+    setInterval(updateClock, 1000);
 
-  <?php if (!$file_exists) : ?>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="LoginModal">🔐 TS-JioTV : Login Portal</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Log in to enjoy seamless, uninterrupted access to all our live TV channels and premium content.
-          </div>
-          <div class="modal-footer">
-            <a href="login" class="btn btn-primary">Login</a>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif; ?>
+    // Update the logout button event listener
+    document.getElementById("logoutButton").addEventListener("click", showLogoutModal);
 
-  <script src="assets/js/details.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-
-  <?php if (!$file_exists) : ?>
-    <script>
-      $(document).ready(function() {
-        $('#myModal').modal('show');
-      });
-    </script>
-  <?php endif; ?>
+    // Update the refresh button event listener
+    document.getElementById("refreshButton").addEventListener("click", showRefreshModal);
+  </script>
 </body>
 
 </html>
