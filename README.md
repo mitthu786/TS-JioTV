@@ -43,9 +43,9 @@
 
 <div align="center">
   <h3>🖥️ Desktop & TV Interface</h3>
-  <img src="https://i.ibb.co/7JK6kWzx/d-1.png" alt="PC Home" width="300" height="170">
-  <img src="https://i.ibb.co/B5z65DZk/d-2.png" alt="PC 7-Day Catchup" width="300" height="170">
-  <img src="https://i.ibb.co/vC0SgCq1/d-3.png" alt="PC Catchup Playback" width="300" height="170">
+  <img src="https://i.ibb.co/7JK6kWzx/d-1.png" alt="PC Home" width="300">
+  <img src="https://i.ibb.co/B5z65DZk/d-2.png" alt="PC 7-Day Catchup" width="300">
+  <img src="https://i.ibb.co/vC0SgCq1/d-3.png" alt="PC Catchup Playback" width="300">
 </div>
 
 ---
