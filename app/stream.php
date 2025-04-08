@@ -43,7 +43,7 @@ $cuk = get_and_refresh_cookie($url, $headers);
 [$search, $replace] = $PROXY
     ? [
         [',URI="https://tv.media.jio.com/fallback/bpk-tv/', $chs[0] . '-', '.ts'],
-        [',URI="auth.php?ck=' . $cuk . '&pkey=', "auth.php?ck=$cuk&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-", '']
+        [',URI="auth.php?ck=' . $cuk . '&pkey=', "auth.php?ck=$cuk&ts=bpk-tv/{$chs[0]}/Fallback/{$chs[0]}-", '.ts']
     ]
     : [
         [',URI="https://tv.media.jio.com/fallback/bpk-tv/', $chs[0] . '-', '.ts'],

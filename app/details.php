@@ -6,7 +6,6 @@
 error_reporting(0);
 $data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
 $data = explode('=?=', $data);
-// print_r($data);die();
 $cid = $data[0];
 $id = $data[1];
 $name = strtoupper(str_replace('_', ' ', $cid));
@@ -24,34 +23,6 @@ $jio_path = rtrim($jio_path, '/');
 
 $file_path = 'assets/data/credskey.jtv';
 $file_exists = file_exists($file_path);
-
-// Fetch EPG data
-function getEPGData($id)
-{
-  $headers = [
-    'Host' => 'jiotvapi.cdn.jio.com',
-    'user-agent' => 'okhttp/4.9.3',
-    'Accept-Encoding' => 'gzip'
-  ];
-
-  $context = stream_context_create([
-    'http' => [
-      'method' => 'GET',
-      'header' => implode("\r\n", array_map(
-        fn($k, $v) => "$k: $v",
-        array_keys($headers),
-        $headers
-      ))
-    ]
-  ]);
-
-  $url = "https://jiotvapi.cdn.jio.com/apis/v1.3/getepg/get?offset=0&channel_id=$id&langId=6";
-  $response = @file_get_contents($url, false, $context);
-
-  return $response ? @json_decode(gzdecode($response), true) : null;
-}
-
-$catchupDataArr = getEPGData($id);
 
 ?>
 <!DOCTYPE html>
@@ -165,26 +136,39 @@ $catchupDataArr = getEPGData($id);
     <!-- Catchup Section -->
     <?php if ($c == true): ?>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
-        <?php for ($i = 0; $i >= -7; $i--):
-          $cp_link = bin2hex($cid . '=?=' . $id . '=?=' . $i);
-          $currentDate = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
-          $prevDate = clone $currentDate;
-          $prevDate->modify("$i day");
+        <?php
+        $daysToShow = 7;
+        $timezone = new DateTimeZone('Asia/Kolkata');
+        $currentDate = new DateTime('now', $timezone);
 
-          $day = $prevDate->format('d');
-          $month = $prevDate->format('F');
-          $year = $prevDate->format('Y');
-          $weekName = $prevDate->format('l');
+        for ($i = 0; $i >= -$daysToShow; $i--):
+          $date = clone $currentDate;
+          $date->modify("$i day");
+
+          $formats = [
+            'day' => 'd',
+            'month' => 'F',
+            'year' => 'Y',
+            'weekday' => 'l'
+          ];
+
+          $dateComponents = [];
+          foreach ($formats as $key => $format) {
+            $dateComponents[$key] = $date->format($format);
+          }
+
+          $dataToEncode = implode('=?=', [$cid, $id, $i]);
+          $cp_link = bin2hex($dataToEncode);
         ?>
-          <div class="date-card rounded-xl p-6 text-center">
+          <div class="date-card rounded-xl p-6 text-center hover:scale-[1.02] transition-transform">
             <div class="mb-4">
-              <div class="text-4xl font-bold text-purple-400"><?= $day ?></div>
+              <div class="text-4xl font-bold text-purple-400"><?= htmlspecialchars($dateComponents['day']) ?></div>
               <div class="text-gray-400 text-sm mt-2">
-                <div><?= $weekName ?></div>
-                <div><?= $month ?> <?= $year ?></div>
+                <div><?= htmlspecialchars($dateComponents['weekday']) ?></div>
+                <div><?= htmlspecialchars($dateComponents['month']) ?> <?= htmlspecialchars($dateComponents['year']) ?></div>
               </div>
             </div>
-            <a href="<?= $jio_path ?>/catchup/cp_<?= $cp_link ?>"
+            <a href="<?= htmlspecialchars($jio_path) ?>/catchup/cp_<?= htmlspecialchars($cp_link) ?>"
               class="inline-block w-full sm:w-auto px-4 py-2 bg-purple-800 hover:bg-purple-700 rounded-lg transition-colors">
               Watch Catchup
             </a>

@@ -145,3 +145,28 @@ function decrypt_data($e_data, $key)
   }
   return $decrypted;
 }
+
+function getEPGData($id, $pg)
+{
+  $headers = [
+    'Host' => 'jiotvapi.cdn.jio.com',
+    'user-agent' => 'okhttp/4.9.3',
+    'Accept-Encoding' => 'gzip'
+  ];
+
+  $context = stream_context_create([
+    'http' => [
+      'method' => 'GET',
+      'header' => implode("\r\n", array_map(
+        fn($k, $v) => "$k: $v",
+        array_keys($headers),
+        $headers
+      ))
+    ]
+  ]);
+
+  $url = "https://jiotvapi.cdn.jio.com/apis/v1.3/getepg/get?offset=$pg&channel_id=$id&langId=6";
+  $response = @file_get_contents($url, false, $context);
+
+  return $response ? @json_decode(gzdecode($response), true) : null;
+}

@@ -86,6 +86,10 @@ if (isset($_GET['data'])) {
 
                 player.on('error', (e) => {
                     console.error('Player error:', e);
+                    player.load({
+                        file: 'https://snehtv.vercel.app/video/tsjiotv.m3u8',
+                        type: 'hls'
+                    });
                 });
             });
          </script>

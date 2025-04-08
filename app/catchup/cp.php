@@ -4,6 +4,7 @@
 // * Created By : TechieSneh
 
 error_reporting(0);
+include "cpfunctions.php";
 
 // Get protocol and host information
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
@@ -36,31 +37,6 @@ $file_path = '../assets/data/credskey.jtv';
 $file_exists = file_exists($file_path);
 
 // Fetch EPG data
-function getEPGData($id, $pg)
-{
-  $headers = [
-    'Host' => 'jiotvapi.cdn.jio.com',
-    'user-agent' => 'okhttp/4.9.3',
-    'Accept-Encoding' => 'gzip'
-  ];
-
-  $context = stream_context_create([
-    'http' => [
-      'method' => 'GET',
-      'header' => implode("\r\n", array_map(
-        fn($k, $v) => "$k: $v",
-        array_keys($headers),
-        $headers
-      ))
-    ]
-  ]);
-
-  $url = "https://jiotvapi.cdn.jio.com/apis/v1.3/getepg/get?offset=$pg&channel_id=$id&langId=6";
-  $response = @file_get_contents($url, false, $context);
-
-  return $response ? @json_decode(gzdecode($response), true) : null;
-}
-
 $catchupDataArr = getEPGData($id, $pg);
 
 // Function to format epoch time

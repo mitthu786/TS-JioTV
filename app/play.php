@@ -57,12 +57,12 @@ $id = $data[1];
         }
     </style>
     <video id="myElement"></video>
-    <script type="text/JavaScript">
+    <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
-            const player = jwplayer("myElement").setup({
-                title: '<?= $name; ?>',
+            const playerConfig = {
+                title: '<?= $name ?>',
                 description: "SnehTV",
-                image: 'https://jiotv.catchup.cdn.jio.com/dare_images/images/<?= $cid; ?>.png',
+                image: 'https://jiotv.catchup.cdn.jio.com/dare_images/images/<?= $cid ?>.png',
                 skin: {
                     name: "netflix"
                 },
@@ -70,13 +70,22 @@ $id = $data[1];
                 width: '100%',
                 mute: false,
                 autostart: true,
-                file: "ts_live_<?= $id; ?>.m3u8",
-                type: "mp4",
-                captions: {color: '#fff',fontSize: 16,backgroundOpacity: 0}
-            });
+                file: "ts_live_<?= $id ?>.m3u8",
+                type: "hls",
+                captions: {
+                    color: '#fff',
+                    fontSize: 16,
+                    backgroundOpacity: 0
+                }
+            };
+            const player = jwplayer("myElement").setup(playerConfig);
 
             player.on('error', (e) => {
                 console.error('Player error:', e);
+                player.load({
+                    file: 'https://snehtv.vercel.app/video/tsjiotv.m3u8',
+                    type: 'hls'
+                });
             });
         });
     </script>
