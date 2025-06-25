@@ -3,13 +3,14 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
+error_reporting(0);
+include "app/functions.php";
+
 $file_path = __DIR__ . '/app/assets/data/credskey.jtv';
 $file_exists = file_exists($file_path);
+$isApache = isApache();
 
 if ($file_exists) {
-    error_reporting(0);
-    include "app/functions.php";
-
     $user_data = getUserData();
     $name = $user_data['name'];
     $mobile = $user_data['mobile'];
@@ -225,6 +226,10 @@ if ($file_exists) {
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Custom Scripts -->
+    <script>
+        const isApache = <?= $isApache ? 'true' : 'false' ?>;
+        const url_host = isApache ? "app/details_" : "app/details.php?data=";
+    </script>
     <script src="app/assets/js/search.js"></script>
     <script src="app/assets/js/button.js"></script>
     <script>

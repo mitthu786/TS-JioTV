@@ -23,8 +23,30 @@ $jio_path = $protocol . $host_jio . str_replace(basename($_SERVER['PHP_SELF']), 
 $jio_path = rtrim($jio_path, '/');
 
 // Process request data
-$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
-$data = explode("=?=", $data);
+$data = null;
+if (isset($_GET['data'])) {
+  $hex = $_GET['data'];
+} else {
+  $parts = explode('_', $_SERVER['REQUEST_URI']);
+  if (isset($parts[1])) {
+    $hex = $parts[1];
+  } else {
+    $hex = '';
+  }
+}
+
+if (isApache()) {
+  $cp_url_host = "/cplay_";
+} else {
+  $cp_url_host = "/cplay.php?data=";
+}
+
+
+if (!empty($hex)) {
+  $decoded = hex2bin($hex);
+  $data = explode('=?=', $decoded);
+}
+
 $id = $data[1];
 $cid = str_replace("_", " ", $data[0]);
 $pg = $data[2];
@@ -151,7 +173,7 @@ function getFormattedTime($startEpoch)
             $begin,
             $end
           ]);
-          $link = $jio_path . '/cplay_' . bin2hex($data);
+          $link = $jio_path . $cp_url_host . bin2hex($data);
         ?>
           <div class="episode-card rounded-xl p-6" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
             <img src="<?= htmlspecialchars($episodePoster) ?>"

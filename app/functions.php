@@ -4,8 +4,9 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
-// Set Proxy  
-$PROXY = false;
+// Load configuration 
+$config = parse_ini_file('../config.ini', true);
+$PROXY = $config['settings']['proxy'] ?? null;
 
 // Constants
 define('DATA_FOLDER', 'assets/data');
@@ -27,6 +28,21 @@ if (strpos($host_jio, $_SERVER['SERVER_PORT']) === false) {
 
 // Build Jio path
 $jio_path = $protocol . $host_jio . str_replace(' ', '%20', str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']));
+
+// Check if server is Apache compatible
+function isApache(): bool
+{
+  $software = strtolower($_SERVER['SERVER_SOFTWARE'] ?? '');
+  $compatibleServers = ['apache', 'litespeed', 'openlitespeed'];
+
+  foreach ($compatibleServers as $server) {
+    if (strpos($software, strtolower($server)) !== false) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 // Refresh token if necessary
 function refresh_token()
@@ -84,7 +100,7 @@ function jio_headers($cookies, $access_token, $crm, $device_id, $ssoToken, $uniq
     "uniqueId: $uniqueId",
     "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7",
     "usergroup: tvYR7NSNn7rymo3F",
-    "versionCode: 331",
+    "versionCode: 353",
     "Origin: https://www.jiocinema.com",
     "Referer: https://www.jiocinema.com/",
   ];
@@ -204,4 +220,50 @@ function getUserData()
     'mobile' => $mobile,
     'exp_date_time' => $exp_date_time
   ];
+}
+
+// JIOTV FUNCTIONS
+
+function getJioTvData($id)
+{
+
+  // Get credentials
+  $cred = getCRED();
+  $jio_cred = json_decode($cred, true) ?? [];
+  extract($jio_cred['sessionAttributes']['user'] ?? []);
+
+  $access_token = $jio_cred['authToken'] ?? '';
+  $crm = $subscriberId ?? '';
+  $uniqueId = $unique ?? '';
+  $device_id = $jio_cred['deviceId'] ?? '';
+
+  $post_data = http_build_query(['stream_type' => 'Seek', 'channel_id' => $id]);
+
+  $headers = [
+    "Host: jiotvapi.media.jio.com",
+    "Content-Type: application/x-www-form-urlencoded",
+    "appkey: NzNiMDhlYzQyNjJm",
+    "channel_id: $id",
+    "userid: $crm",
+    "crmid: $crm",
+    "deviceId: $device_id",
+    "devicetype: phone",
+    "isott: true",
+    "languageId: 6",
+    "lbcookie: 1",
+    "os: android",
+    "dm: Xiaomi 22101316UP",
+    "osversion: 14",
+    "srno: 240303144000",
+    "accesstoken: $access_token",
+    "subscriberid: $crm",
+    "uniqueId: $uniqueId",
+    "content-length: " . strlen($post_data),
+    "usergroup: tvYR7NSNn7rymo3F",
+    "User-Agent: okhttp/4.9.3",
+    "versionCode: 353",
+  ];
+
+  $response = cUrlGetData("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", $headers, $post_data);
+  return json_decode($response);
 }

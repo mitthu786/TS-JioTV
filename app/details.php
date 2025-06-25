@@ -4,8 +4,33 @@
 // * Created By : TechieSneh
 
 error_reporting(0);
-$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
-$data = explode('=?=', $data);
+include "functions.php";
+
+$data = null;
+if (isset($_GET['data'])) {
+  $hex = $_GET['data'];
+} else {
+  $parts = explode('_', $_SERVER['REQUEST_URI']);
+  if (isset($parts[1])) {
+    $hex = $parts[1];
+  } else {
+    $hex = '';
+  }
+}
+
+if (isApache()) {
+  $url_host = "/play_";
+  $cp_url_host = "/catchup/cp_";
+} else {
+  $url_host = "/play.php?data=";
+  $cp_url_host = "/catchup/cp.php?data=";
+}
+
+if (!empty($hex)) {
+  $decoded = hex2bin($hex);
+  $data = explode('=?=', $decoded);
+}
+
 $cid = $data[0];
 $id = $data[1];
 $name = strtoupper(str_replace('_', ' ', $cid));
@@ -121,7 +146,7 @@ $file_exists = file_exists($file_path);
           Description
         </p> -->
 
-        <a href="<?= $jio_path . '/play_' . bin2hex($cid . '=?=' . $id) ?>"
+        <a href="<?= $jio_path .  $url_host . bin2hex($cid . '=?=' . $id) ?>"
           class="inline-block w-full sm:w-auto px-4 py-2 md:px-8 md:py-3 
                   bg-gradient-to-r from-purple-600 to-pink-600 
                   hover:from-purple-700 hover:to-pink-700 
@@ -168,7 +193,7 @@ $file_exists = file_exists($file_path);
                 <div><?= htmlspecialchars($dateComponents['month']) ?> <?= htmlspecialchars($dateComponents['year']) ?></div>
               </div>
             </div>
-            <a href="<?= htmlspecialchars($jio_path) ?>/catchup/cp_<?= htmlspecialchars($cp_link) ?>"
+            <a href="<?= htmlspecialchars($jio_path) . $cp_url_host . htmlspecialchars($cp_link) ?>"
               class="inline-block w-full sm:w-auto px-4 py-2 bg-purple-800 hover:bg-purple-700 rounded-lg transition-colors">
               Watch Catchup
             </a>

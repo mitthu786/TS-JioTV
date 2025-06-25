@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://i.ibb.co/BcjC6R8/jiotv.png" width="120">
-  <h1 align="center">TS-JioTV</h1>
+  <h1 align="center">TS-JioTV : ReBorn</h1>
   <p align="center">PHP Script for JioTV Streaming with Catchup & Multi-Device Support</p>
   
   [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
@@ -22,6 +22,7 @@
 - 🎬 **Multi-Audio Streaming Support**
 - 🌐 **Adaptive Streaming with Quality Selection**
 - 💻 **Cross-Platform Compatibility (Mobile, Android TV, PC Browsers)**
+- 📱 **Added Non-Apache Compatibility**
 
 ### 💖 **Next-Gen Player Features:**
 
@@ -61,7 +62,7 @@
 
 #### 🖥️ Windows & Linux Users:
 
-- **XAMPP (Apache + PHP)**
+- **XAMPP (Apache + PHP) [Now Support `Nginx` and `LiteSpeed`]**
 - 📥 [Download XAMPP](https://www.apachefriends.org/download.html)
 
 ### 🅱️ **Step 2: Get TS-JioTV Files**
@@ -96,21 +97,19 @@
 
 ## 🌍 Proxy Support (For Users Outside India)
 
-- **Enable Proxy:** Edit these files and set `$PROXY = true;`
-  - `app/functions.php`
-  - `app/catchup/cpfunctions.php`
-  ```php
+- **Enable Proxy:** Edit `config.ini` file in main directory as follow :-
+
+  ```ini
   // Activate Proxy
-  $PROXY = true;
+  [settings]
+  proxy=true
   ```
 
 ---
 
 ## ⭐ Star History & Popularity
 
-[![Star History Chart](https://i.ibb.co/nsrdh5mR/star-history.png)](https://star-history.com/#mitthu786/TS-JioTV&Date)
-
----
+## [![Star History Chart](https://api.star-history.com/svg?repos=mitthu786/TS-JioTV&type=Date)](https://www.star-history.com/#mitthu786/TS-JioTV&Date)
 
 ## 📞 Contact & Support
 

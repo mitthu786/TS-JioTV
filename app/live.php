@@ -13,17 +13,6 @@ header("Access-Control-Expose-Headers: Content-Length, Content-Range");
 header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
-// Get credentials
-$cred = getCRED();
-$jio_cred = json_decode($cred, true) ?? [];
-extract($jio_cred['sessionAttributes']['user'] ?? []);
-
-$ssoToken = $jio_cred['ssoToken'] ?? '';
-$access_token = $jio_cred['authToken'] ?? '';
-$crm = $subscriberId ?? '';
-$uniqueId = $unique ?? '';
-$device_id = $jio_cred['deviceId'] ?? '';
-
 // Server configuration
 $protocol = ($_SERVER['HTTPS'] ?? '') === 'on' ? 'https://' : 'http://';
 $host_jio = in_array($_SERVER['SERVER_ADDR'], ['127.0.0.1', 'localhost'])
@@ -42,36 +31,8 @@ $jio_path = rtrim(sprintf(
 
 // API request setup
 $id = htmlspecialchars($_REQUEST['id'] ?? '');
-$post_data = http_build_query(['stream_type' => 'Seek', 'channel_id' => $id]);
 
-$headers = [
-    "Host: jiotvapi.media.jio.com",
-    "Content-Type: application/x-www-form-urlencoded",
-    "appkey: NzNiMDhlYzQyNjJm",
-    "channel_id: $id",
-    "userid: $crm",
-    "crmid: $crm",
-    "deviceId: $device_id",
-    "devicetype: phone",
-    "isott: true",
-    "languageId: 6",
-    "lbcookie: 1",
-    "os: android",
-    "dm: Xiaomi 22101316UP",
-    "osversion: 14",
-    "srno: 240303144000",
-    "accesstoken: $access_token",
-    "subscriberid: $crm",
-    "uniqueId: $uniqueId",
-    "content-length: " . strlen($post_data),
-    "usergroup: tvYR7NSNn7rymo3F",
-    "User-Agent: okhttp/4.9.3",
-    "versionCode: 331",
-];
-
-// API call
-$response = cUrlGetData("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", $headers, $post_data);
-$haystack = json_decode($response);
+$haystack = getJioTvData($id);
 
 if (!isset($haystack->code) || $haystack->code !== 200) {
     refresh_token();
@@ -123,7 +84,10 @@ if (str_contains($query, "bpk-tv")) {
     ];
 
     if (isset($sonyData[$id])) {
-        $url = "$jio_path/ts_sony_live_" . $sonyData[$id] . ".m3u8";
+        $streamId = $sonyData[$id];
+        $url = isApache()
+            ? "$jio_path/ts_sony_live_$streamId.m3u8"
+            : "$jio_path/s_live.php?id=$streamId&e=.m3u8";
         echo cUrlGetData($url, $headers_1);
     }
 } else {

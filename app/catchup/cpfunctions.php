@@ -1,11 +1,12 @@
 <?php
 
-// * Copyright 2021-2024 SnehTV, Inc.
+// * Copyright 2021-2025 SnehTV, Inc.
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
 // Set Proxy  
-$PROXY = false;
+$config = parse_ini_file('../../config.ini', true);
+$PROXY = $config['settings']['proxy'] ?? null;
 
 // Constants
 define('DATA_FOLDER', '../assets/data');
@@ -64,7 +65,7 @@ function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, 
   $reqHeader[] = "uniqueId: " . $uniqueId;
   $reqHeader[] = "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7";
   $reqHeader[] = "usergroup: tvYR7NSNn7rymo3F";
-  $reqHeader[] = "versionCode: 331";
+  $reqHeader[] = "versionCode: 353";
   $reqHeader[] = "appname: RJIL_JioTV";
   $reqHeader[] = "Origin: https://www.jiocinema.com";
   $reqHeader[] = "Referer: https://www.jiocinema.com/";
@@ -93,7 +94,7 @@ function jio_headers($cookies, $crm, $device_id, $ssoToken, $uniqueId)
   $reqHeader[] = "appname: RJIL_JioTV";
   $reqHeader[] = "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7";
   $reqHeader[] = "usergroup: tvYR7NSNn7rymo3F";
-  $reqHeader[] = "versionCode: 331";
+  $reqHeader[] = "versionCode: 353";
   return $reqHeader;
 }
 
@@ -122,6 +123,21 @@ function cUrlGetData($url, $headers = null, $post_fields = null)
 
   curl_close($ch);
   return $data;
+}
+
+// Check if server is Apache compatible
+function isApache(): bool
+{
+  $software = strtolower($_SERVER['SERVER_SOFTWARE'] ?? '');
+  $compatibleServers = ['apache', 'litespeed', 'openlitespeed'];
+
+  foreach ($compatibleServers as $server) {
+    if (strpos($software, strtolower($server)) !== false) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 // ENCRYPTION && DECRYPTION

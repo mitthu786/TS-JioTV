@@ -1,6 +1,6 @@
 <?php
 
-// Copyright 2021-2024 SnehTV, Inc.
+// Copyright 2021-2025 SnehTV, Inc.
 // Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // Created By: TechieSneh
 
@@ -117,8 +117,14 @@ if ($json !== null) {
         $channel_category = htmlspecialchars($channel['channelCategoryId'], ENT_QUOTES, 'UTF-8');
         $channel_language = htmlspecialchars($channel['channelLanguageId'], ENT_QUOTES, 'UTF-8');
         $logo_url = htmlspecialchars($channel['logoUrl'], ENT_QUOTES, 'UTF-8');
-        $catchup_source = htmlspecialchars($jio_path . 'catchup/ts_catchup_' . urlencode($channel['channel_id']) . '_${catchup-id}_${start}_${stop}.m3u8', ENT_QUOTES, 'UTF-8');
-        $stream_url = $jio_path . 'ts_live_' . urlencode($channel['channel_id']) . '.m3u8';
+
+        if (isApache()) {
+            $catchup_source = htmlspecialchars($jio_path . 'catchup/ts_catchup_' . urlencode($channel['channel_id']) . '_${catchup-id}_${start}_${stop}.m3u8', ENT_QUOTES, 'UTF-8');
+            $stream_url = $jio_path . 'ts_live_' . urlencode($channel['channel_id']) . '.m3u8';
+        } else {
+            $catchup_source = $jio_path . 'catchup/cpapi.php?id=' . urlencode($channel['channel_id']) . '&srno=${catchup-id}&begin={start}&end=${stop}&e=.m3u8';
+            $stream_url = $jio_path . 'live.php?id=' . urlencode($channel['channel_id']) . '&e=.m3u8';
+        }
 
         $jio_data .= sprintf(
             '#EXTINF:-1 tvg-id="%s" tvg-name="%s" tvg-type="%s" group-title="TS-JioTV %s" tvg-language="%s" tvg-logo="%s"%s,%s',

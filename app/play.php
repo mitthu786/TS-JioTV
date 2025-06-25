@@ -5,11 +5,35 @@
 // Created By : TechieSneh
 
 error_reporting(0);
-$data = hex2bin(explode('_', $_SERVER['REQUEST_URI'])[1]);
-$data = explode('=?=', $data);
-$cid = $data[0];
+include "functions.php";
+
+$data = null;
+$hex = '';
+
+// Determine data source
+if (isset($_GET['data'])) {
+    $hex = $_GET['data'];
+} else {
+    $parts = explode('_', $_SERVER['REQUEST_URI']);
+    if (isset($parts[1])) {
+        $hex = $parts[1];
+    }
+}
+
+// Decode and parse data
+if (!empty($hex)) {
+    $decoded = hex2bin($hex);
+    $data = explode('=?=', $decoded);
+}
+
+$cid = $data[0] ?? '';
+$id = $data[1] ?? '';
 $name = str_replace('_', ' ', $cid);
-$id = $data[1];
+
+// Set live URL
+$live_url = (isApache())
+    ? "ts_live_$id.m3u8"
+    : "live.php?id=$id&e=.m3u8";
 
 ?>
 
@@ -26,9 +50,8 @@ $id = $data[1];
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
     <link rel="stylesheet" href="assets/css/player.css" />
     <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
-    <script src="assets/js/jwplayer.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/BcjC6R8/jiotv.png">
-    <!-- <script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script> -->
+    <script type="text/javascript" src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
 
 </head>
 
@@ -70,7 +93,7 @@ $id = $data[1];
                 width: '100%',
                 mute: false,
                 autostart: true,
-                file: "ts_live_<?= $id ?>.m3u8",
+                file: "<?= $live_url ?>",
                 type: "hls",
                 captions: {
                     color: '#fff',
