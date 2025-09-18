@@ -59,13 +59,13 @@ function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, 
   $reqHeader[] = "deviceId: " . $device_id;
   $reqHeader[] = "devicetype: phone";
   $reqHeader[] = "x-platform: android";
-  $reqHeader[] = "srno: 240707144000";
+  $reqHeader[] = "srno: 250918144000";
   $reqHeader[] = "ssotoken: " . $ssoToken;
   $reqHeader[] = "subscriberId: " . $crm;
   $reqHeader[] = "uniqueId: " . $uniqueId;
   $reqHeader[] = "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7";
   $reqHeader[] = "usergroup: tvYR7NSNn7rymo3F";
-  $reqHeader[] = "versionCode: 353";
+  $reqHeader[] = "versionCode: 452";
   $reqHeader[] = "appname: RJIL_JioTV";
   $reqHeader[] = "Origin: https://www.jiocinema.com";
   $reqHeader[] = "Referer: https://www.jiocinema.com/";
@@ -87,14 +87,14 @@ function jio_headers($cookies, $crm, $device_id, $ssoToken, $uniqueId)
   $reqHeader[] = "lbcookie: 1";
   $reqHeader[] = "os: android";
   $reqHeader[] = "osVersion: 14";
-  $reqHeader[] = "srno: 240707144000";
+  $reqHeader[] = "srno: 250918144000";
   $reqHeader[] = "ssotoken: " . $ssoToken;
   $reqHeader[] = "subscriberId: " . $crm;
   $reqHeader[] = "uniqueId: " . $uniqueId;
   $reqHeader[] = "appname: RJIL_JioTV";
   $reqHeader[] = "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7";
   $reqHeader[] = "usergroup: tvYR7NSNn7rymo3F";
-  $reqHeader[] = "versionCode: 353";
+  $reqHeader[] = "versionCode: 452";
   return $reqHeader;
 }
 
@@ -166,7 +166,7 @@ function getEPGData($id, $pg)
 {
   $headers = [
     'Host' => 'jiotvapi.cdn.jio.com',
-    'user-agent' => 'okhttp/4.9.3',
+    'user-agent' => 'okhttp/4.12.13',
     'Accept-Encoding' => 'gzip'
   ];
 

@@ -94,16 +94,42 @@ function jio_headers($cookies, $access_token, $crm, $device_id, $ssoToken, $uniq
     "lbcookie: 1",
     "os: android",
     "osVersion: 14",
-    "srno: 240707144000",
+    "srno: 250918144000",
     "ssotoken: $ssoToken",
     "subscriberId: $crm",
     "uniqueId: $uniqueId",
     "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7",
     "usergroup: tvYR7NSNn7rymo3F",
-    "versionCode: 353",
+    "versionCode: 452",
     "Origin: https://www.jiocinema.com",
     "Referer: https://www.jiocinema.com/",
   ];
+}
+
+
+function jio_sony_headers($ck, $id, $crm, $device_id, $access_token, $uniqueId, $ssoToken)
+{
+  $reqHeader = array();
+  $reqHeader[] = "Cookie: " . hex2bin($ck);
+  $reqHeader[] = "appkey: NzNiMDhlYcQyNjJm";
+  $reqHeader[] = "accesstoken: " . $access_token;
+  $reqHeader[] = "channel_id: " . $id;
+  $reqHeader[] = "channelid: " . $id;
+  $reqHeader[] = "crmid: " . $crm;
+  $reqHeader[] = "deviceId: " . $device_id;
+  $reqHeader[] = "devicetype: phone";
+  $reqHeader[] = "x-platform: android";
+  $reqHeader[] = "srno: 250918144000";
+  $reqHeader[] = "ssotoken: " . $ssoToken;
+  $reqHeader[] = "subscriberId: " . $crm;
+  $reqHeader[] = "uniqueId: " . $uniqueId;
+  $reqHeader[] = "User-Agent: plaYtv/7.1.3 (Linux;Android 14) ExoPlayerLib/2.11.7";
+  $reqHeader[] = "usergroup: tvYR7NSNn7rymo3F";
+  $reqHeader[] = "versionCode: 452";
+  $reqHeader[] = "appname: RJIL_JioTV";
+  $reqHeader[] = "Origin: https://www.jiocinema.com";
+  $reqHeader[] = "Referer: https://www.jiocinema.com/";
+  return $reqHeader;
 }
 
 // Fetch data using cURL
@@ -254,14 +280,14 @@ function getJioTvData($id)
     "os: android",
     "dm: Xiaomi 22101316UP",
     "osversion: 14",
-    "srno: 240303144000",
+    "srno: 250918144000",
     "accesstoken: $access_token",
     "subscriberid: $crm",
     "uniqueId: $uniqueId",
     "content-length: " . strlen($post_data),
     "usergroup: tvYR7NSNn7rymo3F",
-    "User-Agent: okhttp/4.9.3",
-    "versionCode: 353",
+    "User-Agent: okhttp/4.12.13",
+    "versionCode: 452",
   ];
 
   $response = cUrlGetData("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", $headers, $post_data);
